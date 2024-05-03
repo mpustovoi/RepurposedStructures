@@ -16,19 +16,19 @@ repositories {
 
 &nbsp;
 
-Don't forget to change \<modversion> with the actual latest version of this mod like `7.2.0` for example. (See older branches's README.md for their stuff)
+Don't forget to change &lt;modversion> with the actual latest version of this mod like `7.2.0` for example. (See older branches's README.md for their stuff)
 
 ```
 dependencies {
    ...
    NEOFORGE: 
-     compileOnly fg.deobf("com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.2-neoforge")
+     compileOnly fg.deobf("com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.2-neoforge")
      
    FABRIC/QUILT: 
-     modCompileOnly "com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.2-fabric"
+     modCompileOnly "com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.2-fabric"
      
    ARCH COMMON MODULE: 
-     modCompileOnly "com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.2-common"
+     modCompileOnly "com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.2-common"
 }
 ```
 
@@ -58,19 +58,19 @@ repositories {
 
 &nbsp;
 
-Don't forget to change \<modversion> with the actual latest version of this mod like `7.2.0` for example. (See older branches's README.md for their stuff)
+Don't forget to change &lt;modversion> with the actual latest version of this mod like `7.2.0` for example. (See older branches's README.md for their stuff)
 
 ```
 dependencies {
    ...
    NEOFORGE: 
-     implementation fg.deobf("com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.2-neoforge")
+     implementation fg.deobf("com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.2-neoforge")
      
    FABRIC/QUILT: 
-     modImplementation "com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.2-fabric"
+     modImplementation "com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.2-fabric"
      modImplementation "maven.modrinth:midnightlib:1.4.1-fabric" 
    
    ARCH COMMON MODULE: 
-     modCompileOnly "com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.2-common"
+     modCompileOnly "com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.2-common"
 }
 ```
