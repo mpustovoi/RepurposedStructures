@@ -16,22 +16,22 @@ repositories {
 
 &nbsp;
 
-Don't forget to change \<modversion> with the actual latest version of this mod like `7.1.10` for example. (See older branches's README.md for their stuff)
+Don't forget to change &lt;modversion> with the actual latest version of this mod like `7.1.10` for example. (See older branches's README.md for their stuff)
 
 ```
 dependencies {
    ...
    FORGE: 
-     compileOnly fg.deobf("com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.1-forge")
+     compileOnly fg.deobf("com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.1-forge")
      
    FABRIC: 
-     modCompileOnly "com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.1-fabric"
+     modCompileOnly "com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.1-fabric"
      
    QUILT: 
-     modCompileOnly "com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.1-quilt"
+     modCompileOnly "com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.1-quilt"
      
    ARCH COMMON MODULE: 
-     modCompileOnly "com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.1-common"
+     modCompileOnly "com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.1-common"
 }
 ```
 
@@ -75,24 +75,24 @@ repositories {
 
 &nbsp;
 
-Don't forget to change \<modversion> with the actual latest version of this mod like `7.1.10` for example. (See older branches's README.md for their stuff)
+Don't forget to change &lt;modversion> with the actual latest version of this mod like `7.1.10` for example. (See older branches's README.md for their stuff)
 
 ```
 dependencies {
    ...
    FORGE: 
-     implementation fg.deobf("com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.1-forge")
+     implementation fg.deobf("com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.1-forge")
      
    FABRIC: 
-     modImplementation "com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.1-fabric"
+     modImplementation "com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.1-fabric"
      modImplementation "maven.modrinth:midnightlib:1.4.1-fabric" 
    
    QUILT: 
-     modImplementation "com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.1-quilt"
+     modImplementation "com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.1-quilt"
      modImplementation "maven.modrinth:midnightlib:1.4.1-fabric" 
      
    ARCH COMMON MODULE: 
-     modCompileOnly "com.telepathicgrunt:RepurposedStructures:\<modversion>+1.20.1-common"
+     modCompileOnly "com.telepathicgrunt:RepurposedStructures:&lt;modversion>+1.20.1-common"
 }
 ```
 
