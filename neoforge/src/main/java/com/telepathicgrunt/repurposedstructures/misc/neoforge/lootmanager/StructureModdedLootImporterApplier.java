@@ -1,7 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.misc.neoforge.lootmanager;
 
 import com.google.common.base.Suppliers;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.configs.neoforge.RSModdedLootConfig;

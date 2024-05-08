@@ -1,7 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.world.neoforge.biomemodifiers;
 
 import com.google.common.collect.Maps;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.neoforge.RSBiomeModifiers;
@@ -16,7 +15,6 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.ModifiableBiomeInfo;
 
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.Map;
 

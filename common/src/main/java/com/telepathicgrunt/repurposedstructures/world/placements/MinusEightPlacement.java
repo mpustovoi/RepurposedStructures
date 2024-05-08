@@ -1,6 +1,5 @@
 package com.telepathicgrunt.repurposedstructures.world.placements;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.telepathicgrunt.repurposedstructures.modinit.RSPlacements;
 import net.minecraft.core.BlockPos;

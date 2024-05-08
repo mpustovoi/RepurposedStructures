@@ -5,7 +5,9 @@ import com.telepathicgrunt.repurposedstructures.mixins.entities.MerchantOfferAcc
 import com.telepathicgrunt.repurposedstructures.mixins.items.MapItemAccessor;
 import com.telepathicgrunt.repurposedstructures.utils.AsyncLocator;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,11 +18,14 @@ import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MapItem;
+import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.saveddata.maps.MapDecoration;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
+import net.minecraft.world.level.saveddata.maps.MapId;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
+
+import java.util.Optional;
 
 
 // Source: https://github.com/thebrightspark/AsyncLocator/blob/1.19.x/src/main/java/brightspark/asynclocator/logic/MerchantLogic.java
@@ -28,7 +33,10 @@ public class MerchantMapUpdating {
     private MerchantMapUpdating() {}
 
     public static void invalidateMap(AbstractVillager merchant, ItemStack mapStack) {
-        mapStack.setHoverName(Component.translatable("item.minecraft.map"));
+        Component customName = mapStack.getComponents().get(DataComponents.CUSTOM_NAME);
+        if (customName != null) {
+            mapStack.set(DataComponents.CUSTOM_NAME, Component.translatable("item.minecraft.map"));
+        }
         merchant.getOffers()
                 .stream()
                 .filter(offer -> offer.getResult() == mapStack)
@@ -49,7 +57,7 @@ public class MerchantMapUpdating {
             AbstractVillager merchant,
             ItemStack mapStack,
             String displayName,
-            MapDecorationType destinationType,
+            Holder.Reference<MapDecorationType> destinationType,
             BlockPos pos
     ) {
         if (pos == null) {
@@ -75,7 +83,7 @@ public class MerchantMapUpdating {
             Entity pTrader,
             int emeraldCost,
             String displayName,
-            MapDecorationType destinationType,
+            Holder.Reference<MapDecorationType> destinationType,
             int maxUses,
             int villagerXp,
             TagKey<Structure> destination,
@@ -102,7 +110,7 @@ public class MerchantMapUpdating {
             Entity pTrader,
             int emeraldCost,
             String displayName,
-            MapDecorationType destinationType,
+            Holder.Reference<MapDecorationType> destinationType,
             int maxUses,
             int villagerXp,
             HolderSet<Structure> structureSet,
@@ -133,8 +141,8 @@ public class MerchantMapUpdating {
             task.apply((ServerLevel) trader.level(), merchant, mapStack);
 
             return new MerchantOffer(
-                    new ItemStack(Items.EMERALD, emeraldCost),
-                    new ItemStack(Items.COMPASS),
+                    new ItemCost(Items.EMERALD, emeraldCost),
+                    Optional.of(new ItemCost(Items.COMPASS, 1)),
                     mapStack,
                     maxUses,
                     villagerXp,
@@ -152,7 +160,10 @@ public class MerchantMapUpdating {
 
     public static ItemStack createEmptyMap() {
         ItemStack stack = new ItemStack(Items.FILLED_MAP);
-        stack.setHoverName(Component.translatable("Locating... (Do not buy this map until finished)"));
+        Component customName = stack.getComponents().get(DataComponents.CUSTOM_NAME);
+        if (customName != null) {
+            stack.set(DataComponents.CUSTOM_NAME, Component.translatable("Locating... (Do not buy this map until finished)"));
+        }
         return stack;
     }
 
@@ -161,16 +172,19 @@ public class MerchantMapUpdating {
             ServerLevel level,
             BlockPos pos,
             int scale,
-            MapDecorationType destinationType,
+            Holder.Reference<MapDecorationType> destinationType,
             String displayName
     ) {
-        MapItemAccessor.callCreateAndStoreSavedData(
-                mapStack, level, pos.getX(), pos.getZ(), scale, true, true, level.dimension()
-        );
+        MapId mapId = MapItemAccessor.callCreateNewSavedData(level, pos.getX(), pos.getZ(), scale, true, true, level.dimension());
+        mapStack.set(DataComponents.MAP_ID, mapId);
         MapItem.renderBiomePreviewMap(level, mapStack);
         MapItemSavedData.addTargetDecoration(mapStack, pos, "+", destinationType);
-        if (displayName != null)
-            mapStack.setHoverName(Component.translatable(displayName));
+        if (displayName != null) {
+            Component customName = mapStack.getComponents().get(DataComponents.CUSTOM_NAME);
+            if (customName != null) {
+                mapStack.set(DataComponents.CUSTOM_NAME, Component.translatable(displayName));
+            }
+        }
     }
 }
 

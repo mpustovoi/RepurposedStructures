@@ -1,6 +1,5 @@
 package com.telepathicgrunt.repurposedstructures.world.neoforge.biomemodifiers;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.neoforge.RSBiomeModifiers;

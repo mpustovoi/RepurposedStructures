@@ -9,8 +9,10 @@ import com.telepathicgrunt.repurposedstructures.mixins.structures.JigsawJunction
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.FrontAndTop;
+import net.minecraft.core.Registry;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.packs.resources.Resource;
@@ -38,7 +40,6 @@ import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.storage.loot.LootDataType;
 import net.minecraft.world.level.storage.loot.LootTable;
 
 import java.io.BufferedReader;
@@ -305,11 +306,12 @@ public final class GeneralUtils {
 
     public static boolean isInvalidLootTableFound(MinecraftServer minecraftServer, Map.Entry<ResourceLocation, ResourceLocation> entry) {
         boolean invalidLootTableFound = false;
-        if(minecraftServer.getLootData().getLootTable(entry.getKey()) == LootTable.EMPTY) {
+        Registry<LootTable> lootTableRegistry = minecraftServer.registryAccess().registryOrThrow(Registries.LOOT_TABLE);
+        if(lootTableRegistry.get(entry.getKey()) == LootTable.EMPTY || lootTableRegistry.get(entry.getKey()) == null) {
             RepurposedStructures.LOGGER.error("Unable to find loot table key: {}", entry.getKey());
             invalidLootTableFound = true;
         }
-        if(minecraftServer.getLootData().getLootTable(entry.getValue()) == LootTable.EMPTY) {
+        if(lootTableRegistry.get(entry.getValue()) == LootTable.EMPTY || lootTableRegistry.get(entry.getValue()) == null) {
             RepurposedStructures.LOGGER.error("Unable to find loot table value: {}", entry.getValue());
             invalidLootTableFound = true;
         }
@@ -318,7 +320,8 @@ public final class GeneralUtils {
 
     public static boolean isMissingLootImporting(MinecraftServer minecraftServer, Set<ResourceLocation> tableKeys) {
         AtomicBoolean invalidLootTableFound = new AtomicBoolean(false);
-        minecraftServer.getLootData().getKeys(LootDataType.TABLE).forEach(rl -> {
+        Registry<LootTable> lootTableRegistry = minecraftServer.registryAccess().registryOrThrow(Registries.LOOT_TABLE);
+        lootTableRegistry.keySet().forEach(rl -> {
             if(rl.getNamespace().equals(RepurposedStructures.MODID) && !tableKeys.contains(rl)) {
                 if(rl.getPath().contains("mansions") && rl.getPath().contains("storage")) {
                     return;

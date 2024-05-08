@@ -2,7 +2,6 @@ package com.telepathicgrunt.repurposedstructures.misc.lootmanager;
 
 import com.telepathicgrunt.repurposedstructures.configs.RSMainModdedLootConfig;
 import com.telepathicgrunt.repurposedstructures.mixins.resources.LootContextAccessor;
-import com.telepathicgrunt.repurposedstructures.mixins.resources.LootManagerAccessor;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -14,33 +13,16 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public final class StructureModdedLootImporterApplier {
     private StructureModdedLootImporterApplier() {}
 
-    // Cache the reverse lookup for what loottable goes with what identifier
-    private static final Map<LootTable, ResourceLocation> REVERSED_TABLES = new HashMap<>();
-
     public static void checkAndGetModifiedLoot(LootContext context, LootTable currentLootTable, List<ItemStack> originalLoot) {
         if(RSMainModdedLootConfig.importModdedItems) {
-            
-            // Cache the result of the loottable to the id into our own map.
-            ResourceLocation lootTableID = REVERSED_TABLES.computeIfAbsent(
-                    currentLootTable,
-                    // Will iterate lazily through loottable map for which identifier gives this loottable and return the result
-                    (lootTable) -> ((LootManagerAccessor)context.getLevel().getServer().getLootData()).repurposedstructures_getTables()
-                            .entrySet()
-                            .stream()
-                            .filter(entry -> lootTable.equals(entry.getValue()))
-                            .map(key -> key.getKey().location())
-                            .findFirst()
-                            .orElse(null) // null should be ever returned as otherwise, that would be concerning...
-            );
 
+            ResourceLocation lootTableID = context.getLevel().registryAccess().registryOrThrow(Registries.LOOT_TABLE).getKey(currentLootTable);
             if(lootTableID != null && !StructureModdedLootImporter.isInBlacklist(lootTableID)) {
                 StructureModdedLootImporterApplier.modifyLootTables(context, lootTableID, originalLoot);
             }

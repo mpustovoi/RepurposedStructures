@@ -1,13 +1,10 @@
 package com.telepathicgrunt.repurposedstructures.modinit.neoforge;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
 import com.telepathicgrunt.repurposedstructures.misc.neoforge.lootmanager.DetectRSLootTables;
 import com.telepathicgrunt.repurposedstructures.misc.neoforge.lootmanager.StructureModdedLootImporterApplier;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.registries.DeferredHolder;

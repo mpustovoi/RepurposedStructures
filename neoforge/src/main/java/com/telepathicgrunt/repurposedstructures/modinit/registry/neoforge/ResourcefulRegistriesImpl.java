@@ -3,7 +3,6 @@ package com.telepathicgrunt.repurposedstructures.modinit.registry.neoforge;
 import com.telepathicgrunt.repurposedstructures.modinit.registry.CustomRegistryLookup;
 import com.telepathicgrunt.repurposedstructures.modinit.registry.ResourcefulRegistry;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegistryBuilder;
