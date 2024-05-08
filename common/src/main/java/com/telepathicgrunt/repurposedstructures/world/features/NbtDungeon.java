@@ -39,6 +39,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
+import net.minecraft.world.level.storage.loot.LootTable;
 
 import java.util.List;
 import java.util.Optional;
@@ -220,6 +221,8 @@ public class NbtDungeon extends Feature<NbtDungeonConfig>{
                         mutable.move(Direction.UP);
                         boolean isOnWall = false;
 
+                        ResourceKey<LootTable> lootTableResourceKey = ResourceKey.create(Registries.LOOT_TABLE, config.chestResourcelocation);
+
                         for(Direction neighborDirection : Direction.Plane.HORIZONTAL) {
                             mutable.move(neighborDirection);
                             BlockState neighboringState = world.getBlockState(mutable);
@@ -261,7 +264,7 @@ public class NbtDungeon extends Feature<NbtDungeonConfig>{
                                                     .setValue(ChestBlock.FACING, currentDirection)
                                                     .setValue(ChestBlock.TYPE, chestTyping ? ChestType.RIGHT : ChestType.LEFT),
                                             2);
-                                    RandomizableContainer.setBlockEntityLootTable(world, random, mutable, config.chestResourcelocation);
+                                    RandomizableContainer.setBlockEntityLootTable(world, random, mutable, lootTableResourceKey);
 
                                     // Set neighboring chest to face same way too
                                     world.setBlock(mutable.move(neighborDirection),
@@ -269,7 +272,7 @@ public class NbtDungeon extends Feature<NbtDungeonConfig>{
                                                     .setValue(ChestBlock.FACING, currentDirection)
                                                     .setValue(ChestBlock.TYPE, chestTyping ? ChestType.LEFT : ChestType.RIGHT),
                                             2);
-                                    RandomizableContainer.setBlockEntityLootTable(world, random, mutable, config.chestResourcelocation);
+                                    RandomizableContainer.setBlockEntityLootTable(world, random, mutable, lootTableResourceKey);
                                     SolidifyBlock(world, mutable.below());
 
                                     isOnWall = false; // Skip wall code as we already placed chest
@@ -301,7 +304,7 @@ public class NbtDungeon extends Feature<NbtDungeonConfig>{
                             currentChestAttempt++;
                             addedChestThisAttempt = true;
 
-                            RandomizableContainer.setBlockEntityLootTable(world, random, mutable, config.chestResourcelocation);
+                            RandomizableContainer.setBlockEntityLootTable(world, random, mutable, lootTableResourceKey);
                             mutable.move(Direction.DOWN);
                             if(lootBlock.getBlock() == Blocks.SHULKER_BOX && world.getBlockEntity(mutable) == null) {
                                 EntityType<?> entity = MobSpawnerManager.MOB_SPAWNER_MANAGER.getSpawnerMob(config.rsSpawnerResourcelocation, random);

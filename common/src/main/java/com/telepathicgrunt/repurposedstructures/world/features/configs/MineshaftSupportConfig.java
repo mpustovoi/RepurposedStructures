@@ -12,7 +12,7 @@ import java.util.HashSet;
 
 public class MineshaftSupportConfig implements FeatureConfiguration {
 
-    public static final Codec<MineshaftSupportConfig> CODEC = RecordCodecBuilder.create((configInstance) -> configInstance.group(
+    public static final MapCodec<MineshaftSupportConfig> CODEC = RecordCodecBuilder.mapCodec((configInstance) -> configInstance.group(
             BuiltInRegistries.BLOCK.byNameCodec().listOf().fieldOf("arch_blocks").xmap(HashSet::new, ArrayList::new).forGetter(mineshaftSupportConfig -> mineshaftSupportConfig.archBlocks),
             BlockState.CODEC.fieldOf("pillar_state").forGetter(mineshaftSupportConfig -> mineshaftSupportConfig.pillarState),
             BlockState.CODEC.fieldOf("fence_state").forGetter(mineshaftSupportConfig -> mineshaftSupportConfig.fenceState),

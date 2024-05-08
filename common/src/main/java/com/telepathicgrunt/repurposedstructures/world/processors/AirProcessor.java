@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
@@ -27,7 +27,7 @@ import java.util.HashSet;
  */
 public class AirProcessor extends StructureProcessor {
 
-    public static final Codec<AirProcessor> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
+    public static final MapCodec<AirProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             BuiltInRegistries.BLOCK.byNameCodec().listOf().fieldOf("ignore_block").orElse(new ArrayList<>()).xmap(HashSet::new, ArrayList::new).forGetter(config -> config.blocksToIgnore)
     ).apply(instance, instance.stable(AirProcessor::new)));
 

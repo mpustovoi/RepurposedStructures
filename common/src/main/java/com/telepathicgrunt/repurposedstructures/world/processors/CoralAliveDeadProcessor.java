@@ -1,28 +1,20 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import com.telepathicgrunt.repurposedstructures.utils.GeneralUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 
 import java.util.AbstractMap;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -30,7 +22,7 @@ import java.util.Map;
  */
 public class CoralAliveDeadProcessor extends StructureProcessor {
 
-    public static final Codec<CoralAliveDeadProcessor> CODEC = Codec.unit(CoralAliveDeadProcessor::new);
+    public static final MapCodec<CoralAliveDeadProcessor> CODEC = MapCodec.unit(CoralAliveDeadProcessor::new);
     private static final Map<Block, Block> ALIVE_TO_DEAD_CORAL = Map.ofEntries(
             new AbstractMap.SimpleEntry<>(Blocks.BRAIN_CORAL, Blocks.DEAD_BRAIN_CORAL),
             new AbstractMap.SimpleEntry<>(Blocks.FIRE_CORAL, Blocks.DEAD_FIRE_CORAL),

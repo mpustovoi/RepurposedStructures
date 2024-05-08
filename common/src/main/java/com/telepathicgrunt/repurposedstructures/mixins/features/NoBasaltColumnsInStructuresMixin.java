@@ -1,7 +1,5 @@
 package com.telepathicgrunt.repurposedstructures.mixins.features;
 
-import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
-import com.telepathicgrunt.repurposedstructures.mixins.world.WorldGenRegionAccessor;
 import com.telepathicgrunt.repurposedstructures.modinit.RSTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -11,7 +9,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.StructureManager;
-import net.minecraft.world.level.chunk.ChunkStatus;
+import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.minecraft.world.level.levelgen.feature.BasaltColumnsFeature;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import org.spongepowered.asm.mixin.Mixin;
@@ -39,7 +37,8 @@ public class NoBasaltColumnsInStructuresMixin {
         }
 
         Registry<Structure> configuredStructureFeatureRegistry = levelAccessor.registryAccess().registryOrThrow(Registries.STRUCTURE);
-        StructureManager structureManager = ((WorldGenRegionAccessor)levelAccessor).getStructureManager();
+        StructureManager structureManager = ((WorldGenRegion) levelAccessor).getLevel().structureManager();
+
         for (Holder<Structure> configuredStructureFeature : configuredStructureFeatureRegistry.getOrCreateTag(RSTags.NO_BASALT)) {
             if (structureManager.getStructureAt(mutableBlockPos, configuredStructureFeature.value()).isValid()) {
                 cir.setReturnValue(false);

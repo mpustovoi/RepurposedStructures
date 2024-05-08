@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.misc.neoforge.lootmanager;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
 import net.minecraft.resources.ResourceLocation;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class DetectRSLootTables implements LootItemCondition {
-    public static final Codec<DetectRSLootTables> CODEC = RecordCodecBuilder.create((configInstance) -> configInstance.group(
+    public static final MapCodec<DetectRSLootTables> CODEC = RecordCodecBuilder.mapCodec((configInstance) -> configInstance.group(
             ResourceLocation.CODEC.listOf().fieldOf("blacklisted_loot_tables").xmap(HashSet::new, ArrayList::new).forGetter(config -> config.blacklistedLootTableIds)
     ).apply(configInstance, DetectRSLootTables::new));
 

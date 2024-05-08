@@ -1,12 +1,12 @@
 package com.telepathicgrunt.repurposedstructures.world.structures;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSStructures;
 import com.telepathicgrunt.repurposedstructures.utils.GeneralUtils;
 import com.telepathicgrunt.repurposedstructures.world.structures.pieces.MansionPieces;
 import com.telepathicgrunt.repurposedstructures.world.structures.pieces.MansionStructurePiece;
-import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.QuartPos;
@@ -38,7 +38,7 @@ import java.util.Optional;
 
 public class MansionStructure extends Structure {
 
-    public static final Codec<MansionStructure> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<MansionStructure> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             MansionStructure.settingsCodec(instance),
             Codec.STRING.fieldOf("mansion_type").forGetter(structure -> structure.mansionType),
             BlockState.CODEC.fieldOf("foundation_block").forGetter(structure -> structure.foundationBlock),

@@ -63,7 +63,7 @@ public class DrownedWithArmor extends Feature<NoneFeatureConfiguration> {
                 (double)position.getZ() + 0.5D,
                 0.0F,
                 0.0F);
-        drownedEntity.finalizeSpawn(context.level(), context.level().getCurrentDifficultyAt(position), MobSpawnType.STRUCTURE, null, null);
+        drownedEntity.finalizeSpawn(context.level(), context.level().getCurrentDifficultyAt(position), MobSpawnType.STRUCTURE, null);
         context.level().addFreshEntityWithPassengers(drownedEntity);
         return true;
     }

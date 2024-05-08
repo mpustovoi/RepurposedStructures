@@ -2,6 +2,7 @@ package com.telepathicgrunt.repurposedstructures.world.neoforge.biomemodifiers;
 
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.neoforge.RSBiomeModifiers;
 import com.telepathicgrunt.repurposedstructures.utils.GeneralUtils;
@@ -21,7 +22,7 @@ import java.util.Map;
 
 public record AdditionsTemperatureModifier(HolderSet<Biome> biomes, Holder<PlacedFeature> feature, GenerationStep.Decoration step, TEMPERATURE_RANGE temperatureRange) implements BiomeModifier {
 
-    public static Codec<AdditionsTemperatureModifier> CODEC = RecordCodecBuilder.create(builder -> builder.group(
+    public static MapCodec<AdditionsTemperatureModifier> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(
             Biome.LIST_CODEC.fieldOf("biomes").forGetter(AdditionsTemperatureModifier::biomes),
             PlacedFeature.CODEC.fieldOf("feature").forGetter(AdditionsTemperatureModifier::feature),
             GenerationStep.Decoration.CODEC.fieldOf("step").forGetter(AdditionsTemperatureModifier::step),
@@ -82,7 +83,7 @@ public record AdditionsTemperatureModifier(HolderSet<Biome> biomes, Holder<Place
         }
     }
 
-    public Codec<? extends BiomeModifier> codec() {
+    public MapCodec<? extends BiomeModifier> codec() {
         return RSBiomeModifiers.ADDITIONS_TEMPERATURE_MODIFIER.get();
     }
 

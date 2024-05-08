@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.misc.mobspawners.MobSpawnerManager;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
@@ -25,7 +26,7 @@ import java.util.Optional;
 
 public class SpawnerRandomizingProcessor extends StructureProcessor {
 
-    public static final Codec<SpawnerRandomizingProcessor> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
+    public static final MapCodec<SpawnerRandomizingProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             ResourceLocation.CODEC.fieldOf("rs_spawner_resourcelocation").forGetter(spawnerRandomizingProcessor -> spawnerRandomizingProcessor.rsSpawnerResourcelocation),
             InclusiveRange.INT.optionalFieldOf("valid_block_light_level").forGetter(spawnerRandomizingProcessor -> spawnerRandomizingProcessor.validBlockLightLevel),
             InclusiveRange.INT.optionalFieldOf("valid_sky_light_level").forGetter(spawnerRandomizingProcessor -> spawnerRandomizingProcessor.validSkyLightLevel),

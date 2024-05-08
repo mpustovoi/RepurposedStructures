@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
@@ -27,7 +28,7 @@ import net.minecraft.world.level.material.Fluids;
  */
 public class FloodWithWaterProcessor extends StructureProcessor {
 
-    public static final Codec<FloodWithWaterProcessor> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
+    public static final MapCodec<FloodWithWaterProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             Codec.INT.fieldOf("flood_level").forGetter(config -> config.floodLevel)
     ).apply(instance, instance.stable(FloodWithWaterProcessor::new)));
 

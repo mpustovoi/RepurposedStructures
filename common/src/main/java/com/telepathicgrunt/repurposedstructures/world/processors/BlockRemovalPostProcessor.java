@@ -1,13 +1,12 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
@@ -19,7 +18,7 @@ import java.util.List;
 
 public class BlockRemovalPostProcessor extends StructureProcessor {
 
-    public static final Codec<BlockRemovalPostProcessor> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
+    public static final MapCodec<BlockRemovalPostProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             BuiltInRegistries.BLOCK.byNameCodec().listOf().fieldOf("remove_blocks").orElse(new ArrayList<>()).xmap(HashSet::new, ArrayList::new).forGetter(config -> config.removeBlocks)
     ).apply(instance, instance.stable(BlockRemovalPostProcessor::new)));
 

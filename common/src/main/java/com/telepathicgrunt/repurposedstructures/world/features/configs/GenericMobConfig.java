@@ -9,7 +9,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import java.util.Optional;
 
 public class GenericMobConfig implements FeatureConfiguration {
-    public static final Codec<GenericMobConfig> CODEC = RecordCodecBuilder.create((configInstance) -> configInstance.group(
+    public static final MapCodec<GenericMobConfig> CODEC = RecordCodecBuilder.mapCodec((configInstance) -> configInstance.group(
             BuiltInRegistries.ITEM.byNameCodec().optionalFieldOf("held_item").forGetter(config -> config.heldItem),
             BuiltInRegistries.ITEM.byNameCodec().optionalFieldOf("helmet").forGetter(config -> config.helmet),
             BuiltInRegistries.ITEM.byNameCodec().optionalFieldOf("chestplate").forGetter(config -> config.chestplate),

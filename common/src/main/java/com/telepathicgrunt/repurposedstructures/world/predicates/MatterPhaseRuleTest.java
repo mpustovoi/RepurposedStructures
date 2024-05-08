@@ -2,6 +2,7 @@ package com.telepathicgrunt.repurposedstructures.world.predicates;
 
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSPredicates;
 import net.minecraft.Util;
@@ -16,7 +17,7 @@ import java.util.Locale;
 import java.util.Map;
 
 public class MatterPhaseRuleTest extends RuleTest {
-    public static final Codec<MatterPhaseRuleTest> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
+    public static final MapCodec<MatterPhaseRuleTest> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             StringRepresentable.fromEnum(MATTER_PHASE::values).fieldOf("phase_to_test_for").stable().forGetter((ruletest) -> ruletest.phaseToTestFor),
             Codec.BOOL.fieldOf("invert_condition").orElse(false).forGetter((ruletest) -> ruletest.invertCondition))
             .apply(instance, instance.stable(MatterPhaseRuleTest::new)));

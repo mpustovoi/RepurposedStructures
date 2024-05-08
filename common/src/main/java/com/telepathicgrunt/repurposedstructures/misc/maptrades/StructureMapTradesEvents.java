@@ -6,6 +6,7 @@ import com.telepathicgrunt.repurposedstructures.events.RegisterWanderingTradesEv
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.saveddata.maps.MapDecoration;
+import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 
 import java.util.List;
 import java.util.Locale;
@@ -18,13 +19,13 @@ public final class StructureMapTradesEvents {
         ResourceLocation currentVillager = BuiltInRegistries.VILLAGER_PROFESSION.getKey(event.type());
         if (currentVillager != null && StructureMapManager.STRUCTURE_MAP_MANAGER.VILLAGER_MAP_TRADES.containsKey(currentVillager.toString())) {
             for (VillagerMapObj mapTrade : StructureMapManager.STRUCTURE_MAP_MANAGER.VILLAGER_MAP_TRADES.get(currentVillager.toString())) {
-                MapDecoration.Type icon;
+                MapDecorationType icon;
                 try {
-                    icon = MapDecoration.Type.valueOf(mapTrade.mapIcon.toUpperCase(Locale.ROOT));
+                    icon = MapDecorationType.valueOf(mapTrade.mapIcon.toUpperCase(Locale.ROOT));
                 }
                 catch (Exception e) {
                     RepurposedStructures.LOGGER.error(e);
-                    icon = MapDecoration.Type.MANSION;
+                    icon = MapDecorationType.MANSION;
                 }
 
                 event.addTrade(mapTrade.tradeLevel, new StructureSpecificMaps.TreasureMapForEmeralds(
@@ -42,13 +43,13 @@ public final class StructureMapTradesEvents {
     public static void addWanderingTrades(RegisterWanderingTradesEvent event) {
         for (Map.Entry<WanderingTraderMapObj.TRADE_TYPE, List<WanderingTraderMapObj>> tradeEntry : StructureMapManager.STRUCTURE_MAP_MANAGER.WANDERING_TRADER_MAP_TRADES.entrySet()) {
             for (WanderingTraderMapObj mapTrade : tradeEntry.getValue()) {
-                MapDecoration.Type icon;
+                MapDecorationType icon;
                 try {
-                    icon = MapDecoration.Type.valueOf(mapTrade.mapIcon.toUpperCase(Locale.ROOT));
+                    icon = MapDecorationType.valueOf(mapTrade.mapIcon.toUpperCase(Locale.ROOT));
                 }
                 catch (Exception e) {
                     RepurposedStructures.LOGGER.error(e);
-                    icon = MapDecoration.Type.MANSION;
+                    icon = MapDecorationType.MANSION;
                 }
 
                 if (tradeEntry.getKey() == WanderingTraderMapObj.TRADE_TYPE.RARE) {

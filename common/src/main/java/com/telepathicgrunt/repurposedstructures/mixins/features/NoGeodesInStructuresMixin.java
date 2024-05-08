@@ -1,6 +1,5 @@
 package com.telepathicgrunt.repurposedstructures.mixins.features;
 
-import com.telepathicgrunt.repurposedstructures.mixins.world.WorldGenRegionAccessor;
 import com.telepathicgrunt.repurposedstructures.modinit.RSTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -9,7 +8,6 @@ import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.GeodeFeature;
-import net.minecraft.world.level.levelgen.feature.LakeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,7 +30,7 @@ public class NoGeodesInStructuresMixin {
         }
 
         Registry<Structure> configuredStructureFeatureRegistry = context.level().registryAccess().registryOrThrow(Registries.STRUCTURE);
-        StructureManager structureManager = ((WorldGenRegionAccessor)context.level()).getStructureManager();
+        StructureManager structureManager = context.level().getLevel().structureManager();
 
         for (Holder<Structure> configuredStructureFeature : configuredStructureFeatureRegistry.getOrCreateTag(RSTags.NO_GEODES)) {
             if (structureManager.getStructureAt(context.origin(), configuredStructureFeature.value()).isValid()) {

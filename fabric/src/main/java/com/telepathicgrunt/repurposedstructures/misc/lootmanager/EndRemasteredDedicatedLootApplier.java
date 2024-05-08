@@ -1,12 +1,18 @@
 package com.telepathicgrunt.repurposedstructures.misc.lootmanager;
 
 import com.telepathicgrunt.repurposedstructures.mixins.resources.LootContextAccessor;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootTable;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class EndRemasteredDedicatedLootApplier {
     private EndRemasteredDedicatedLootApplier() {}
@@ -23,7 +29,10 @@ public class EndRemasteredDedicatedLootApplier {
 
             // Generate End Remastered's dedicated loot
             LootContext newContext = StructureModdedLootImporterApplier.copyLootContext(oldLootContext);
-            List<ItemStack> endRemasteredLoot = oldLootContext.getResolver().getLootTable(tableToImportLoot).getRandomItems(((LootContextAccessor)newContext).getParams());
+            Optional<Holder.Reference<LootTable>> optionalLootTableReference = oldLootContext.getResolver().get(Registries.LOOT_TABLE, ResourceKey.create(Registries.LOOT_TABLE, tableToImportLoot));
+
+            List<ItemStack> endRemasteredLoot = optionalLootTableReference.isPresent() ?
+                    optionalLootTableReference.get().value().getRandomItems(((LootContextAccessor)newContext).getParams()) : new ArrayList<>();
 
             currentLoot.addAll(endRemasteredLoot);
         }

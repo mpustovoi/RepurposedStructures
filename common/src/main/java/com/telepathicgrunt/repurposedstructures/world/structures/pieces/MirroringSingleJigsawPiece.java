@@ -2,6 +2,7 @@ package com.telepathicgrunt.repurposedstructures.world.structures.pieces;
 
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.mixins.structures.SinglePoolElementAccessor;
 import com.telepathicgrunt.repurposedstructures.modinit.RSStructurePieces;
@@ -32,7 +33,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class MirroringSingleJigsawPiece extends SinglePoolElement {
-    public static final Codec<MirroringSingleJigsawPiece> CODEC = RecordCodecBuilder.create((jigsawPieceInstance) ->
+    public static final MapCodec<MirroringSingleJigsawPiece> CODEC = RecordCodecBuilder.mapCodec((jigsawPieceInstance) ->
             jigsawPieceInstance.group(
                     templateCodec(),
                     processorsCodec(),

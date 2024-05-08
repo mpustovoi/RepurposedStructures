@@ -1,9 +1,9 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
-import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -24,7 +24,7 @@ import java.util.HashSet;
 
 public class SuperGravityProcessor extends StructureProcessor {
 
-    public static final Codec<SuperGravityProcessor> CODEC = RecordCodecBuilder.create(
+    public static final MapCodec<SuperGravityProcessor> CODEC = RecordCodecBuilder.mapCodec(
             (instance) -> instance.group(
                     Heightmap.Types.CODEC.fieldOf("heightmap").orElse(Heightmap.Types.WORLD_SURFACE_WG).forGetter((superGravityProcessor) -> superGravityProcessor.heightmap),
                     Codec.INT.fieldOf("offset").orElse(0).forGetter((superGravityProcessor) -> superGravityProcessor.offset),

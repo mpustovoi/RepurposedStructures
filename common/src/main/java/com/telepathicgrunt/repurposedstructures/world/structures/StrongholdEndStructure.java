@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.structures;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSStructures;
 import com.telepathicgrunt.repurposedstructures.utils.GeneralUtils;
@@ -24,7 +25,7 @@ import java.util.Optional;
 
 public class StrongholdEndStructure extends GenericJigsawStructure {
 
-    public static final Codec<StrongholdEndStructure> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<StrongholdEndStructure> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             StrongholdEndStructure.settingsCodec(instance),
             StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
             Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),

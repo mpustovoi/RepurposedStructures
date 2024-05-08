@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
@@ -19,7 +19,7 @@ import java.util.Optional;
 
 public class EndGatewayProcessor extends StructureProcessor {
 
-    public static final Codec<EndGatewayProcessor> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
+    public static final MapCodec<EndGatewayProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             BlockPos.CODEC.optionalFieldOf("exit_position").forGetter(config -> config.exitPos)
     ).apply(instance, instance.stable(EndGatewayProcessor::new)));
 

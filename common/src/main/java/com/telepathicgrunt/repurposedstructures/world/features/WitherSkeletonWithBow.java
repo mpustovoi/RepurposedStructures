@@ -41,12 +41,12 @@ public class WitherSkeletonWithBow extends Feature<NoneFeatureConfiguration> {
                 .addPermanentModifier(new AttributeModifier(
                         "Random spawn bonus",
                         (context.random().nextGaussian() * 0.3D) + 0.5D,
-                        AttributeModifier.Operation.MULTIPLY_BASE));
+                        AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
         ItemStack bow = new ItemStack(Items.BOW);
-        bow.enchant(Enchantments.FLAMING_ARROWS, 1);
-        bow.enchant(Enchantments.PUNCH_ARROWS, 2);
-        bow.enchant(Enchantments.POWER_ARROWS, 2);
+        bow.enchant(Enchantments.FLAME, 1);
+        bow.enchant(Enchantments.PUNCH, 2);
+        bow.enchant(Enchantments.POWER, 2);
         bow.enchant(Enchantments.VANISHING_CURSE, 1);
         bow.enchant(Enchantments.BINDING_CURSE, 1);
         witherEntity.setItemInHand(InteractionHand.MAIN_HAND, bow);

@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.placements;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.telepathicgrunt.repurposedstructures.modinit.RSPlacements;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,7 +14,7 @@ import java.util.stream.Stream;
 
 public class SnapToLowerNonAirPlacement extends PlacementModifier {
 	private static final SnapToLowerNonAirPlacement INSTANCE = new SnapToLowerNonAirPlacement();
-	public static final Codec<SnapToLowerNonAirPlacement> CODEC = Codec.unit(() -> INSTANCE);
+	public static final MapCodec<SnapToLowerNonAirPlacement> CODEC = MapCodec.unit(() -> INSTANCE);
 
 	public static SnapToLowerNonAirPlacement snapToLowerNonAir() {
 		return INSTANCE;

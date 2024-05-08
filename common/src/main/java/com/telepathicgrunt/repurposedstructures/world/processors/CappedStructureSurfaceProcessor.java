@@ -2,13 +2,12 @@ package com.telepathicgrunt.repurposedstructures.world.processors;
 
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,12 +22,11 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 // TODO: rename in 1.21
 public class CappedStructureSurfaceProcessor extends StructureProcessor {
 
-    public static final Codec<CappedStructureSurfaceProcessor> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
+    public static final MapCodec<CappedStructureSurfaceProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
         StructureProcessorType.SINGLE_CODEC.fieldOf("delegate").forGetter((cappedProcessor) -> { return cappedProcessor.delegate; }),
         Codec.BOOL.fieldOf("allow_void_sides").orElse(false).forGetter((cappedProcessor) -> { return cappedProcessor.allowVoidSides; })
     ).apply(instance, CappedStructureSurfaceProcessor::new));

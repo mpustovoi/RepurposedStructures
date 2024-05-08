@@ -14,6 +14,7 @@ import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.saveddata.maps.MapDecoration;
+import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -24,12 +25,12 @@ public class StructureSpecificMaps {
         private final ResourceKey<Structure> destination;
         private final TagKey<Structure> destinationTag;
         private final String displayName;
-        private final MapDecoration.Type destinationType;
+        private final MapDecorationType destinationType;
         private final int maxUses;
         private final int villagerXp;
         private final int spawnRegionSearchRadius;
 
-        public TreasureMapForEmeralds(int emeraldCost, String csf, String displayName, MapDecoration.Type mapIcon, int maxUse, int xp, int spawnRegionSearchRadius) {
+        public TreasureMapForEmeralds(int emeraldCost, String csf, String displayName, MapDecorationType mapIcon, int maxUse, int xp, int spawnRegionSearchRadius) {
             this.emeraldCost = emeraldCost;
 
             if(csf.startsWith("#")) {

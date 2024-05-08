@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.structures;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSStructures;
 import net.minecraft.core.BlockPos;
@@ -22,7 +23,7 @@ import java.util.Optional;
 
 public class ShipwreckNetherStructure extends GenericJigsawStructure {
 
-    public static final Codec<ShipwreckNetherStructure> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<ShipwreckNetherStructure> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             ShipwreckNetherStructure.settingsCodec(instance),
             StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
             Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),

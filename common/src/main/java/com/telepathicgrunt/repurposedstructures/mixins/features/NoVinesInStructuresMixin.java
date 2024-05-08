@@ -1,6 +1,5 @@
 package com.telepathicgrunt.repurposedstructures.mixins.features;
 
-import com.telepathicgrunt.repurposedstructures.mixins.world.WorldGenRegionAccessor;
 import com.telepathicgrunt.repurposedstructures.modinit.RSTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -36,7 +35,7 @@ public class NoVinesInStructuresMixin {
         for (Direction face : Direction.Plane.HORIZONTAL) {
             mutable.set(context.origin()).move(face);
             Registry<Structure> configuredStructureFeatureRegistry = context.level().registryAccess().registryOrThrow(Registries.STRUCTURE);
-            StructureManager structureManager = ((WorldGenRegionAccessor)context.level()).getStructureManager();
+            StructureManager structureManager = context.level().getLevel().structureManager();
 
             for (Holder<Structure> configuredStructureFeature : configuredStructureFeatureRegistry.getOrCreateTag(RSTags.NO_JUNGLE_VINES)) {
                 if (structureManager.getStructureAt(context.origin(), configuredStructureFeature.value()).isValid()) {

@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.structures;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.mixins.structures.PoolElementStructurePieceAccessor;
 import com.telepathicgrunt.repurposedstructures.mixins.structures.SinglePoolElementAccessor;
@@ -33,7 +34,7 @@ import java.util.Optional;
 
 public class MonumentStructure extends Structure {
 
-    public static final Codec<MonumentStructure> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<MonumentStructure> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             MonumentStructure.settingsCodec(instance),
             Codec.STRING.fieldOf("monument_type").forGetter(config -> config.monumentType),
             Codec.intRange(1, 100).optionalFieldOf("valid_biome_radius_check").forGetter(config -> config.biomeRadius),

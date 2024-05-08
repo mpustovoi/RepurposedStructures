@@ -31,11 +31,11 @@ public class SkeletonHorseman extends Feature<GenericMobConfig> {
                 (double)context.origin().getZ() + 0.5D,
                 0.0F,
                 0.0F);
-        skeletonHorseEntity.finalizeSpawn(context.level(), context.level().getCurrentDifficultyAt(context.origin()), MobSpawnType.STRUCTURE, null, null);
+        skeletonHorseEntity.finalizeSpawn(context.level(), context.level().getCurrentDifficultyAt(context.origin()), MobSpawnType.STRUCTURE, null);
         Skeleton skeletonEntity = EntityType.SKELETON.create(context.level().getLevel());
 
         // Do this first as this attaches a bow automatically. We may want to override the bow later.
-        skeletonEntity.finalizeSpawn(context.level(), context.level().getCurrentDifficultyAt(context.origin()), MobSpawnType.STRUCTURE, null, null);
+        skeletonEntity.finalizeSpawn(context.level(), context.level().getCurrentDifficultyAt(context.origin()), MobSpawnType.STRUCTURE, null);
 
         context.config().heldItem.ifPresent(item -> {
             ItemStack heldItem = new ItemStack(item);

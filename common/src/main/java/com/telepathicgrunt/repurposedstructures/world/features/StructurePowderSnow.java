@@ -89,7 +89,7 @@ public class StructurePowderSnow extends Feature<StructureRangeConfig> {
                             mutable.move(Direction.UP);
                         }
 
-                        if (Blocks.SNOW.canSurvive(Blocks.SNOW.defaultBlockState(), context.level(), mutable)) {
+                        if (Blocks.SNOW.defaultBlockState().canSurvive(context.level(), mutable)) {
                             context.level().setBlock(mutable, chosenBlock, 3);
                         }
 

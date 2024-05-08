@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
@@ -18,7 +19,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
  */
 public class FillEndPortalFrameProcessor extends StructureProcessor {
 
-    public static final Codec<FillEndPortalFrameProcessor> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
+    public static final MapCodec<FillEndPortalFrameProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             Codec.FLOAT.fieldOf("probability_per_block").stable().forGetter((processor) -> processor.probability))
             .apply(instance, instance.stable(FillEndPortalFrameProcessor::new)));
 

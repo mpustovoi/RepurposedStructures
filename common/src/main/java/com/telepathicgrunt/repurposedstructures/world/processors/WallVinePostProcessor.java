@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,8 +21,8 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
  * RUN ONLY AFTER THE NBT PIECE IS PLACED INTO THE WORLD
  */
 public class WallVinePostProcessor extends StructureProcessor {
-    public static final Codec<WallVinePostProcessor> CODEC = Codec.FLOAT.fieldOf("probability")
-            .xmap(WallVinePostProcessor::new, (wallVinePostProcessor) -> wallVinePostProcessor.probability).codec();
+    public static final MapCodec<WallVinePostProcessor> CODEC = Codec.FLOAT.fieldOf("probability")
+            .xmap(WallVinePostProcessor::new, (wallVinePostProcessor) -> wallVinePostProcessor.probability);
 
     private final float probability;
     public WallVinePostProcessor(float probability) {

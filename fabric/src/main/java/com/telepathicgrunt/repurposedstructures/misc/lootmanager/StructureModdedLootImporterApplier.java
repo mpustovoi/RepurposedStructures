@@ -3,7 +3,9 @@ package com.telepathicgrunt.repurposedstructures.misc.lootmanager;
 import com.telepathicgrunt.repurposedstructures.configs.RSMainModdedLootConfig;
 import com.telepathicgrunt.repurposedstructures.mixins.resources.LootContextAccessor;
 import com.telepathicgrunt.repurposedstructures.mixins.resources.LootManagerAccessor;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -11,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootTable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +27,7 @@ public final class StructureModdedLootImporterApplier {
 
     public static void checkAndGetModifiedLoot(LootContext context, LootTable currentLootTable, List<ItemStack> originalLoot) {
         if(RSMainModdedLootConfig.importModdedItems) {
+            
             // Cache the result of the loottable to the id into our own map.
             ResourceLocation lootTableID = REVERSED_TABLES.computeIfAbsent(
                     currentLootTable,
@@ -50,7 +54,10 @@ public final class StructureModdedLootImporterApplier {
 
         // Generate random loot that would've been in vanilla chests. (Need to make new context or else we recursively call ourselves infinitely)
         LootContext newContext = copyLootContext(context);
-        List<ItemStack> newlyGeneratedLoot = newContext.getResolver().getLootTable(tableToImportLoot).getRandomItems(((LootContextAccessor)newContext).getParams());
+        Optional<Holder.Reference<LootTable>> optionalLootTableReference = context.getResolver().get(Registries.LOOT_TABLE, ResourceKey.create(Registries.LOOT_TABLE, tableToImportLoot));
+
+        List<ItemStack> newlyGeneratedLoot = optionalLootTableReference.isPresent() ?
+                optionalLootTableReference.get().value().getRandomItems(((LootContextAccessor)newContext).getParams()) : new ArrayList<>();
 
         // Remove all vanilla loot so we only have modded loot
         newlyGeneratedLoot.removeIf(itemStack -> {

@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.WorldGenRegion;
@@ -18,7 +18,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 
 public class WaterlogWhenReplacingWaterProcessor extends StructureProcessor {
 
-    public static final Codec<WaterlogWhenReplacingWaterProcessor> CODEC = Codec.unit(WaterlogWhenReplacingWaterProcessor::new);
+    public static final MapCodec<WaterlogWhenReplacingWaterProcessor> CODEC = MapCodec.unit(WaterlogWhenReplacingWaterProcessor::new);
 
     private WaterlogWhenReplacingWaterProcessor() { }
 

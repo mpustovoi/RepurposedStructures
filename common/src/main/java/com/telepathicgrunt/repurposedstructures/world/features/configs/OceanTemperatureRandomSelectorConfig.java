@@ -14,7 +14,7 @@ import java.util.List;
 
 public class OceanTemperatureRandomSelectorConfig implements FeatureConfiguration {
 
-    public static final Codec<OceanTemperatureRandomSelectorConfig> CODEC = RecordCodecBuilder.create((configInstance) -> configInstance.group(
+    public static final MapCodec<OceanTemperatureRandomSelectorConfig> CODEC = RecordCodecBuilder.mapCodec((configInstance) -> configInstance.group(
             ExtraCodecs.nonEmptyHolderSet(PlacedFeature.LIST_CODEC).fieldOf("warm_features").forGetter(config -> config.warmFeatures),
             ExtraCodecs.nonEmptyHolderSet(PlacedFeature.LIST_CODEC).fieldOf("cold_features").forGetter(config -> config.coldFeatures)
             ).apply(configInstance, OceanTemperatureRandomSelectorConfig::new));

@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.Util;
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class PostProcessListProcessor extends StructureProcessor {
 
-    public static final Codec<PostProcessListProcessor> CODEC = RecordCodecBuilder.create((instance) -> {
+    public static final MapCodec<PostProcessListProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
         return instance.group(
             StructureProcessorType.SINGLE_CODEC.listOf().fieldOf("delegates").forGetter((processor) -> { return processor.delegates; })
         ).apply(instance, PostProcessListProcessor::new);

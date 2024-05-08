@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
@@ -28,7 +29,7 @@ import java.util.stream.Collectors;
  */
 public class CeilingVinePostProcessor extends StructureProcessor {
 
-    public static final Codec<CeilingVinePostProcessor> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
+    public static final MapCodec<CeilingVinePostProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             Codec.FLOAT.fieldOf("probability").stable().forGetter((ceilingVinePostProcessor) -> ceilingVinePostProcessor.probability),
             BlockState.CODEC.fieldOf("blockstate").forGetter((ceilingVinePostProcessor) -> ceilingVinePostProcessor.blockState))
         .apply(instance, instance.stable(CeilingVinePostProcessor::new)));

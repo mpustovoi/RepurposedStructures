@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.neoforge.biomemodifiers;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.neoforge.RSBiomeModifiers;
 import net.minecraft.core.Holder;
@@ -14,7 +15,7 @@ import net.neoforged.neoforge.common.world.ModifiableBiomeInfo;
 
 public record AdditionsModifier(HolderSet<Biome> biomes, Holder<PlacedFeature> feature, GenerationStep.Decoration step) implements BiomeModifier {
 
-    public static Codec<AdditionsModifier> CODEC = RecordCodecBuilder.create(builder -> builder.group(
+    public static MapCodec<AdditionsModifier> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(
             Biome.LIST_CODEC.fieldOf("biomes").forGetter(AdditionsModifier::biomes),
             PlacedFeature.CODEC.fieldOf("feature").forGetter(AdditionsModifier::feature),
             GenerationStep.Decoration.CODEC.fieldOf("step").forGetter(AdditionsModifier::step)
@@ -28,7 +29,7 @@ public record AdditionsModifier(HolderSet<Biome> biomes, Holder<PlacedFeature> f
         }
     }
 
-    public Codec<? extends BiomeModifier> codec() {
+    public MapCodec<? extends BiomeModifier> codec() {
         return RSBiomeModifiers.ADDITIONS_MODIFIER.get();
     }
 }

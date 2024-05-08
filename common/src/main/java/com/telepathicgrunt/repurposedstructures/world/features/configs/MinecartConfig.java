@@ -7,7 +7,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 
 public class MinecartConfig implements FeatureConfiguration {
 
-    public static final Codec<MinecartConfig> CODEC = RecordCodecBuilder.create((configInstance) -> configInstance.group(
+    public static final MapCodec<MinecartConfig> CODEC = RecordCodecBuilder.mapCodec((configInstance) -> configInstance.group(
             ResourceLocation.CODEC.fieldOf("minecart_nbt_file").forGetter(minecartConfig -> minecartConfig.nbtPath),
             Codec.BOOL.fieldOf("is_water_based").orElse(false).forGetter(minecartConfig -> minecartConfig.waterBased)
             ).apply(configInstance, MinecartConfig::new));

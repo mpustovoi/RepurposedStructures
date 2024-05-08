@@ -13,9 +13,9 @@ import com.telepathicgrunt.repurposedstructures.modinit.neoforge.RSGlobalLootMod
 import com.telepathicgrunt.repurposedstructures.modinit.registry.neoforge.ResourcefulRegistriesImpl;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
@@ -27,18 +27,19 @@ import net.neoforged.neoforge.event.village.WandererTradesEvent;
 @Mod(RepurposedStructures.MODID)
 public class RepurposedStructuresNeoforge {
 
-    public RepurposedStructuresNeoforge(IEventBus modEventBus) {
-        RSConfigHandler.setup();
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(EventPriority.NORMAL, ResourcefulRegistriesImpl::onRegisterForgeRegistries);
+    public RepurposedStructuresNeoforge(IEventBus modEventBus, ModContainer modContainer) {
+        RSConfigHandler.setup(modEventBus, modContainer);
+        modEventBus.addListener(EventPriority.NORMAL, ResourcefulRegistriesImpl::onRegisterForgeRegistries);
 
         RepurposedStructures.init();
 
-        IEventBus eventBus = NeoForge.EVENT_BUS;
         RSBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
         RSGlobalLootModifier.GLM.register(modEventBus);
         RSGlobalLootModifier.LOOT_CONDITION_TYPE.register(modEventBus);
 
         modEventBus.addListener(RepurposedStructuresNeoforge::onSetup);
+
+        IEventBus eventBus = NeoForge.EVENT_BUS;
         eventBus.addListener(RepurposedStructuresNeoforge::onServerStarting);
         eventBus.addListener(RepurposedStructuresNeoforge::onServerStopping);
         eventBus.addListener(RepurposedStructuresNeoforge::onAddVillagerTrades);

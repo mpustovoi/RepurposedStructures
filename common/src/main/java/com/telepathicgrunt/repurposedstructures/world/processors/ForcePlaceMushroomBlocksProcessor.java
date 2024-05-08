@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelReader;
@@ -15,7 +15,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
  */
 public class ForcePlaceMushroomBlocksProcessor extends StructureProcessor {
 
-    public static final Codec<ForcePlaceMushroomBlocksProcessor> CODEC = Codec.unit(ForcePlaceMushroomBlocksProcessor::new);
+    public static final MapCodec<ForcePlaceMushroomBlocksProcessor> CODEC = MapCodec.unit(ForcePlaceMushroomBlocksProcessor::new);
     private ForcePlaceMushroomBlocksProcessor() { }
 
     @Override

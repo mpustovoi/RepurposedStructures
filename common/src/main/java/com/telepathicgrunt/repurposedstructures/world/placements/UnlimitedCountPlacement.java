@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.placements;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.telepathicgrunt.repurposedstructures.modinit.RSPlacements;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -10,7 +11,7 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 import net.minecraft.world.level.levelgen.placement.RepeatingPlacement;
 
 public class UnlimitedCountPlacement extends RepeatingPlacement {
-    public static final Codec<UnlimitedCountPlacement> CODEC = IntProvider.NON_NEGATIVE_CODEC.fieldOf("count").xmap(UnlimitedCountPlacement::new, countPlacement -> countPlacement.count).codec();
+    public static final MapCodec<UnlimitedCountPlacement> CODEC = IntProvider.NON_NEGATIVE_CODEC.fieldOf("count").xmap(UnlimitedCountPlacement::new, countPlacement -> countPlacement.count);
     private final IntProvider count;
 
     private UnlimitedCountPlacement(IntProvider intProvider) {

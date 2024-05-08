@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ConfigurableCoralConfig implements FeatureConfiguration {
 
-    public static final Codec<ConfigurableCoralConfig> CODEC = RecordCodecBuilder.create((configInstance) -> configInstance.group(
+    public static final MapCodec<ConfigurableCoralConfig> CODEC = RecordCodecBuilder.mapCodec((configInstance) -> configInstance.group(
             RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("main_blocks").forGetter(config -> config.mainBlocks),
             RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("wall_blocks").forGetter(config -> config.wallBlocks),
             RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("floor_blocks").forGetter(config -> config.floorBlocks)

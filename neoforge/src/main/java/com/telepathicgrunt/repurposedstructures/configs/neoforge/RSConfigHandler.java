@@ -2,20 +2,19 @@ package com.telepathicgrunt.repurposedstructures.configs.neoforge;
 
 
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.config.IConfigSpec;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.config.ModConfigEvent;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public class RSConfigHandler {
 
-    public static void setup() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        bus.addListener(RSConfigHandler::onConfigLoad);
-        bus.addListener(RSConfigHandler::onConfigReload);
+    public static void setup(IEventBus modEventBus, ModContainer modContainer) {
+        modEventBus.addListener(RSConfigHandler::onConfigLoad);
+        modEventBus.addListener(RSConfigHandler::onConfigReload);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RSModdedLootConfig.GENERAL_SPEC, "repurposed_structures-neoforge/modded_loot.toml");
+        modContainer.registerConfig(ModConfig.Type.COMMON, RSModdedLootConfig.GENERAL_SPEC, "repurposed_structures-neoforge/modded_loot.toml");
     }
 
     private static void onConfigLoad(ModConfigEvent.Loading event) {

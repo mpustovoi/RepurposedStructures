@@ -1,7 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.world.structures.pieces;
 
 import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSStructurePieces;
 import net.minecraft.core.Holder;
@@ -17,7 +17,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 
 public class LegacyOceanBottomSinglePoolElement extends SinglePoolElement {
-    public static final Codec<LegacyOceanBottomSinglePoolElement> CODEC = RecordCodecBuilder.create(
+    public static final MapCodec<LegacyOceanBottomSinglePoolElement> CODEC = RecordCodecBuilder.mapCodec(
             (legacyOceanBottomSinglePoolElementInstance) -> legacyOceanBottomSinglePoolElementInstance
                     .group(templateCodec(), processorsCodec(), projectionCodec())
                     .apply(legacyOceanBottomSinglePoolElementInstance, LegacyOceanBottomSinglePoolElement::new));

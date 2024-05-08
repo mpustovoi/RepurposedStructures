@@ -19,6 +19,7 @@ import net.minecraft.world.item.MapItem;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.saveddata.maps.MapDecoration;
+import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 
 
@@ -48,7 +49,7 @@ public class MerchantMapUpdating {
             AbstractVillager merchant,
             ItemStack mapStack,
             String displayName,
-            MapDecoration.Type destinationType,
+            MapDecorationType destinationType,
             BlockPos pos
     ) {
         if (pos == null) {
@@ -74,7 +75,7 @@ public class MerchantMapUpdating {
             Entity pTrader,
             int emeraldCost,
             String displayName,
-            MapDecoration.Type destinationType,
+            MapDecorationType destinationType,
             int maxUses,
             int villagerXp,
             TagKey<Structure> destination,
@@ -101,7 +102,7 @@ public class MerchantMapUpdating {
             Entity pTrader,
             int emeraldCost,
             String displayName,
-            MapDecoration.Type destinationType,
+            MapDecorationType destinationType,
             int maxUses,
             int villagerXp,
             HolderSet<Structure> structureSet,
@@ -160,7 +161,7 @@ public class MerchantMapUpdating {
             ServerLevel level,
             BlockPos pos,
             int scale,
-            MapDecoration.Type destinationType,
+            MapDecorationType destinationType,
             String displayName
     ) {
         MapItemAccessor.callCreateAndStoreSavedData(

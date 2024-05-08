@@ -1,6 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.world.processors;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.telepathicgrunt.repurposedstructures.modinit.RSProcessors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
@@ -18,7 +18,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
  */
 public class MineshaftSkyViewProcessor extends StructureProcessor {
 
-    public static final Codec<MineshaftSkyViewProcessor> CODEC = Codec.unit(MineshaftSkyViewProcessor::new);
+    public static final MapCodec<MineshaftSkyViewProcessor> CODEC = MapCodec.unit(MineshaftSkyViewProcessor::new);
 
     private MineshaftSkyViewProcessor() {}
 

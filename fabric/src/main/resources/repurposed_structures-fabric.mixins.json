@@ -8,7 +8,6 @@
     "blocks.PoweredRailBlockMixin",
     "blocks.RailBlockMixin",
     "resources.BuiltInRegistriesMixin",
-    "resources.LootManagerAccessor",
     "resources.LootTableMixin",
     "structures.StructurePoolMixin"
   ],
