@@ -6,6 +6,7 @@ import re
 data_folder = os.path.join('..', '..', 'common', 'src', 'main', 'resources', 'data', 'repurposed_structures')
 
 loot_tables_folder = os.path.join('loot_tables')
+advancements_folder = os.path.join('advancements')
 
 def createFile(input_path, output_path, regex_list):
     file_content = ''
@@ -298,5 +299,65 @@ for (subdir, dirs, files) in os.walk(path, topdown=True):
         else:
             continue
 
+# Advancement Updating
+path = os.path.join(data_folder, advancements_folder)
+for (subdir, dirs, files) in os.walk(path, topdown=True):
+    for file in files:
+        directory = subdir + os.sep
+        filepath = directory + file
+
+        if filepath.endswith(".json"):
+            lootTable = {}
+            with open(filepath, 'r') as file:
+                lootTable = json.loads(file.read())
+
+                def setPotionComponent(objectToModify):
+                    if "Potion" in objectToModify["nbt"]:
+                        if match := re.search("\\\"([\w:]+)\\\"", objectToModify["nbt"], re.IGNORECASE):
+                            potionType = match.group(1)
+                            if ":" not in potionType:
+                                potionType = "minecraft:" + potionType
+
+                            if potionType in acceptedBasePotions:
+                                objectToModify["components"] = {
+                                    "minecraft:potion_contents": {
+                                        "potion": potionType
+                                    }
+                                }
+                            else:
+                                objectToModify["components"] = {
+                                    "minecraft:potion_contents": {
+                                        "custom_effects": [
+                                            {
+                                                "id": potionType,
+                                                "amplifier": 1,
+                                                "duration": 20,
+                                                "ambient": False,
+                                                "show_particles": True,
+                                                "show_icon": True
+                                            }
+                                        ]
+                                    }
+                                }
+                            del objectToModify["tag"]
+                                
+                def updateItemNames(objectToModify):
+                    if "icon" in objectToModify and "item" in objectToModify["icon"]:
+                        itemIcon = objectToModify["icon"]
+                        itemIcon["id"] = itemIcon["item"]
+                        del itemIcon["item"]
+                        setPotionComponent(itemIcon)
+                    if "location" in objectToModify:
+                        structureLocation = objectToModify["location"]
+                        structureLocation["structures"] = structureLocation["structure"]
+                        del structureLocation["structure"]
+                        
+                traverseAndModify(lootTable, [updateItemNames])
+
+            with open(filepath, 'w') as file:
+                json.dump(lootTable, file, indent = 2)
+            continue
+        else:
+            continue
 
 print('\n\nFINISHED!')
