@@ -23,8 +23,8 @@
               }
             },
             {
-              "function": "minecraft:set_nbt",
-              "tag": "{Potion:\"minecraft:strong_harming\"}"
+              "function": "minecraft:set_potion",
+              "id": "minecraft:strong_harming"
             }
           ]
         }

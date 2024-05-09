@@ -165,8 +165,8 @@
           "weight": 5,
           "functions": [
             {
-              "function": "minecraft:set_nbt",
-              "tag": "{Potion:\"minecraft:regeneration\"}"
+              "function": "minecraft:set_potion",
+              "id": "minecraft:regeneration"
             }
           ]
         },
@@ -312,7 +312,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -330,8 +330,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:bri,Color:0},{Pattern:bri,Color:3},{Pattern:ss,Color:3},{Pattern:dls,Color:9},{Pattern:dls,Color:0},{Pattern:gru,Color:11},{Pattern:bt,Color:15},{Pattern:bt,Color:15},{Pattern:bt,Color:11},{Pattern:bts,Color:15},{Pattern:bts,Color:11},{Pattern:gru,Color:15}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "white"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "light_blue"
+                },
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "light_blue"
+                },
+                {
+                  "pattern": "minecraft:stripe_downleft",
+                  "color": "cyan"
+                },
+                {
+                  "pattern": "minecraft:stripe_downleft",
+                  "color": "white"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:triangle_bottom",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangle_bottom",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangle_bottom",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "black"
+                }
+              ]
             }
           ]
         },
@@ -346,8 +396,8 @@
           "weight": 10,
           "functions": [
             {
-              "function": "minecraft:set_nbt",
-              "tag": "{Potion:\"minecraft:regeneration\"}"
+              "function": "minecraft:set_potion",
+              "id": "minecraft:regeneration"
             }
           ]
         }

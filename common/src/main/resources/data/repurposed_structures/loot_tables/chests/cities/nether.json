@@ -262,8 +262,16 @@
               }
             },
             {
-              "function":"set_nbt",
-              "tag":"{Explosion:{Colors:[I;0], FadeColors:[I;12201518], Trail:1b, Flicker:1b, Type:4b}}"
+              "function": "minecraft:set_firework_explosion",
+              "color": [
+                0
+              ],
+              "fade_colors": [
+                12201518
+              ],
+              "trail": true,
+              "twinkle": true,
+              "shape": "creeper"
             }
           ]
         },
@@ -281,8 +289,16 @@
               }
             },
             {
-              "function":"set_nbt",
-              "tag":"{Explosion:{Colors:[I;12201518], FadeColors:[I;0], Trail:1b, Flicker:1b, Type:4b}}"
+              "function": "minecraft:set_firework_explosion",
+              "color": [
+                12201518
+              ],
+              "fade_colors": [
+                0
+              ],
+              "trail": true,
+              "twinkle": true,
+              "shape": "creeper"
             }
           ]
         },
@@ -457,7 +473,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -475,8 +491,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:ss,Color:4},{Pattern:gra,Color:14},{Pattern:gra,Color:4},{Pattern:cbo,Color:15},{Pattern:glb,Color:4},{Pattern:flo,Color:1},{Pattern:flo,Color:15},{Pattern:mr,Color:15},{Pattern:tt,Color:15},{Pattern:sku,Color:14},{Pattern:sku,Color:4},{Pattern:cre,Color:15}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "yellow"
+                },
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "yellow"
+                },
+                {
+                  "pattern": "minecraft:curly_border",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:globe",
+                  "color": "yellow"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "orange"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangle_top",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:skull",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:skull",
+                  "color": "yellow"
+                },
+                {
+                  "pattern": "minecraft:creeper",
+                  "color": "black"
+                }
+              ]
             }
           ]
         },
@@ -486,8 +552,16 @@
           "weight": 10,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{Explosion:{Colors:[I;0], FadeColors:[I;12201518], Trail:1b, Flicker:1b, Type:4b}}"
+              "function": "minecraft:set_firework_explosion",
+              "color": [
+                0
+              ],
+              "fade_colors": [
+                12201518
+              ],
+              "trail": true,
+              "twinkle": true,
+              "shape": "creeper"
             }
           ]
         },
@@ -497,8 +571,16 @@
           "weight": 10,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{Explosion:{Colors:[I;12201518], FadeColors:[I;0], Trail:1b, Flicker:1b, Type:4b}}"
+              "function": "minecraft:set_firework_explosion",
+              "color": [
+                12201518
+              ],
+              "fade_colors": [
+                0
+              ],
+              "trail": true,
+              "twinkle": true,
+              "shape": "creeper"
             }
           ]
         }

@@ -335,7 +335,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -353,8 +353,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:mr,Color:5},{Pattern:flo,Color:5},{Pattern:flo,Color:15},{Pattern:tts,Color:15},{Pattern:tts,Color:15},{Pattern:tts,Color:5},{Pattern:bts,Color:15},{Pattern:bts,Color:15},{Pattern:bts,Color:5},{Pattern:cbo,Color:7},{Pattern:bo,Color:5},{Pattern:cbo,Color:15}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "lime"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "lime"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "lime"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "lime"
+                },
+                {
+                  "pattern": "minecraft:curly_border",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "lime"
+                },
+                {
+                  "pattern": "minecraft:curly_border",
+                  "color": "black"
+                }
+              ]
             }
           ]
         },

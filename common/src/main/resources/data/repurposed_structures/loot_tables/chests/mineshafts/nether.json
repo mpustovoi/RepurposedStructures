@@ -339,7 +339,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -357,8 +357,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Base:15,Patterns:[{Pattern:gra,Color:4},{Pattern:mr,Color:1},{Pattern:ss,Color:15},{Pattern:flo,Color:1},{Pattern:gru,Color:14},{Pattern:gra,Color:14},{Pattern:gra,Color:15},{Pattern:bts,Color:15},{Pattern:cbo,Color:15},{Pattern:bo,Color:15},{Pattern:cr,Color:14},{Pattern:ss,Color:15}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "yellow"
+                },
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "orange"
+                },
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "orange"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:curly_border",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:cross",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "black"
+                }
+              ]
             }
           ]
         },

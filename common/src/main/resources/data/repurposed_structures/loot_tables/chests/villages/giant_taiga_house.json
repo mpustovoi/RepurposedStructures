@@ -123,7 +123,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -141,8 +141,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:gra,Color:12},{Pattern:gru,Color:7},{Pattern:bri,Color:15},{Pattern:bri,Color:7},{Pattern:tts,Color:15},{Pattern:tts,Color:8},{Pattern:bts,Color:15},{Pattern:bts,Color:8},{Pattern:mc,Color:7},{Pattern:flo,Color:15},{Pattern:flo,Color:15},{Pattern:flo,Color:8}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "brown"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "light_gray"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "light_gray"
+                },
+                {
+                  "pattern": "minecraft:circle",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "light_gray"
+                }
+              ]
             }
           ]
         },
@@ -166,7 +216,7 @@
               "function": "minecraft:set_damage",
               "damage": {
                 "min": 0.0,
-                "max": 0.60
+                "max": 0.6
               }
             },
             {

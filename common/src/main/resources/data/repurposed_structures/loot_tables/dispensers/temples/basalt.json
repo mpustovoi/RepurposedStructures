@@ -23,8 +23,8 @@
               }
             },
             {
-              "function": "minecraft:set_nbt",
-              "tag": "{Potion:\"minecraft:long_weakness\"}"
+              "function": "minecraft:set_potion",
+              "id": "minecraft:long_weakness"
             }
           ]
         }

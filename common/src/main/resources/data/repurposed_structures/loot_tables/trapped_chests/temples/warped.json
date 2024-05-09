@@ -97,7 +97,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -115,8 +115,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:bt,Color:11},{Pattern:bts,Color:9},{Pattern:tt,Color:11},{Pattern:tts,Color:9},{Pattern:mr,Color:15},{Pattern:bri,Color:15},{Pattern:bri,Color:15},{Pattern:bo,Color:9},{Pattern:bo,Color:11},{Pattern:bo,Color:15},{Pattern:moj,Color:14},{Pattern:moj,Color:4}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:triangle_bottom",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "cyan"
+                },
+                {
+                  "pattern": "minecraft:triangle_top",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "cyan"
+                },
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "cyan"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:mojang",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:mojang",
+                  "color": "yellow"
+                }
+              ]
             }
           ]
         },

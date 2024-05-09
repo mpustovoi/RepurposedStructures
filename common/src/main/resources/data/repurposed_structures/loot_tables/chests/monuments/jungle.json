@@ -302,7 +302,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -320,8 +320,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:gru,Color:1},{Pattern:bri,Color:15},{Pattern:bri,Color:15},{Pattern:bri,Color:15},{Pattern:ss,Color:15},{Pattern:ss,Color:15},{Pattern:ss,Color:15},{Pattern:cs,Color:7},{Pattern:cs,Color:8},{Pattern:ms,Color:7},{Pattern:ms,Color:8},{Pattern:sc,Color:15}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "orange"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:stripe_center",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:stripe_center",
+                  "color": "light_gray"
+                },
+                {
+                  "pattern": "minecraft:stripe_middle",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:stripe_middle",
+                  "color": "light_gray"
+                },
+                {
+                  "pattern": "minecraft:straight_cross",
+                  "color": "black"
+                }
+              ]
             }
           ]
         },

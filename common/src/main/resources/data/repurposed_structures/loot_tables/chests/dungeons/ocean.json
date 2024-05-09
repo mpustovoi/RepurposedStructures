@@ -7,28 +7,28 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "minecraft:chests/buried_treasure",
-          "weight": 1
+          "weight": 1,
+          "value": "minecraft:chests/buried_treasure"
         },
         {
           "type": "minecraft:loot_table",
-          "name": "minecraft:chests/underwater_ruin_big",
-          "weight": 9
+          "weight": 9,
+          "value": "minecraft:chests/underwater_ruin_big"
         },
         {
           "type": "minecraft:loot_table",
-          "name": "minecraft:chests/underwater_ruin_small",
-          "weight": 22
+          "weight": 22,
+          "value": "minecraft:chests/underwater_ruin_small"
         },
         {
           "type": "minecraft:loot_table",
-          "name": "minecraft:chests/simple_dungeon",
-          "weight": 45
+          "weight": 45,
+          "value": "minecraft:chests/simple_dungeon"
         },
         {
           "type": "minecraft:loot_table",
-          "name": "minecraft:chests/shipwreck_supply",
-          "weight": 55
+          "weight": 55,
+          "value": "minecraft:chests/shipwreck_supply"
         }
       ]
     },
@@ -111,7 +111,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -129,8 +129,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:mr,Color:11},{Pattern:flo,Color:11},{Pattern:flo,Color:15},{Pattern:tts,Color:15},{Pattern:tts,Color:15},{Pattern:tts,Color:11},{Pattern:bts,Color:15},{Pattern:bts,Color:15},{Pattern:bts,Color:11},{Pattern:cbo,Color:7},{Pattern:bo,Color:11},{Pattern:cbo,Color:15}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:curly_border",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:curly_border",
+                  "color": "black"
+                }
+              ]
             }
           ]
         },

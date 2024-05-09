@@ -450,7 +450,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -468,8 +468,62 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Base:7,Patterns:[{Pattern:bri,Color:7},{Pattern:bri,Color:15},{Pattern:gra,Color:14},{Pattern:gra,Color:7},{Pattern:bts,Color:15},{Pattern:tts,Color:15},{Pattern:mr,Color:15},{Pattern:mr,Color:15},{Pattern:sc,Color:8},{Pattern:flo,Color:8},{Pattern:flo,Color:8},{Pattern:sc,Color:15},{Pattern:flo,Color:15}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:straight_cross",
+                  "color": "light_gray"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "light_gray"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "light_gray"
+                },
+                {
+                  "pattern": "minecraft:straight_cross",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "black"
+                }
+              ]
             }
           ]
         },

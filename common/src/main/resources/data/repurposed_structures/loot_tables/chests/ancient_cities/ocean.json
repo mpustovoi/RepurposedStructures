@@ -42,8 +42,8 @@
           "weight": 3,
           "functions": [
             {
-              "function": "minecraft:set_nbt",
-              "tag": "{Potion:\"minecraft:regeneration\"}"
+              "function": "minecraft:set_potion",
+              "id": "minecraft:regeneration"
             }
           ]
         },
@@ -53,8 +53,8 @@
           "weight": 3,
           "functions": [
             {
-              "function": "minecraft:set_nbt",
-              "tag": "{Potion:\"minecraft:water_breathing\"}"
+              "function": "minecraft:set_potion",
+              "id": "minecraft:water_breathing"
             }
           ]
         },
@@ -463,7 +463,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -481,8 +481,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:bri,Color:15},{Pattern:ss,Color:9},{Pattern:gru,Color:15},{Pattern:gru,Color:11},{Pattern:mr,Color:15},{Pattern:br,Color:9},{Pattern:br,Color:15},{Pattern:bl,Color:9},{Pattern:bl,Color:15},{Pattern:bts,Color:9},{Pattern:gra,Color:9},{Pattern:bts,Color:15}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "cyan"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:square_bottom_right",
+                  "color": "cyan"
+                },
+                {
+                  "pattern": "minecraft:square_bottom_right",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:square_bottom_left",
+                  "color": "cyan"
+                },
+                {
+                  "pattern": "minecraft:square_bottom_left",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "cyan"
+                },
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "cyan"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "black"
+                }
+              ]
             }
           ]
         },

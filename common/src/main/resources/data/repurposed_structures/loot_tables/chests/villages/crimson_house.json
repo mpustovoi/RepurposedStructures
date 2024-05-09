@@ -188,7 +188,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -206,8 +206,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:gru,Color:1},{Pattern:bri,Color:15},{Pattern:bri,Color:14},{Pattern:tts,Color:14},{Pattern:tts,Color:4},{Pattern:bts,Color:14},{Pattern:bts,Color:4},{Pattern:ms,Color:15},{Pattern:mr,Color:15},{Pattern:ms,Color:14},{Pattern:mr,Color:14},{Pattern:pig,Color:4}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "orange"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:triangles_top",
+                  "color": "yellow"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:triangles_bottom",
+                  "color": "yellow"
+                },
+                {
+                  "pattern": "minecraft:stripe_middle",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:stripe_middle",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:piglin",
+                  "color": "yellow"
+                }
+              ]
             }
           ]
         },
@@ -231,7 +281,7 @@
               "function": "minecraft:set_damage",
               "damage": {
                 "min": 0.0,
-                "max": 0.60
+                "max": 0.6
               }
             },
             {

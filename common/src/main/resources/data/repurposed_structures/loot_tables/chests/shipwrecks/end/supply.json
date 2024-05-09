@@ -68,8 +68,9 @@
               }
             },
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Color:15,Pattern:tt}, {Color:15,Pattern:bt}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": []
             }
           ]
         },
@@ -252,8 +253,16 @@
               }
             },
             {
-              "function":"set_nbt",
-              "tag":"{Explosion:{Colors:[I;8073150], FadeColors:[I;12801229], Trail:1b, Flicker:1b, Type:2b}}"
+              "function": "minecraft:set_firework_explosion",
+              "color": [
+                8073150
+              ],
+              "fade_colors": [
+                12801229
+              ],
+              "trail": true,
+              "twinkle": true,
+              "shape": "star"
             }
           ]
         },
@@ -271,8 +280,16 @@
               }
             },
             {
-              "function":"set_nbt",
-              "tag":"{Explosion:{Colors:[I;12801229], FadeColors:[I;8073150], Trail:1b, Flicker:1b, Type:2b}}"
+              "function": "minecraft:set_firework_explosion",
+              "color": [
+                12801229
+              ],
+              "fade_colors": [
+                8073150
+              ],
+              "trail": true,
+              "twinkle": true,
+              "shape": "star"
             }
           ]
         },
@@ -425,8 +442,16 @@
               "count": 3
             },
             {
-              "function":"set_nbt",
-              "tag":"{Explosion:{Colors:[I;8073150], FadeColors:[I;12801229], Trail:1b, Flicker:1b, Type:2b}}"
+              "function": "minecraft:set_firework_explosion",
+              "color": [
+                8073150
+              ],
+              "fade_colors": [
+                12801229
+              ],
+              "trail": true,
+              "twinkle": true,
+              "shape": "star"
             }
           ]
         },
@@ -440,8 +465,16 @@
               "count": 3
             },
             {
-              "function":"set_nbt",
-              "tag":"{Explosion:{Colors:[I;12801229], FadeColors:[I;8073150], Trail:1b, Flicker:1b, Type:2b}}"
+              "function": "minecraft:set_firework_explosion",
+              "color": [
+                12801229
+              ],
+              "fade_colors": [
+                8073150
+              ],
+              "trail": true,
+              "twinkle": true,
+              "shape": "star"
             }
           ]
         }

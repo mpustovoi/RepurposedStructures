@@ -23,8 +23,8 @@
               }
             },
             {
-              "function": "minecraft:set_nbt",
-              "tag": "{Potion:\"minecraft:poison\"}"
+              "function": "minecraft:set_potion",
+              "id": "minecraft:poison"
             }
           ]
         }

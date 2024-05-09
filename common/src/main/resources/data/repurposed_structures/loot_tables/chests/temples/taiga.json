@@ -164,8 +164,8 @@
           "weight": 2
         },
         {
-           "name": "minecraft:wild_armor_trim_smithing_template",
-         "type": "minecraft:item",
+          "name": "minecraft:wild_armor_trim_smithing_template",
+          "type": "minecraft:item",
           "functions": [
             {
               "add": false,
@@ -181,7 +181,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -199,8 +199,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:gra,Color:13},{Pattern:gra,Color:13},{Pattern:gra,Color:12},{Pattern:mr,Color:15},{Pattern:flo,Color:15},{Pattern:bri,Color:15},{Pattern:bri,Color:15},{Pattern:bo,Color:1},{Pattern:bo,Color:12},{Pattern:bo,Color:15},{Pattern:moj,Color:14},{Pattern:moj,Color:4}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "green"
+                },
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "green"
+                },
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "brown"
+                },
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:bricks",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "orange"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "brown"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:mojang",
+                  "color": "red"
+                },
+                {
+                  "pattern": "minecraft:mojang",
+                  "color": "yellow"
+                }
+              ]
             }
           ]
         },

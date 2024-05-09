@@ -194,7 +194,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -212,8 +212,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:gru,Color:11},{Pattern:glb,Color:15},{Pattern:mr,Color:11},{Pattern:mr,Color:3},{Pattern:mc,Color:9},{Pattern:cbo,Color:15},{Pattern:flo,Color:15},{Pattern:flo,Color:15},{Pattern:flo,Color:11},{Pattern:sku,Color:11},{Pattern:sku,Color:15},{Pattern:sku,Color:15}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:globe",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:rhombus",
+                  "color": "light_blue"
+                },
+                {
+                  "pattern": "minecraft:circle",
+                  "color": "cyan"
+                },
+                {
+                  "pattern": "minecraft:curly_border",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:flower",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:skull",
+                  "color": "blue"
+                },
+                {
+                  "pattern": "minecraft:skull",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:skull",
+                  "color": "black"
+                }
+              ]
             }
           ]
         },

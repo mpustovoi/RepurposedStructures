@@ -462,7 +462,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -480,8 +480,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:gra,Color:2},{Pattern:gra,Color:2},{Pattern:gru,Color:2},{Pattern:gru,Color:10},{Pattern:gru,Color:10},{Pattern:sku,Color:15},{Pattern:sku,Color:2},{Pattern:sku,Color:10},{Pattern:cbo,Color:15},{Pattern:bo,Color:15},{Pattern:drs,Color:10},{Pattern:ss,Color:15}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "magenta"
+                },
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "magenta"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "magenta"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "purple"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "purple"
+                },
+                {
+                  "pattern": "minecraft:skull",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:skull",
+                  "color": "magenta"
+                },
+                {
+                  "pattern": "minecraft:skull",
+                  "color": "purple"
+                },
+                {
+                  "pattern": "minecraft:curly_border",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:stripe_downright",
+                  "color": "purple"
+                },
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "black"
+                }
+              ]
             }
           ]
         },

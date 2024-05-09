@@ -166,8 +166,16 @@
               }
             },
             {
-              "function":"set_nbt",
-              "tag":"{Explosion:{Colors:[I;0], FadeColors:[I;2988471], Trail:1b, Flicker:1b, Type:4b}}"
+              "function": "minecraft:set_firework_explosion",
+              "color": [
+                0
+              ],
+              "fade_colors": [
+                2988471
+              ],
+              "trail": true,
+              "twinkle": true,
+              "shape": "creeper"
             }
           ]
         },
@@ -185,8 +193,16 @@
               }
             },
             {
-              "function":"set_nbt",
-              "tag":"{Explosion:{Colors:[I;2988471], FadeColors:[I;0], Trail:1b, Flicker:1b, Type:4b}}"
+              "function": "minecraft:set_firework_explosion",
+              "color": [
+                2988471
+              ],
+              "fade_colors": [
+                0
+              ],
+              "trail": true,
+              "twinkle": true,
+              "shape": "creeper"
             }
           ]
         },

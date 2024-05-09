@@ -240,7 +240,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "repurposed_structures:chests/lucky_pool"
+          "value": "repurposed_structures:chests/lucky_pool"
         }
       ]
     },
@@ -258,8 +258,58 @@
           "weight": 30,
           "functions": [
             {
-              "function":"set_nbt",
-              "tag":"{BlockEntityTag:{Patterns:[{Pattern:gra,Color:7},{Pattern:gru,Color:15},{Pattern:gru,Color:15},{Pattern:gru,Color:15},{Pattern:gra,Color:7},{Pattern:pig,Color:15},{Pattern:ss,Color:7},{Pattern:ss,Color:7},{Pattern:ss,Color:15},{Pattern:bo,Color:7},{Pattern:bo,Color:7},{Pattern:bo,Color:7}]}}"
+              "function": "minecraft:set_banner_pattern",
+              "append": true,
+              "patterns": [
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:gradient_up",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:gradient",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:piglin",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:small_stripes",
+                  "color": "black"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "gray"
+                },
+                {
+                  "pattern": "minecraft:border",
+                  "color": "gray"
+                }
+              ]
             }
           ]
         },
