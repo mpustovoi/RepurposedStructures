@@ -22,7 +22,7 @@ public final class StructureModdedLootImporterApplier {
     public static void checkAndGetModifiedLoot(LootContext context, LootTable currentLootTable, List<ItemStack> originalLoot) {
         if(RSMainModdedLootConfig.importModdedItems) {
 
-            ResourceLocation lootTableID = context.getLevel().registryAccess().registryOrThrow(Registries.LOOT_TABLE).getKey(currentLootTable);
+            ResourceLocation lootTableID = context.getLevel().getServer().reloadableRegistries().get().registryOrThrow(Registries.LOOT_TABLE).getKey(currentLootTable);
             if(lootTableID != null && !StructureModdedLootImporter.isInBlacklist(lootTableID)) {
                 StructureModdedLootImporterApplier.modifyLootTables(context, lootTableID, originalLoot);
             }

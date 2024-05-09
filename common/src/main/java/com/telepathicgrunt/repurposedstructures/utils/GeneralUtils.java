@@ -306,7 +306,7 @@ public final class GeneralUtils {
 
     public static boolean isInvalidLootTableFound(MinecraftServer minecraftServer, Map.Entry<ResourceLocation, ResourceLocation> entry) {
         boolean invalidLootTableFound = false;
-        Registry<LootTable> lootTableRegistry = minecraftServer.registryAccess().registryOrThrow(Registries.LOOT_TABLE);
+        Registry<LootTable> lootTableRegistry = minecraftServer.reloadableRegistries().get().registryOrThrow(Registries.LOOT_TABLE);
         if(lootTableRegistry.get(entry.getKey()) == LootTable.EMPTY || lootTableRegistry.get(entry.getKey()) == null) {
             RepurposedStructures.LOGGER.error("Unable to find loot table key: {}", entry.getKey());
             invalidLootTableFound = true;
@@ -320,7 +320,7 @@ public final class GeneralUtils {
 
     public static boolean isMissingLootImporting(MinecraftServer minecraftServer, Set<ResourceLocation> tableKeys) {
         AtomicBoolean invalidLootTableFound = new AtomicBoolean(false);
-        Registry<LootTable> lootTableRegistry = minecraftServer.registryAccess().registryOrThrow(Registries.LOOT_TABLE);
+        Registry<LootTable> lootTableRegistry = minecraftServer.reloadableRegistries().get().registryOrThrow(Registries.LOOT_TABLE);
         lootTableRegistry.keySet().forEach(rl -> {
             if(rl.getNamespace().equals(RepurposedStructures.MODID) && !tableKeys.contains(rl)) {
                 if(rl.getPath().contains("mansions") && rl.getPath().contains("storage")) {
