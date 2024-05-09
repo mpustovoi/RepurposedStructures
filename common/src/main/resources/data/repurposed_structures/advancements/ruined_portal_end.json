@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:ruined_portal_end"
+                "structures": "repurposed_structures:ruined_portal_end"
               }
             }
           }

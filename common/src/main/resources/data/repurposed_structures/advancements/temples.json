@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:temple_nether_basalt"
+                "structures": "repurposed_structures:temple_nether_basalt"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:temple_nether_crimson"
+                "structures": "repurposed_structures:temple_nether_crimson"
               }
             }
           }
@@ -59,7 +59,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:temple_nether_soul"
+                "structures": "repurposed_structures:temple_nether_soul"
               }
             }
           }
@@ -75,7 +75,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:temple_nether_warped"
+                "structures": "repurposed_structures:temple_nether_warped"
               }
             }
           }
@@ -91,7 +91,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:temple_nether_wasteland"
+                "structures": "repurposed_structures:temple_nether_wasteland"
               }
             }
           }
@@ -107,7 +107,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:temple_taiga"
+                "structures": "repurposed_structures:temple_taiga"
               }
             }
           }
@@ -123,7 +123,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:temple_ocean"
+                "structures": "repurposed_structures:temple_ocean"
               }
             }
           }

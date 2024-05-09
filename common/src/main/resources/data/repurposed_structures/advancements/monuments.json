@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:monument_jungle"
+                "structures": "repurposed_structures:monument_jungle"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:monument_icy"
+                "structures": "repurposed_structures:monument_icy"
               }
             }
           }
@@ -59,7 +59,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:monument_nether"
+                "structures": "repurposed_structures:monument_nether"
               }
             }
           }
@@ -75,7 +75,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:monument_desert"
+                "structures": "repurposed_structures:monument_desert"
               }
             }
           }

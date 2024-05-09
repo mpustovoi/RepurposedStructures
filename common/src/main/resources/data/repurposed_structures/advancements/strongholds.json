@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:stronghold_nether"
+                "structures": "repurposed_structures:stronghold_nether"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:stronghold_end"
+                "structures": "repurposed_structures:stronghold_end"
               }
             }
           }

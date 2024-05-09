@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:igloo_grassy"
+                "structures": "repurposed_structures:igloo_grassy"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:igloo_mangrove"
+                "structures": "repurposed_structures:igloo_mangrove"
               }
             }
           }
@@ -59,7 +59,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:igloo_mushroom"
+                "structures": "repurposed_structures:igloo_mushroom"
               }
             }
           }
@@ -75,7 +75,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:igloo_stone"
+                "structures": "repurposed_structures:igloo_stone"
               }
             }
           }

@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:ancient_city_ocean"
+                "structures": "repurposed_structures:ancient_city_ocean"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:ancient_city_nether"
+                "structures": "repurposed_structures:ancient_city_nether"
               }
             }
           }
@@ -59,7 +59,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:ancient_city_end"
+                "structures": "repurposed_structures:ancient_city_end"
               }
             }
           }

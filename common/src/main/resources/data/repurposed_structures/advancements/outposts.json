@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_badlands"
+                "structures": "repurposed_structures:outpost_badlands"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_basalt"
+                "structures": "repurposed_structures:outpost_basalt"
               }
             }
           }
@@ -59,7 +59,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_birch"
+                "structures": "repurposed_structures:outpost_birch"
               }
             }
           }
@@ -75,7 +75,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_crimson"
+                "structures": "repurposed_structures:outpost_crimson"
               }
             }
           }
@@ -91,7 +91,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_desert"
+                "structures": "repurposed_structures:outpost_desert"
               }
             }
           }
@@ -107,7 +107,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_end"
+                "structures": "repurposed_structures:outpost_end"
               }
             }
           }
@@ -123,7 +123,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_giant_tree_taiga"
+                "structures": "repurposed_structures:outpost_giant_tree_taiga"
               }
             }
           }
@@ -139,7 +139,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_icy"
+                "structures": "repurposed_structures:outpost_icy"
               }
             }
           }
@@ -155,7 +155,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_jungle"
+                "structures": "repurposed_structures:outpost_jungle"
               }
             }
           }
@@ -171,7 +171,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_mangrove"
+                "structures": "repurposed_structures:outpost_mangrove"
               }
             }
           }
@@ -187,7 +187,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_nether_brick"
+                "structures": "repurposed_structures:outpost_nether_brick"
               }
             }
           }
@@ -203,7 +203,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_oak"
+                "structures": "repurposed_structures:outpost_oak"
               }
             }
           }
@@ -219,7 +219,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_ocean"
+                "structures": "repurposed_structures:outpost_ocean"
               }
             }
           }
@@ -235,7 +235,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_savanna"
+                "structures": "repurposed_structures:outpost_savanna"
               }
             }
           }
@@ -251,7 +251,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_soul"
+                "structures": "repurposed_structures:outpost_soul"
               }
             }
           }
@@ -267,7 +267,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_snowy"
+                "structures": "repurposed_structures:outpost_snowy"
               }
             }
           }
@@ -283,7 +283,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_taiga"
+                "structures": "repurposed_structures:outpost_taiga"
               }
             }
           }
@@ -299,7 +299,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:outpost_warped"
+                "structures": "repurposed_structures:outpost_warped"
               }
             }
           }

@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:shipwreck_crimson"
+                "structures": "repurposed_structures:shipwreck_crimson"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:shipwreck_end"
+                "structures": "repurposed_structures:shipwreck_end"
               }
             }
           }
@@ -59,7 +59,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:shipwreck_nether_bricks"
+                "structures": "repurposed_structures:shipwreck_nether_bricks"
               }
             }
           }
@@ -75,7 +75,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:shipwreck_warped"
+                "structures": "repurposed_structures:shipwreck_warped"
               }
             }
           }

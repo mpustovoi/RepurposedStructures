@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:ruins_land_hot"
+                "structures": "repurposed_structures:ruins_land_hot"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:ruins_land_warm"
+                "structures": "repurposed_structures:ruins_land_warm"
               }
             }
           }
@@ -59,7 +59,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:ruins_land_cold"
+                "structures": "repurposed_structures:ruins_land_cold"
               }
             }
           }
@@ -75,7 +75,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:ruins_land_icy"
+                "structures": "repurposed_structures:ruins_land_icy"
               }
             }
           }
@@ -91,7 +91,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:ruins_nether"
+                "structures": "repurposed_structures:ruins_nether"
               }
             }
           }

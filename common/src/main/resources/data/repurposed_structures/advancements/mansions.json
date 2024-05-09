@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mansion_birch"
+                "structures": "repurposed_structures:mansion_birch"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mansion_desert"
+                "structures": "repurposed_structures:mansion_desert"
               }
             }
           }
@@ -59,7 +59,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mansion_jungle"
+                "structures": "repurposed_structures:mansion_jungle"
               }
             }
           }
@@ -75,7 +75,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mansion_mangrove"
+                "structures": "repurposed_structures:mansion_mangrove"
               }
             }
           }
@@ -91,7 +91,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mansion_oak"
+                "structures": "repurposed_structures:mansion_oak"
               }
             }
           }
@@ -107,7 +107,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mansion_savanna"
+                "structures": "repurposed_structures:mansion_savanna"
               }
             }
           }
@@ -123,7 +123,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mansion_snowy"
+                "structures": "repurposed_structures:mansion_snowy"
               }
             }
           }
@@ -139,7 +139,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mansion_taiga"
+                "structures": "repurposed_structures:mansion_taiga"
               }
             }
           }

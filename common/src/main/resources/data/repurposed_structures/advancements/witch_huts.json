@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:witch_hut_birch"
+                "structures": "repurposed_structures:witch_hut_birch"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:witch_hut_dark_forest"
+                "structures": "repurposed_structures:witch_hut_dark_forest"
               }
             }
           }
@@ -59,7 +59,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:witch_hut_giant_tree_taiga"
+                "structures": "repurposed_structures:witch_hut_giant_tree_taiga"
               }
             }
           }
@@ -75,7 +75,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:witch_hut_mangrove"
+                "structures": "repurposed_structures:witch_hut_mangrove"
               }
             }
           }
@@ -91,7 +91,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:witch_hut_oak"
+                "structures": "repurposed_structures:witch_hut_oak"
               }
             }
           }
@@ -107,7 +107,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:witch_hut_taiga"
+                "structures": "repurposed_structures:witch_hut_taiga"
               }
             }
           }

@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:pyramid_badlands"
+                "structures": "repurposed_structures:pyramid_badlands"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:pyramid_end"
+                "structures": "repurposed_structures:pyramid_end"
               }
             }
           }
@@ -59,7 +59,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:pyramid_flower_forest"
+                "structures": "repurposed_structures:pyramid_flower_forest"
               }
             }
           }
@@ -75,7 +75,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:pyramid_giant_tree_taiga"
+                "structures": "repurposed_structures:pyramid_giant_tree_taiga"
               }
             }
           }
@@ -91,7 +91,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:pyramid_icy"
+                "structures": "repurposed_structures:pyramid_icy"
               }
             }
           }
@@ -107,7 +107,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:pyramid_jungle"
+                "structures": "repurposed_structures:pyramid_jungle"
               }
             }
           }
@@ -123,7 +123,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:pyramid_mushroom"
+                "structures": "repurposed_structures:pyramid_mushroom"
               }
             }
           }
@@ -139,7 +139,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:pyramid_nether"
+                "structures": "repurposed_structures:pyramid_nether"
               }
             }
           }
@@ -155,7 +155,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:pyramid_ocean"
+                "structures": "repurposed_structures:pyramid_ocean"
               }
             }
           }
@@ -171,7 +171,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:pyramid_snowy"
+                "structures": "repurposed_structures:pyramid_snowy"
               }
             }
           }
@@ -187,7 +187,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:pyramid_dark_forest"
+                "structures": "repurposed_structures:pyramid_dark_forest"
               }
             }
           }

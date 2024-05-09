@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_basalt"
+                "structures": "repurposed_structures:mineshaft_basalt"
               }
             }
           }
@@ -43,7 +43,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_birch"
+                "structures": "repurposed_structures:mineshaft_birch"
               }
             }
           }
@@ -59,7 +59,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_crimson"
+                "structures": "repurposed_structures:mineshaft_crimson"
               }
             }
           }
@@ -75,7 +75,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_dark_forest"
+                "structures": "repurposed_structures:mineshaft_dark_forest"
               }
             }
           }
@@ -91,7 +91,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_desert"
+                "structures": "repurposed_structures:mineshaft_desert"
               }
             }
           }
@@ -107,7 +107,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_end"
+                "structures": "repurposed_structures:mineshaft_end"
               }
             }
           }
@@ -123,7 +123,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_icy"
+                "structures": "repurposed_structures:mineshaft_icy"
               }
             }
           }
@@ -139,7 +139,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_jungle"
+                "structures": "repurposed_structures:mineshaft_jungle"
               }
             }
           }
@@ -155,7 +155,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_nether"
+                "structures": "repurposed_structures:mineshaft_nether"
               }
             }
           }
@@ -171,7 +171,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_ocean"
+                "structures": "repurposed_structures:mineshaft_ocean"
               }
             }
           }
@@ -187,7 +187,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_savanna"
+                "structures": "repurposed_structures:mineshaft_savanna"
               }
             }
           }
@@ -203,7 +203,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_soul"
+                "structures": "repurposed_structures:mineshaft_soul"
               }
             }
           }
@@ -219,7 +219,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_stone"
+                "structures": "repurposed_structures:mineshaft_stone"
               }
             }
           }
@@ -235,7 +235,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_swamp"
+                "structures": "repurposed_structures:mineshaft_swamp"
               }
             }
           }
@@ -251,7 +251,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_taiga"
+                "structures": "repurposed_structures:mineshaft_taiga"
               }
             }
           }
@@ -267,7 +267,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:mineshaft_warped"
+                "structures": "repurposed_structures:mineshaft_warped"
               }
             }
           }

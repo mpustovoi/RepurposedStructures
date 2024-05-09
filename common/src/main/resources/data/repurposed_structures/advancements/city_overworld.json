@@ -27,7 +27,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "structure": "repurposed_structures:city_overworld"
+                "structures": "repurposed_structures:city_overworld"
               }
             }
           }
