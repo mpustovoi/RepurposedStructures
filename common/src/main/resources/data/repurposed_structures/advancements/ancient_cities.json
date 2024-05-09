@@ -2,7 +2,7 @@
   "parent": "repurposed_structures:root",
   "display": {
     "icon": {
-      "item": "minecraft:reinforced_deepslate"
+      "id": "minecraft:reinforced_deepslate"
     },
     "title": {
       "translate": "Civilization from the Beyond"

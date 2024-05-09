@@ -2,7 +2,7 @@
   "parent": "repurposed_structures:root",
   "display": {
     "icon": {
-      "item": "minecraft:wet_sponge"
+      "id": "minecraft:wet_sponge"
     },
     "title": {
       "translate": "Tributes and Sacrifices"

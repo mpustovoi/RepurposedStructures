@@ -2,7 +2,7 @@
   "parent": "repurposed_structures:root",
   "display": {
     "icon": {
-      "item": "minecraft:bone"
+      "id": "minecraft:bone"
     },
     "title": {
       "translate": "Bastions, Evil, and Bones..."

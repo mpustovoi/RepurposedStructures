@@ -2,7 +2,7 @@
   "parent": "repurposed_structures:root",
   "display": {
     "icon": {
-      "item": "minecraft:ender_eye"
+      "id": "minecraft:ender_eye"
     },
     "title": {
       "translate": "Following the Eyes"

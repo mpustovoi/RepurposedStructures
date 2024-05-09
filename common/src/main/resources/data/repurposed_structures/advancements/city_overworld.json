@@ -2,7 +2,7 @@
   "parent": "repurposed_structures:root",
   "display": {
     "icon": {
-      "item": "minecraft:brown_banner"
+      "id": "minecraft:brown_banner"
     },
     "title": {
       "translate": "Skyward Cities"

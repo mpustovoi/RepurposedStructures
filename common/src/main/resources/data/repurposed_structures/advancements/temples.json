@@ -2,7 +2,7 @@
   "parent": "repurposed_structures:root",
   "display": {
     "icon": {
-      "item": "minecraft:arrow"
+      "id": "minecraft:arrow"
     },
     "title": {
       "translate": "Unanswered Prayers"

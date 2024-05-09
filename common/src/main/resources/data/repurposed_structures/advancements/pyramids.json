@@ -2,7 +2,7 @@
   "parent": "repurposed_structures:root",
   "display": {
     "icon": {
-      "item": "minecraft:tnt"
+      "id": "minecraft:tnt"
     },
     "title": {
       "translate": "Raider of the Tombs"

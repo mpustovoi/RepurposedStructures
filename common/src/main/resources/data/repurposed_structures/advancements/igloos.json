@@ -2,7 +2,7 @@
   "parent": "repurposed_structures:root",
   "display": {
     "icon": {
-      "item": "minecraft:red_bed"
+      "id": "minecraft:red_bed"
     },
     "title": {
       "translate": "Having a Hobbit Time!"

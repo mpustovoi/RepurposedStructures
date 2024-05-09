@@ -2,7 +2,7 @@
   "parent": "repurposed_structures:root",
   "display": {
     "icon": {
-      "item": "minecraft:crying_obsidian"
+      "id": "minecraft:crying_obsidian"
     },
     "title": {
       "translate": "The Useless Portal"

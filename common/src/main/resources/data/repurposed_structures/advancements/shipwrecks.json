@@ -2,7 +2,7 @@
   "parent": "repurposed_structures:root",
   "display": {
     "icon": {
-      "item": "minecraft:oak_boat"
+      "id": "minecraft:oak_boat"
     },
     "title": {
       "translate": "Interdimensional Pirates"

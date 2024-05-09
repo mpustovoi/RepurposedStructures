@@ -2,7 +2,7 @@
   "parent": "repurposed_structures:root",
   "display": {
     "icon": {
-      "item": "minecraft:magma_block"
+      "id": "minecraft:magma_block"
     },
     "title": {
       "translate": "Remains of the Past"
