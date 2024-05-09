@@ -64,6 +64,100 @@ def traverseAndModify(dictionary, modifiers):
 """ and None
 
 # Loot Table Updating
+acceptedBasePotions = {
+    "minecraft:water",
+    "minecraft:mundane",
+    "minecraft:thick",
+    "minecraft:awkward",
+    "minecraft:night_vision",
+    "minecraft:long_night_vision",
+    "minecraft:invisibility",
+    "minecraft:long_invisibility",
+    "minecraft:leaping",
+    "minecraft:long_leaping",
+    "minecraft:strong_leaping",
+    "minecraft:fire_resistance",
+    "minecraft:long_fire_resistance",
+    "minecraft:swiftness",
+    "minecraft:long_swiftness",
+    "minecraft:strong_swiftness",
+    "minecraft:slowness",
+    "minecraft:long_slowness",
+    "minecraft:strong_slowness",
+    "minecraft:turtle_master",
+    "minecraft:long_turtle_master",
+    "minecraft:strong_turtle_master",
+    "minecraft:water_breathing",
+    "minecraft:long_water_breathing",
+    "minecraft:healing",
+    "minecraft:strong_healing",
+    "minecraft:harming",
+    "minecraft:strong_harming",
+    "minecraft:poison",
+    "minecraft:long_poison",
+    "minecraft:strong_poison",
+    "minecraft:regeneration",
+    "minecraft:long_regeneration",
+    "minecraft:strong_regeneration",
+    "minecraft:strength",
+    "minecraft:long_strength",
+    "minecraft:strong_strength",
+    "minecraft:weakness",
+    "minecraft:long_weakness",
+    "minecraft:luck",
+    "minecraft:slow_falling",
+    "minecraft:long_slow_falling",
+    "minecraft:wind_charged",
+    "minecraft:weaving",
+    "minecraft:oozing",
+    "minecraft:infested",
+    "water",
+    "mundane",
+    "thick",
+    "awkward",
+    "night_vision",
+    "long_night_vision",
+    "invisibility",
+    "long_invisibility",
+    "leaping",
+    "long_leaping",
+    "strong_leaping",
+    "fire_resistance",
+    "long_fire_resistance",
+    "swiftness",
+    "long_swiftness",
+    "strong_swiftness",
+    "slowness",
+    "long_slowness",
+    "strong_slowness",
+    "turtle_master",
+    "long_turtle_master",
+    "strong_turtle_master",
+    "water_breathing",
+    "long_water_breathing",
+    "healing",
+    "strong_healing",
+    "harming",
+    "strong_harming",
+    "poison",
+    "long_poison",
+    "strong_poison",
+    "regeneration",
+    "long_regeneration",
+    "strong_regeneration",
+    "strength",
+    "long_strength",
+    "strong_strength",
+    "weakness",
+    "long_weakness",
+    "luck",
+    "slow_falling",
+    "long_slow_falling",
+    "wind_charged",
+    "weaving",
+    "oozing",
+    "infested",
+}
 bannerPatternConversion = {
     "b": "minecraft:base",
     "bl": "minecraft:square_bottom_left",
@@ -125,6 +219,14 @@ bannerColorConversion = {
     "14": "red",
     "15": "black"
 }
+fireworkStarTypeConversion = {
+    "0": "small_ball",
+    "1": "large_ball",
+    "2": "star",
+    "3": "magenta",
+    "4": "creeper",
+    "5": "burst"
+}
 path = os.path.join(data_folder, loot_tables_folder)
 for (subdir, dirs, files) in os.walk(path, topdown=True):
     for file in files:
@@ -142,18 +244,39 @@ for (subdir, dirs, files) in os.walk(path, topdown=True):
                         and (objectToModify["function"] == "minecraft:set_nbt" or objectToModify["function"] == "set_nbt") \
                         and "Potion" in objectToModify["tag"]:
                         
-                        objectToModify["function"] = "minecraft:set_potion"
                         if match := re.search("\\\"(\w+:\w+)\\\"", objectToModify["tag"], re.IGNORECASE):
-                            objectToModify["id"] = match.group(1)
-                        del objectToModify["tag"]
-
+                            potionType = match.group(1)
+                            if potionType in acceptedBasePotions:
+                                objectToModify["function"] = "minecraft:set_potion"
+                                objectToModify["id"] = potionType
+                                del objectToModify["tag"]
+                            else:
+                                objectToModify["function"] = "minecraft:set_components"
+                                objectToModify["components"] = {
+                                    "minecraft:potion_contents": {
+                                        "custom_effects": [
+                                            {
+                                                "id": potionType,
+                                                "amplifier": 1,
+                                                "duration": 20,
+                                                "ambient": False,
+                                                "show_particles": True,
+                                                "show_icon": True
+                                            }
+                                        ]
+                                    }
+                                }
+                                del objectToModify["tag"]
+                                
                 def setBannerComponent(objectToModify):
                     if "function" in objectToModify \
                         and "tag" in objectToModify \
                         and (objectToModify["function"] == "minecraft:set_nbt" or objectToModify["function"] == "set_nbt") \
-                        and "BlockEntityTag:{Patterns:" in objectToModify["tag"]:
+                        and "BlockEntityTag:" in objectToModify["tag"] \
+                        and "Patterns:" in objectToModify["tag"]:
                         
                         objectToModify["function"] = "minecraft:set_banner_pattern"
+                        objectToModify["append"] = True
 
                         bannerData = []
                         if matches := re.findall("Pattern:(\w+),Color:(\d+)", objectToModify["tag"], re.IGNORECASE):
@@ -166,7 +289,46 @@ for (subdir, dirs, files) in os.walk(path, topdown=True):
                         objectToModify["patterns"] = bannerData
                         del objectToModify["tag"]
 
-                traverseAndModify(lootTable, [setPotionComponent, setBannerComponent])
+                def setNestedLootTable(objectToModify):
+                    if "type" in objectToModify \
+                        and "name" in objectToModify \
+                        and (objectToModify["type"] == "minecraft:loot_table" or objectToModify["type"] == "loot_table"):
+                        
+                        objectToModify["type"] = "minecraft:loot_table"
+                        objectToModify["value"] = objectToModify["name"]
+                        del objectToModify["name"]
+
+                def setFireworkStarComponent(objectToModify):
+                    if "function" in objectToModify \
+                        and "tag" in objectToModify \
+                        and (objectToModify["function"] == "minecraft:set_nbt" or objectToModify["function"] == "set_nbt") \
+                        and "Explosion:" in objectToModify["tag"]:
+                        
+                        objectToModify["function"] = "minecraft:set_firework_explosion"
+
+                        if match := re.search("\WColors:\[((?:(?:I;)?\d+,?)+)", objectToModify["tag"], re.IGNORECASE):
+                            colorsStringArray = match.group(1).replace("I;", "").split(",")
+                            colorsArray = [int(numeric_string) for numeric_string in colorsStringArray]
+                            objectToModify["color"] = colorsArray
+
+                        if match := re.search("FadeColors:\[((?:(?:I;)?\d+,?)+)", objectToModify["tag"], re.IGNORECASE):
+                            colorsStringArray = match.group(1).replace("I;", "").split(",")
+                            colorsArray = [int(numeric_string) for numeric_string in colorsStringArray]
+                            objectToModify["fade_colors"] = colorsArray
+
+                        if match := re.search("Trail:(\d+)", objectToModify["tag"], re.IGNORECASE):
+                            objectToModify["trail"] = True if match.group(1) == "1" else False
+
+                        if match := re.search("Flicker:(\d+)", objectToModify["tag"], re.IGNORECASE):
+                            objectToModify["twinkle"] = True if match.group(1) == "1" else False
+
+                        if match := re.search("Type:(\d+)", objectToModify["tag"], re.IGNORECASE):
+                            objectToModify["shape"] = fireworkStarTypeConversion[match.group(1)]
+
+                        del objectToModify["tag"]
+
+
+                traverseAndModify(lootTable, [setPotionComponent, setBannerComponent, setNestedLootTable, setFireworkStarComponent])
 
             with open(filepath, 'w') as file:
                 json.dump(lootTable, file, indent = 2)
