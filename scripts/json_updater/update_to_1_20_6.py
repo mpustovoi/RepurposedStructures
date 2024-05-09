@@ -110,53 +110,7 @@ acceptedBasePotions = {
     "minecraft:wind_charged",
     "minecraft:weaving",
     "minecraft:oozing",
-    "minecraft:infested",
-    "water",
-    "mundane",
-    "thick",
-    "awkward",
-    "night_vision",
-    "long_night_vision",
-    "invisibility",
-    "long_invisibility",
-    "leaping",
-    "long_leaping",
-    "strong_leaping",
-    "fire_resistance",
-    "long_fire_resistance",
-    "swiftness",
-    "long_swiftness",
-    "strong_swiftness",
-    "slowness",
-    "long_slowness",
-    "strong_slowness",
-    "turtle_master",
-    "long_turtle_master",
-    "strong_turtle_master",
-    "water_breathing",
-    "long_water_breathing",
-    "healing",
-    "strong_healing",
-    "harming",
-    "strong_harming",
-    "poison",
-    "long_poison",
-    "strong_poison",
-    "regeneration",
-    "long_regeneration",
-    "strong_regeneration",
-    "strength",
-    "long_strength",
-    "strong_strength",
-    "weakness",
-    "long_weakness",
-    "luck",
-    "slow_falling",
-    "long_slow_falling",
-    "wind_charged",
-    "weaving",
-    "oozing",
-    "infested",
+    "minecraft:infested"
 }
 bannerPatternConversion = {
     "b": "minecraft:base",
@@ -244,8 +198,11 @@ for (subdir, dirs, files) in os.walk(path, topdown=True):
                         and (objectToModify["function"] == "minecraft:set_nbt" or objectToModify["function"] == "set_nbt") \
                         and "Potion" in objectToModify["tag"]:
                         
-                        if match := re.search("\\\"(\w+:\w+)\\\"", objectToModify["tag"], re.IGNORECASE):
+                        if match := re.search("\\\"([\w:]+)\\\"", objectToModify["tag"], re.IGNORECASE):
                             potionType = match.group(1)
+                            if ":" not in potionType:
+                                potionType = "minecraft:" + potionType
+
                             if potionType in acceptedBasePotions:
                                 objectToModify["function"] = "minecraft:set_potion"
                                 objectToModify["id"] = potionType
@@ -327,8 +284,13 @@ for (subdir, dirs, files) in os.walk(path, topdown=True):
 
                         del objectToModify["tag"]
 
-
-                traverseAndModify(lootTable, [setPotionComponent, setBannerComponent, setNestedLootTable, setFireworkStarComponent])
+                def updateItemNames(objectToModify):
+                    if "name" in objectToModify and (objectToModify["name"] == "minecraft:scute" or objectToModify["name"] == "scute"):
+                        objectToModify["name"] = "minecraft:turtle_scute"
+                    if "name" in objectToModify and (objectToModify["name"] == "minecraft:stone_cutter" or objectToModify["name"] == "stone_cutter"):
+                        objectToModify["name"] = "minecraft:stonecutter"
+                        
+                traverseAndModify(lootTable, [setPotionComponent, setBannerComponent, setNestedLootTable, setFireworkStarComponent, updateItemNames])
 
             with open(filepath, 'w') as file:
                 json.dump(lootTable, file, indent = 2)
