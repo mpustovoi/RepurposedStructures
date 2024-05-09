@@ -180,7 +180,7 @@
         "minecraft:fletching_table",
         "minecraft:grindstone",
         "minecraft:smithing_table",
-        "minecraft:stone_cutter",
+        "minecraft:stonecutter",
         "minecraft:lectern",
         "minecraft:cauldron"
       ],
@@ -235,7 +235,10 @@
       "rules": [
         {
           "output_state": {
-            "Name": "minecraft:jukebox"
+            "Name": "minecraft:jukebox",
+            "Properties": {
+              "has_record": "false"
+            }
           },
           "input_predicate": {
             "block": "minecraft:blast_furnace",
@@ -251,7 +254,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 15,
       "pillar_processor_list": "repurposed_structures:cities/overworld_randomize",
       "pillar_trigger_and_replacements": [
@@ -267,7 +270,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_processor_list": "repurposed_structures:cities/overworld_randomize",
       "pillar_trigger_and_replacements": [
         {

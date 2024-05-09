@@ -124,7 +124,7 @@
         },
         {
           "output_state": {
-            "Name": "minecraft:terrcotta"
+            "Name": "minecraft:terracotta"
           },
           "input_predicate": {
             "block": "minecraft:cobweb",

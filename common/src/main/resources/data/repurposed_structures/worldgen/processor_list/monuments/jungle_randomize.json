@@ -1,7 +1,7 @@
 {
   "processors": [
     {
-      "processor_type": "repurposed_structures:capped_structure_surface_processor",
+      "processor_type": "repurposed_structures:structure_surface_processor",
       "allow_void_sides": true,
       "delegate": {
         "processor_type": "minecraft:rule",
@@ -336,7 +336,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 2,
       "forced_placement": true,
       "pillar_trigger_and_replacements": [
@@ -352,7 +352,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_processor_list": "repurposed_structures:monuments/jungle_randomize",
       "pillar_trigger_and_replacements": [
         {

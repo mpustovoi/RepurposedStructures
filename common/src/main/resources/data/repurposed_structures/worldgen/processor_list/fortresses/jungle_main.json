@@ -1,7 +1,7 @@
 {
   "processors": [
     {
-      "processor_type": "repurposed_structures:capped_structure_surface_processor",
+      "processor_type": "repurposed_structures:structure_surface_processor",
       "delegate": {
         "processor_type": "minecraft:rule",
         "rules": [
@@ -217,7 +217,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_processor_list": "repurposed_structures:fortresses/jungle_main",
       "pillar_trigger_and_replacements": [
         {

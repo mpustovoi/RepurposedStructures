@@ -108,6 +108,6 @@ public class CappedStructureSurfaceProcessor extends StructureProcessor {
 
     @Override
     protected StructureProcessorType<?> getType() {
-        return RSProcessors.CAPPED_STRUCTURE_SURFACE_PROCESSOR.get();
+        return RSProcessors.STRUCTURE_SURFACE_PROCESSOR.get();
     }
 }

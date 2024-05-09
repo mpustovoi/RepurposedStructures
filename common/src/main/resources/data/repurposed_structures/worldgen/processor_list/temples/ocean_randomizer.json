@@ -1,7 +1,7 @@
 {
   "processors": [
     {
-      "processor_type": "repurposed_structures:capped_structure_surface_processor",
+      "processor_type": "repurposed_structures:structure_surface_processor",
       "allow_void_sides": true,
       "delegate": {
         "processor_type": "minecraft:rule",

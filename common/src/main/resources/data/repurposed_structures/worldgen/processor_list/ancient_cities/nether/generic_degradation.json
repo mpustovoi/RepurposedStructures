@@ -31,7 +31,7 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:cracked_blackstone_bricks"
+            "Name": "minecraft:cracked_polished_blackstone_bricks"
           }
         }
       ]

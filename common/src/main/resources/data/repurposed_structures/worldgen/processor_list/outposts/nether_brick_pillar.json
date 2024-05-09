@@ -2,7 +2,7 @@
   "processors": [
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "original_replaced_block" : {
         "Name": "minecraft:nether_brick_slab",
         "Properties": {
@@ -23,7 +23,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "original_replaced_block" : {
         "Name": "minecraft:red_nether_brick_slab",
         "Properties": {

@@ -98,7 +98,7 @@
       "rules": [
         {
           "output_state": {
-            "Name": "minecraft:bricks_stairs"
+            "Name": "minecraft:brick_stairs"
           },
           "input_predicate": {
             "block": "minecraft:bricks",
@@ -111,10 +111,10 @@
         },
         {
           "output_state": {
-            "Name": "minecraft:bricks_slab"
+            "Name": "minecraft:brick_slab"
           },
           "input_predicate": {
-            "block": "minecraft:bricks_stairs",
+            "block": "minecraft:brick_stairs",
             "probability": 0.04,
             "predicate_type": "minecraft:random_block_match"
           },
@@ -127,7 +127,7 @@
             "Name": "minecraft:air"
           },
           "input_predicate": {
-            "block": "minecraft:bricks_slab",
+            "block": "minecraft:brick_slab",
             "probability": 0.04,
             "predicate_type": "minecraft:random_block_match"
           },

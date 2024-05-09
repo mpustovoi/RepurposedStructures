@@ -77,7 +77,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 5,
       "original_replaced_block" : {
         "Name": "minecraft:crimson_nylium"
@@ -95,7 +95,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 5,
       "original_replaced_block" : {
         "Name": "minecraft:nether_gold_ore"
@@ -113,7 +113,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 5,
       "pillar_processor_list": "repurposed_structures:villages/crimson/path_pillar_randomizer",
       "pillar_trigger_and_replacements": [
@@ -129,7 +129,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 5,
       "pillar_processor_list": "repurposed_structures:villages/crimson/path_pillar_randomizer",
       "pillar_trigger_and_replacements": [

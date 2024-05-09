@@ -53,7 +53,7 @@
             "Name": "minecraft:structure_void"
           },
           "input_predicate": {
-            "block": "minecraft:daylight_sensor",
+            "block": "minecraft:daylight_detector",
             "probability": 0.35,
             "predicate_type": "minecraft:random_block_match"
           },

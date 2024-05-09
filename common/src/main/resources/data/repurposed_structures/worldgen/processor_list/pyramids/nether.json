@@ -33,7 +33,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 0,
       "pillar_processor_list": "repurposed_structures:pyramids/nether",
       "pillar_trigger_and_replacements": [
@@ -49,7 +49,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 1,
       "pillar_processor_list": "repurposed_structures:pyramids/nether",
       "pillar_trigger_and_replacements": [
@@ -65,7 +65,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 2,
       "pillar_processor_list": "repurposed_structures:pyramids/nether",
       "pillar_trigger_and_replacements": [
@@ -81,7 +81,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 3,
       "pillar_processor_list": "repurposed_structures:pyramids/nether",
       "pillar_trigger_and_replacements": [
@@ -97,7 +97,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 4,
       "pillar_processor_list": "repurposed_structures:pyramids/nether",
       "pillar_trigger_and_replacements": [
@@ -113,7 +113,7 @@
     },
     {
       "processor_type": "repurposed_structures:pillar_processor",
-      "direction": "DOWN",
+      "direction": "down",
       "pillar_length": 5,
       "pillar_processor_list": "repurposed_structures:pyramids/nether",
       "pillar_trigger_and_replacements": [

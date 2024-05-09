@@ -61,7 +61,7 @@ public final class RSProcessors {
     public static final RegistryEntry<StructureProcessorType<ForcePlaceMushroomBlocksProcessor>> FORCE_PLACE_MUSHROOM_BLOCKS_PROCESSOR = STRUCTURE_PROCESSOR.register("force_place_mushroom_blocks_processor", () -> () -> ForcePlaceMushroomBlocksProcessor.CODEC);
     public static final RegistryEntry<StructureProcessorType<CoralAliveDeadProcessor>> CORAL_ALIVE_DEAD_PROCESSOR = STRUCTURE_PROCESSOR.register("coral_alive_dead_processor", () -> () -> CoralAliveDeadProcessor.CODEC);
 
-    public static final RegistryEntry<StructureProcessorType<CappedStructureSurfaceProcessor>> CAPPED_STRUCTURE_SURFACE_PROCESSOR = STRUCTURE_PROCESSOR.register("capped_structure_surface_processor", () -> () -> CappedStructureSurfaceProcessor.CODEC);
+    public static final RegistryEntry<StructureProcessorType<CappedStructureSurfaceProcessor>> STRUCTURE_SURFACE_PROCESSOR = STRUCTURE_PROCESSOR.register("structure_surface_processor", () -> () -> CappedStructureSurfaceProcessor.CODEC);
     public static final RegistryEntry<StructureProcessorType<PostProcessListProcessor>> POST_PROCESS_LIST_PROCESSOR = STRUCTURE_PROCESSOR.register("post_process_list_processor", () -> () -> PostProcessListProcessor.CODEC);
 
     public static final RegistryEntry<StructureProcessorType<WallVinePostProcessor>> WALL_VINE_POST_PROCESSOR = STRUCTURE_PROCESSOR.register("wall_vine_post_processor", () -> () -> WallVinePostProcessor.CODEC);
