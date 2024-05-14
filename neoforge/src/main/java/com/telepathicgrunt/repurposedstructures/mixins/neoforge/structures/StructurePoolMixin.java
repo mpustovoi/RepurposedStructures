@@ -16,7 +16,10 @@ public class StructurePoolMixin {
      * @return - The higher weight that is a more reasonable limit.
      */
     @WrapOperation(
-            method = "method_28886",
+            method = {
+                "lambda$static$1",
+                "method_28886"
+            },
             at = @At(value = "INVOKE", target = "Lcom/mojang/serialization/Codec;intRange(II)Lcom/mojang/serialization/Codec;"),
             require = 0,
             remap = false

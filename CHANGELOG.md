@@ -1,7 +1,4 @@
-### **(V.7.4.0 Changes) (1.20.6 Minecraft)**
+### **(V.7.4.1 Changes) (1.20.6 Minecraft)**
 
 #### Misc:
-Updated to 1.20.6
-
-#### Villages:
-Named the Nausea Potions as "Dry Whisky" in Badland Villages' Saloons
+(NeoForge): Fixed mod not loading in world due to a bad mixin not undo a Mojang limit.
