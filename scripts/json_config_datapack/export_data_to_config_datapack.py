@@ -3,7 +3,8 @@ import os
 import shutil
 import json
 
-mod_resources = "C:\\Users\\MSI Laptop\\Documents\\ModWorkspace\\RepurposedStructures\\common\\src\\main\\resources"
+mod_resources_rel = os.path.join('..', '..', 'common', 'src', 'main', 'resources')
+mod_resources = os.path.abspath(mod_resources_rel)
 compat_datapack = "C:\\Users\\MSI Laptop\\Documents\\ModWorkspace\\.Extra\\Backroom\\repurposed_structures\\datapacks\\Repurposed_Structures-Config_Datapack"
 
 # Source: https://thispointer.com/python-how-to-get-list-of-files-in-directory-and-sub-directories/
