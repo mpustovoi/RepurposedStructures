@@ -5,7 +5,7 @@ import json
 
 mod_resources_rel = os.path.join('..', '..', 'common', 'src', 'main', 'resources')
 mod_resources = os.path.abspath(mod_resources_rel)
-compat_datapack = "C:\\Users\\MSI Laptop\\Documents\\ModWorkspace\\.Extra\\Backroom\\repurposed_structures\\datapacks\\Repurposed_Structures-Config_Datapack"
+compat_datapack = "C:\\Users\\alext\\Documents\\ModWorkspace\\.Extra\\Backroom\\repurposed_structures\\datapacks\\Repurposed_Structures-Config_Datapack"
 
 # Source: https://thispointer.com/python-how-to-get-list-of-files-in-directory-and-sub-directories/
 def getListOfFiles(dirName):
@@ -23,7 +23,7 @@ def getListOfFiles(dirName):
 
 restart = True
 while restart:
-    mc_version = "1.20.6"
+    mc_version = "1.21"
     version = input("\ncompat_datapack_version\n").strip()
 
     #-------------------------------------------------------------------------------------------
