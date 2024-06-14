@@ -6,6 +6,7 @@
   "biomes": "#repurposed_structures:has_structure/bastions/underground",
   "step": "underground_structures",
   "terrain_adaptation": "none",
+  "liquid_settings": "ignore_waterlogging",
   "start_height": {
     "absolute": -45
   },

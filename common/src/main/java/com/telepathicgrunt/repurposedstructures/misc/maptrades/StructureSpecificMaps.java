@@ -34,10 +34,10 @@ public class StructureSpecificMaps {
 
             if(csf.startsWith("#")) {
                 this.destination = null;
-                this.destinationTag = TagKey.create(Registries.STRUCTURE, new ResourceLocation(csf.replaceFirst("#","")));
+                this.destinationTag = TagKey.create(Registries.STRUCTURE, ResourceLocation.tryParse(csf.replaceFirst("#","")));
             }
             else {
-                this.destination = ResourceKey.create(Registries.STRUCTURE, new ResourceLocation(csf));
+                this.destination = ResourceKey.create(Registries.STRUCTURE, ResourceLocation.tryParse(csf));
                 this.destinationTag = null;
             }
 

@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 public final class RSConditionsRegistry {
     private RSConditionsRegistry() {}
 
-    public static final ResourceKey<Registry<Supplier<Boolean>>> RS_JSON_CONDITIONS_KEY = ResourceKey.createRegistryKey(new ResourceLocation(RepurposedStructures.MODID, "json_conditions"));
+    public static final ResourceKey<Registry<Supplier<Boolean>>> RS_JSON_CONDITIONS_KEY = ResourceKey.createRegistryKey(ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "json_conditions"));
     public static final CustomRegistry<Supplier<Boolean>> RS_JSON_CONDITIONS_REGISTRY = CustomRegistry.of(RepurposedStructures.MODID, RS_JSON_CONDITIONS_KEY, false, false, true);
     public static final RegistryEntry<Supplier<Boolean>> ALWAYS_TRUE = RS_JSON_CONDITIONS_REGISTRY.register("always_true", () -> () -> true);
     public static final RegistryEntry<Supplier<Boolean>> ALWAYS_FALSE = RS_JSON_CONDITIONS_REGISTRY.register("always_false", () -> () -> true);
@@ -30,15 +30,15 @@ public final class RSConditionsRegistry {
      * NOTE: DO THIS CODE ONLY AT MOD INIT. Do not run it when a world is being made! The registry will be frozen after mod init.
 
      * FABRIC/QUILT:
-         BuiltInRegistries.REGISTRY.getOptional(new ResourceLocation("repurposed_structures", "json_conditions"))
+         BuiltInRegistries.REGISTRY.getOptional(ResourceLocation.fromNamespaceAndPath("repurposed_structures", "json_conditions"))
              .ifPresent(registry -> Registry.register(
                  (Registry<Supplier<Boolean>>)registry,
-                 new ResourceLocation("repurposed_structures", "test"),
+                 ResourceLocation.fromNamespaceAndPath("repurposed_structures", "test"),
                  () -> SomeConfig.EnableJson()));
 
      * FORGE:
         public static final DeferredRegister<Supplier<Boolean>> RS_CONDITIONS_REGISTRY = DeferredRegister.createOptional(
-                new ResourceLocation("repurposed_structures", "json_conditions"), "modid");
+                ResourceLocation.fromNamespaceAndPath("repurposed_structures", "json_conditions"), "modid");
 
         // If the typing here doesn't work, make a helper method that takes a Supplier<Boolean> and returns a Supplier<Boolean>
         public static final RegistryObject<Supplier<Boolean>> CUSTOM_MOD_CONFIG_CONDITION = RS_CONDITIONS_REGISTRY.register(

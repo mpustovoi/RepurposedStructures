@@ -29,13 +29,13 @@ public class Skeletons extends Feature<GenericMobConfig> {
 
         context.config().heldItem.ifPresent(item -> {
             ItemStack heldItem = new ItemStack(item);
-            skeletonEntity.setItemInHand(InteractionHand.MAIN_HAND, GeneralUtils.enchantRandomly(context.random(), heldItem, 0.333F));
+            skeletonEntity.setItemInHand(InteractionHand.MAIN_HAND, GeneralUtils.enchantRandomly(context.level().registryAccess(), context.random(), heldItem, 0.333F));
             skeletonEntity.setLeftHanded(context.random().nextFloat() < 0.05F);
         });
-        context.config().helmet.ifPresent(item -> skeletonEntity.setItemSlot(EquipmentSlot.HEAD, GeneralUtils.enchantRandomly(context.random(), item.getDefaultInstance(), 0.075F)));
-        context.config().chestplate.ifPresent(item -> skeletonEntity.setItemSlot(EquipmentSlot.CHEST, GeneralUtils.enchantRandomly(context.random(), item.getDefaultInstance(), 0.075F)));
-        context.config().leggings.ifPresent(item -> skeletonEntity.setItemSlot(EquipmentSlot.LEGS, GeneralUtils.enchantRandomly(context.random(), item.getDefaultInstance(), 0.075F)));
-        context.config().boots.ifPresent(item -> skeletonEntity.setItemSlot(EquipmentSlot.FEET, GeneralUtils.enchantRandomly(context.random(), item.getDefaultInstance(), 0.075F)));
+        context.config().helmet.ifPresent(item -> skeletonEntity.setItemSlot(EquipmentSlot.HEAD, GeneralUtils.enchantRandomly(context.level().registryAccess(), context.random(), item.getDefaultInstance(), 0.075F)));
+        context.config().chestplate.ifPresent(item -> skeletonEntity.setItemSlot(EquipmentSlot.CHEST, GeneralUtils.enchantRandomly(context.level().registryAccess(), context.random(), item.getDefaultInstance(), 0.075F)));
+        context.config().leggings.ifPresent(item -> skeletonEntity.setItemSlot(EquipmentSlot.LEGS, GeneralUtils.enchantRandomly(context.level().registryAccess(), context.random(), item.getDefaultInstance(), 0.075F)));
+        context.config().boots.ifPresent(item -> skeletonEntity.setItemSlot(EquipmentSlot.FEET, GeneralUtils.enchantRandomly(context.level().registryAccess(), context.random(), item.getDefaultInstance(), 0.075F)));
 
         skeletonEntity.setPersistenceRequired();
         skeletonEntity.moveTo(

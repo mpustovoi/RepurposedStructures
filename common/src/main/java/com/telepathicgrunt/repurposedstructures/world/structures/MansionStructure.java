@@ -29,6 +29,8 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
+import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
+import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,24 +45,28 @@ public class MansionStructure extends Structure {
             Codec.STRING.fieldOf("mansion_type").forGetter(structure -> structure.mansionType),
             BlockState.CODEC.fieldOf("foundation_block").forGetter(structure -> structure.foundationBlock),
             Codec.BOOL.fieldOf("pillar_only_to_land").orElse(true).forGetter(structure -> structure.pillarOnlyToLand),
-            Codec.intRange(1, 100).optionalFieldOf("valid_biome_radius_check").forGetter(structure -> structure.biomeRadius)
+            Codec.intRange(1, 100).optionalFieldOf("valid_biome_radius_check").forGetter(structure -> structure.biomeRadius),
+            LiquidSettings.CODEC.optionalFieldOf("liquid_settings", JigsawStructure.DEFAULT_LIQUID_SETTINGS).forGetter(structure -> structure.liquidSettings)
     ).apply(instance, MansionStructure::new));
 
     public final String mansionType;
     public final BlockState foundationBlock;
     public final boolean pillarOnlyToLand;
     public final Optional<Integer> biomeRadius;
+    public final LiquidSettings liquidSettings;
     public MansionStructure(Structure.StructureSettings config,
                             String mansionType, 
                             BlockState foundationBlock, 
                             boolean pillarOnlyToLand,
-                            Optional<Integer> biomeRadius
+                            Optional<Integer> biomeRadius,
+                            LiquidSettings liquidSettings
     ) {
         super(config);
         this.mansionType = mansionType.toLowerCase(Locale.ROOT);
         this.foundationBlock = foundationBlock;
         this.pillarOnlyToLand = pillarOnlyToLand;
         this.biomeRadius = biomeRadius;
+        this.liquidSettings = liquidSettings;
     }
     
     protected boolean extraSpawningChecks(GenerationContext context, BlockPos blockPos) {
@@ -110,8 +116,9 @@ public class MansionStructure extends Structure {
         int forthheight = context.chunkGenerator().getFirstOccupiedHeight(centerX + xOffset, centerZ + zOffset, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState());
         int finalheight = Math.min(Math.min(firstHeight, secondHeight), Math.min(thirdHeight, forthheight));
 
-        if(finalheight <= context.chunkGenerator().getMinY())
+        if(finalheight <= context.chunkGenerator().getMinY()) {
             return Optional.empty();
+        }
 
         if (!extraSpawningChecks(context, chunkPos.getMiddleBlockPosition(finalheight))) {
             return Optional.empty();
@@ -120,10 +127,10 @@ public class MansionStructure extends Structure {
         return Optional.of(new Structure.GenerationStub(new BlockPos(centerX, finalheight + 1, centerZ), (structurePiecesBuilder) -> {
             BlockPos blockPos = new BlockPos(chunkPos.getMiddleBlockX(), finalheight + 1, chunkPos.getMiddleBlockZ());
             List<StructurePiece> list = new ArrayList<>();
-            MansionPieces.createMansionLayout(context.registryAccess(), context.structureTemplateManager(), blockPos, blockRotation, list, random, this.mansionType);
+            MansionPieces.createMansionLayout(context.registryAccess(), context.structureTemplateManager(), blockPos, blockRotation, list, random, this.mansionType, this.liquidSettings);
             list.forEach(piece -> {
                 if (piece instanceof PoolElementStructurePiece poolElementStructurePiece) {
-                    structurePiecesBuilder.addPiece(new MansionStructurePiece(poolElementStructurePiece, this.mansionType, this.foundationBlock, this.pillarOnlyToLand));
+                    structurePiecesBuilder.addPiece(new MansionStructurePiece(poolElementStructurePiece, this.mansionType, this.foundationBlock, this.pillarOnlyToLand, this.liquidSettings));
                 }
                 else {
                     structurePiecesBuilder.addPiece(piece);

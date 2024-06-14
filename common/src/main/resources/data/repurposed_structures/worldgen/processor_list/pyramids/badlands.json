@@ -22,9 +22,6 @@
         "min_inclusive": 0,
         "max_inclusive": 7
       }
-    },
-    {
-      "processor_type": "repurposed_structures:waterlogging_fix_processor"
     }
   ]
 }

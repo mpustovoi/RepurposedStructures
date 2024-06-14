@@ -29,7 +29,7 @@ public class MobSpawnerObj {
     }
 
     public void setEntityType() throws Exception {
-        ResourceLocation entityRl = new ResourceLocation(this.name);
+        ResourceLocation entityRl = ResourceLocation.tryParse(this.name);
         if(BuiltInRegistries.ENTITY_TYPE.containsKey(entityRl)) {
             entityType = BuiltInRegistries.ENTITY_TYPE.get(entityRl);
         }

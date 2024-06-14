@@ -38,7 +38,7 @@ public class DrownedWithArmor extends Feature<NoneFeatureConfiguration> {
             ItemStack stoneSword = new ItemStack(Items.STONE_SWORD);
 
             // enchant sword
-            drownedEntity.setItemInHand(InteractionHand.MAIN_HAND, GeneralUtils.enchantRandomly(context.random(), stoneSword, 0.25F));
+            drownedEntity.setItemInHand(InteractionHand.MAIN_HAND, GeneralUtils.enchantRandomly(context.level().registryAccess(), context.random(), stoneSword, 0.25F));
             drownedEntity.setDropChance(EquipmentSlot.MAINHAND, 0.4f);
             drownedEntity.setLeftHanded(context.random().nextFloat() < 0.05F);
         }

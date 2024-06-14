@@ -26,7 +26,7 @@ public class NbtDungeonConfig implements FeatureConfiguration {
             ResourceLocation.CODEC.fieldOf("loot_block_loottable_resourcelocation").forGetter(nbtDungeonConfig -> nbtDungeonConfig.chestResourcelocation),
             ResourceLocation.CODEC.fieldOf("rs_spawner_resourcelocation").forGetter(nbtDungeonConfig -> nbtDungeonConfig.rsSpawnerResourcelocation),
             ResourceLocation.CODEC.fieldOf("processors").forGetter(nbtDungeonConfig -> nbtDungeonConfig.processor),
-            ResourceLocation.CODEC.fieldOf("post_processors").orElse(new ResourceLocation("minecraft:empty")).forGetter(nbtDungeonConfig -> nbtDungeonConfig.postProcessor),
+            ResourceLocation.CODEC.fieldOf("post_processors").orElse(ResourceLocation.fromNamespaceAndPath("minecraft", "empty")).forGetter(nbtDungeonConfig -> nbtDungeonConfig.postProcessor),
             Codec.mapPair(ResourceLocation.CODEC.fieldOf("resourcelocation"), Codec.intRange(1, Integer.MAX_VALUE).fieldOf("weight")).codec().listOf().fieldOf("dungeon_nbt_entries").forGetter(nbtFeatureConfig -> nbtFeatureConfig.nbtResourcelocationsAndWeights),
             Codec.floatRange(0, 1).optionalFieldOf("chance_of_spawning_loot_block_at_spot").forGetter(nbtFeatureConfig -> nbtFeatureConfig.chanceOfSpawningLootBlockAtSpot)
     ).apply(configInstance, NbtDungeonConfig::new))

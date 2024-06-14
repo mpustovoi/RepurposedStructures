@@ -21,7 +21,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 
 public class BottomPillarProcessor extends StructureProcessor {
-    private static final ResourceLocation EMPTY_RL = new ResourceLocation("minecraft", "empty");
+    private static final ResourceLocation EMPTY_RL = ResourceLocation.fromNamespaceAndPath("minecraft", "empty");
 
     public static final MapCodec<BottomPillarProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             ResourceLocation.CODEC.optionalFieldOf("pillar_processor_list", EMPTY_RL).forGetter(processor -> processor.processorList),

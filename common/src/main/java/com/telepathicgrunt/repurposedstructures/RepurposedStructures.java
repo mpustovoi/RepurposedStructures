@@ -85,8 +85,8 @@ public class RepurposedStructures {
     }
 
     public static void registerDatapackListener(final RegisterReloadListenerEvent event) {
-        event.register(new ResourceLocation(RepurposedStructures.MODID, "rs_spawners"), MobSpawnerManager.MOB_SPAWNER_MANAGER);
-        event.register(new ResourceLocation(RepurposedStructures.MODID, "structure_map_trades"), StructureMapManager.STRUCTURE_MAP_MANAGER);
-        event.register(new ResourceLocation(RepurposedStructures.MODID, "rs_pieces_spawn_counts"), StructurePieceCountsManager.STRUCTURE_PIECE_COUNTS_MANAGER);
+        event.register(ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "rs_spawners"), MobSpawnerManager.MOB_SPAWNER_MANAGER);
+        event.register(ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "structure_map_trades"), StructureMapManager.STRUCTURE_MAP_MANAGER);
+        event.register(ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "rs_pieces_spawn_counts"), StructurePieceCountsManager.STRUCTURE_PIECE_COUNTS_MANAGER);
     }
 }

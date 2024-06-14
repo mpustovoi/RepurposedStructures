@@ -95,9 +95,6 @@
           }
         }
       ]
-    },
-    {
-      "processor_type": "repurposed_structures:waterlogging_fix_processor"
     }
   ]
 }

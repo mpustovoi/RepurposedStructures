@@ -3,12 +3,13 @@ package com.telepathicgrunt.repurposedstructures.mixins.entities;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.minecraft.world.entity.decoration.BlockAttachedEntity;
 import net.minecraft.world.entity.decoration.HangingEntity;
 import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(value = HangingEntity.class, priority = 1200)
+@Mixin(value = BlockAttachedEntity.class, priority = 1200)
 public class HangingEntityMixin {
 
     // Silence logspam that isn't an issue by lowering it from error to debug: https://bugs.mojang.com/browse/MC-252934

@@ -8,7 +8,9 @@
   "terrain_adaptation": "beard_box",
   "project_start_to_heightmap": "OCEAN_FLOOR_WG",
   "burying_type": "AVERAGE_LAND",
-  "max_y_allowed": 42,
+  "y_allowance": {
+    "max_y_allowed": 42
+  },
   "start_height": {
     "absolute": 0
   },

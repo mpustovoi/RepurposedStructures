@@ -33,9 +33,6 @@
     },
     {
       "processor_type": "repurposed_structures:force_place_mushroom_blocks_processor"
-    },
-    {
-      "processor_type": "repurposed_structures:waterlogging_fix_processor"
     }
   ]
 }

@@ -24,6 +24,8 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
+import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
+import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 
@@ -39,25 +41,29 @@ public class MonumentStructure extends Structure {
             Codec.STRING.fieldOf("monument_type").forGetter(config -> config.monumentType),
             Codec.intRange(1, 100).optionalFieldOf("valid_biome_radius_check").forGetter(config -> config.biomeRadius),
             Codec.INT.optionalFieldOf("fixed_y_spawn").forGetter(config -> config.fixedYSpawn),
-            Codec.FLOAT.optionalFieldOf("center_terrain_height_weight").forGetter(config -> config.centerTerrainHeightWeight)
+            Codec.FLOAT.optionalFieldOf("center_terrain_height_weight").forGetter(config -> config.centerTerrainHeightWeight),
+            LiquidSettings.CODEC.optionalFieldOf("liquid_settings", JigsawStructure.DEFAULT_LIQUID_SETTINGS).forGetter(structure -> structure.liquidSettings)
     ).apply(instance, MonumentStructure::new));
 
     public final String monumentType;
     public final Optional<Integer> biomeRadius;
     public final Optional<Integer> fixedYSpawn;
     public final Optional<Float> centerTerrainHeightWeight;
+    public final LiquidSettings liquidSettings;
 
     public MonumentStructure(Structure.StructureSettings config,
                              String monumentType,
                              Optional<Integer> biomeRadius,
                              Optional<Integer> fixedYSpawn,
-                             Optional<Float> centerTerrainHeightWeight
+                             Optional<Float> centerTerrainHeightWeight,
+                             LiquidSettings liquidSettings
     ) {
         super(config);
         this.monumentType = monumentType.toLowerCase(Locale.ROOT);
         this.biomeRadius = biomeRadius;
         this.fixedYSpawn = fixedYSpawn;
         this.centerTerrainHeightWeight = centerTerrainHeightWeight;
+        this.liquidSettings = liquidSettings;
     }
 
     protected boolean extraSpawningChecks(GenerationContext context, BlockPos blockPos) {
@@ -116,7 +122,8 @@ public class MonumentStructure extends Structure {
                     centerPoint.getX(),
                     finalheight,
                     centerPoint.getZ(),
-                    this.monumentType);
+                    this.monumentType,
+                    this.liquidSettings);
 
             Rotation rotation = Rotation.getRandom(random);
             BlockPos mainOffset = new BlockPos(-29, 0, -29).rotate(rotation);

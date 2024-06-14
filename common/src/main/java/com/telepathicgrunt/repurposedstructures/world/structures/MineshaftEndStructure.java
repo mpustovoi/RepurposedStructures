@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSStructures;
 import com.telepathicgrunt.repurposedstructures.utils.GeneralUtils;
+import com.telepathicgrunt.repurposedstructures.world.structures.codecs.YRangeAllowance;
 import com.telepathicgrunt.repurposedstructures.world.structures.pieces.PieceLimitedJigsawManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,6 +24,8 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
+import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
+import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 import org.joml.Vector3f;
 
 import java.util.ArrayList;
@@ -37,52 +40,48 @@ public class MineshaftEndStructure extends Structure {
             MineshaftEndStructure.settingsCodec(instance),
             StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
             Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),
-            Codec.INT.optionalFieldOf("min_y_allowed").forGetter(structure -> structure.minYAllowed),
-            Codec.INT.optionalFieldOf("max_y_allowed").forGetter(structure -> structure.maxYAllowed),
-            Codec.intRange(1, 1000).optionalFieldOf("allowed_y_range_from_start").forGetter(structure -> structure.allowedYRangeFromStart),
+            YRangeAllowance.CODEC.optionalFieldOf("y_allowance").forGetter(structure -> structure.yAllowance),
             HeightProvider.CODEC.fieldOf("start_height").forGetter(structure -> structure.startHeight),
             Codec.intRange(1, 100).optionalFieldOf("valid_biome_radius_check").forGetter(structure -> structure.biomeRadius),
             ResourceLocation.CODEC.listOf().fieldOf("pools_that_ignore_boundaries").orElse(new ArrayList<>()).xmap(HashSet::new, ArrayList::new).forGetter(structure -> structure.poolsThatIgnoreBoundaries),
             Codec.intRange(1, 128).optionalFieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter),
-            Codec.intRange(1, 1000).optionalFieldOf("min_island_thickness_allowed").forGetter(config -> config.minIslandThickness)
+            Codec.intRange(1, 1000).optionalFieldOf("min_island_thickness_allowed").forGetter(config -> config.minIslandThickness),
+            LiquidSettings.CODEC.optionalFieldOf("liquid_settings", JigsawStructure.DEFAULT_LIQUID_SETTINGS).forGetter(structure -> structure.liquidSettings)
     ).apply(instance, MineshaftEndStructure::new));
 
     public final Holder<StructureTemplatePool> startPool;
     public final int size;
-    public final Optional<Integer> minYAllowed;
-    public final Optional<Integer> maxYAllowed;
-    public final Optional<Integer> allowedYRangeFromStart;
+    public final Optional<YRangeAllowance> yAllowance;
     public final HeightProvider startHeight;
     public final Optional<Integer> biomeRadius;
     public final HashSet<ResourceLocation> poolsThatIgnoreBoundaries;
     public final Optional<Integer> maxDistanceFromCenter;
     public final Optional<Integer> minIslandThickness;
+    public final LiquidSettings liquidSettings;
 
     public MineshaftEndStructure(Structure.StructureSettings config,
                                   Holder<StructureTemplatePool> startPool,
                                   int size,
-                                  Optional<Integer> minYAllowed,
-                                  Optional<Integer> maxYAllowed,
-                                  Optional<Integer> allowedYRangeFromStart,
+                                 Optional<YRangeAllowance> yAllowance,
                                   HeightProvider startHeight,
                                   Optional<Integer> biomeRadius,
                                   HashSet<ResourceLocation> poolsThatIgnoreBoundaries,
                                   Optional<Integer> maxDistanceFromCenter,
-                                  Optional<Integer> minIslandThickness)
+                                  Optional<Integer> minIslandThickness,
+                                 LiquidSettings liquidSettings)
     {
         super(config);
         this.startPool = startPool;
         this.size = size;
-        this.minYAllowed = minYAllowed;
-        this.maxYAllowed = maxYAllowed;
-        this.allowedYRangeFromStart = allowedYRangeFromStart;
+        this.yAllowance = yAllowance;
         this.startHeight = startHeight;
         this.biomeRadius = biomeRadius;
         this.poolsThatIgnoreBoundaries = poolsThatIgnoreBoundaries;
         this.maxDistanceFromCenter = maxDistanceFromCenter;
         this.minIslandThickness = minIslandThickness;
+        this.liquidSettings = liquidSettings;
 
-        if (maxYAllowed.isPresent() && minYAllowed.isPresent() && maxYAllowed.get() < minYAllowed.get()) {
+        if (yAllowance.isPresent() && yAllowance.get().maxYAllowed.isPresent() && yAllowance.get().minYAllowed.isPresent() && yAllowance.get().maxYAllowed.get() < yAllowance.get().minYAllowed.get()) {
             throw new RuntimeException("""
                 Repurposed Structures: maxYAllowed cannot be less than minYAllowed.
                 Please correct this error as there's no way to spawn this structure properly
@@ -199,6 +198,7 @@ public class MineshaftEndStructure extends Structure {
                 this.poolsThatIgnoreBoundaries,
                 this.maxDistanceFromCenter,
                 Optional.empty(),
+                this.liquidSettings,
                 (structurePiecesBuilder, pieces) -> {
                     Optional<PoolElementStructurePiece> highestPiece = pieces.stream().max(Comparator.comparingInt(p -> p.getBoundingBox().maxY()));
                     int topY = highestPiece.map(poolElementStructurePiece -> poolElementStructurePiece.getBoundingBox().maxY()).orElseGet(blockpos::getY);

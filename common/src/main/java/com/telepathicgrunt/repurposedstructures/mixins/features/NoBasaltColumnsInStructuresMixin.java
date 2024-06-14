@@ -32,7 +32,7 @@ public class NoBasaltColumnsInStructuresMixin {
         }
 
         SectionPos sectionPos = SectionPos.of(mutableBlockPos);
-        if (!levelAccessor.getChunk(sectionPos.x(), sectionPos.z()).getStatus().isOrAfter(ChunkStatus.STRUCTURE_REFERENCES)) {
+        if (!levelAccessor.getChunk(sectionPos.x(), sectionPos.z()).getHighestGeneratedStatus().isOrAfter(ChunkStatus.STRUCTURE_REFERENCES)) {
             return;
         }
 

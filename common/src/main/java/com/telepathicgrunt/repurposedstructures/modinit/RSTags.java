@@ -11,39 +11,39 @@ public final class RSTags {
     public static void initTags() {}
 
     public static TagKey<Structure> NO_LAKES = TagKey.create(Registries.STRUCTURE,
-            new ResourceLocation(RepurposedStructures.MODID, "no_lakes"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "no_lakes"));
 
     public static TagKey<Structure> LESS_JUNGLE_BUSHES = TagKey.create(Registries.STRUCTURE,
-            new ResourceLocation(RepurposedStructures.MODID, "less_jungle_bushes"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "less_jungle_bushes"));
 
     public static TagKey<Structure> LESS_BAMBOO = TagKey.create(Registries.STRUCTURE,
-            new ResourceLocation(RepurposedStructures.MODID, "less_bamboo"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "less_bamboo"));
 
     public static TagKey<Structure> NO_JUNGLE_VINES = TagKey.create(Registries.STRUCTURE,
-            new ResourceLocation(RepurposedStructures.MODID, "no_jungle_vines"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "no_jungle_vines"));
 
     public static TagKey<Structure> NO_LAVAFALLS = TagKey.create(Registries.STRUCTURE,
-            new ResourceLocation(RepurposedStructures.MODID, "no_lavafalls"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "no_lavafalls"));
 
     public static TagKey<Structure> NO_WATERFALLS = TagKey.create(Registries.STRUCTURE,
-            new ResourceLocation(RepurposedStructures.MODID, "no_waterfalls"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "no_waterfalls"));
 
     public static TagKey<Structure> NO_BASALT = TagKey.create(Registries.STRUCTURE,
-            new ResourceLocation(RepurposedStructures.MODID, "no_basalt"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "no_basalt"));
 
     public static TagKey<Structure> NO_GEODES = TagKey.create(Registries.STRUCTURE,
-            new ResourceLocation(RepurposedStructures.MODID, "no_geodes"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "no_geodes"));
 
     public static TagKey<Structure> SMARTER_SNOW_PLACING = TagKey.create(Registries.STRUCTURE,
-            new ResourceLocation(RepurposedStructures.MODID, "smarter_snow_placing"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "smarter_snow_placing"));
 
     public static TagKey<Structure> LARGER_LOCATE_SEARCH = TagKey.create(Registries.STRUCTURE,
-            new ResourceLocation(RepurposedStructures.MODID, "larger_locate_search"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "larger_locate_search"));
 
 
     public static TagKey<Block> MINESHAFT_SUPPORT_REPLACEABLES = TagKey.create(Registries.BLOCK,
-            new ResourceLocation(RepurposedStructures.MODID, "mineshaft_support_replaceables"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "mineshaft_support_replaceables"));
 
     public static TagKey<Block> DEAD_CORALS = TagKey.create(Registries.BLOCK,
-            new ResourceLocation(RepurposedStructures.MODID, "dead_corals"));
+            ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "dead_corals"));
 }

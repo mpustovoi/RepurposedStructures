@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.telepathicgrunt.repurposedstructures.modinit.RSStructures;
+import com.telepathicgrunt.repurposedstructures.world.structures.codecs.YRangeAllowance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -15,6 +16,8 @@ import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
+import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
+import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -27,9 +30,7 @@ public class ShipwreckNetherStructure extends GenericJigsawStructure {
             ShipwreckNetherStructure.settingsCodec(instance),
             StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
             Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),
-            Codec.INT.optionalFieldOf("min_y_allowed").forGetter(structure -> structure.minYAllowed),
-            Codec.INT.optionalFieldOf("max_y_allowed").forGetter(structure -> structure.maxYAllowed),
-            Codec.intRange(1, 1000).optionalFieldOf("allowed_y_range_from_start").forGetter(structure -> structure.allowedYRangeFromStart),
+            YRangeAllowance.CODEC.optionalFieldOf("y_allowance").forGetter(structure -> structure.yAllowance),
             HeightProvider.CODEC.fieldOf("start_height").forGetter(structure -> structure.startHeight),
             Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(structure -> structure.projectStartToHeightmap),
             Codec.BOOL.fieldOf("cannot_spawn_in_liquid").orElse(false).forGetter(structure -> structure.cannotSpawnInLiquid),
@@ -39,32 +40,30 @@ public class ShipwreckNetherStructure extends GenericJigsawStructure {
             ResourceLocation.CODEC.listOf().fieldOf("pools_that_ignore_boundaries").orElse(new ArrayList<>()).xmap(HashSet::new, ArrayList::new).forGetter(structure -> structure.poolsThatIgnoreBoundaries),
             Codec.intRange(1, 128).optionalFieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter),
             StringRepresentable.fromEnum(BURYING_TYPE::values).optionalFieldOf("burying_type").forGetter(structure -> structure.buryingType),
-            Codec.BOOL.fieldOf("use_bounding_box_hack").orElse(false).forGetter(structure -> structure.useBoundingBoxHack)
+            Codec.BOOL.fieldOf("use_bounding_box_hack").orElse(false).forGetter(structure -> structure.useBoundingBoxHack),
+            LiquidSettings.CODEC.optionalFieldOf("liquid_settings", JigsawStructure.DEFAULT_LIQUID_SETTINGS).forGetter(structure -> structure.liquidSettings)
     ).apply(instance, ShipwreckNetherStructure::new));
 
     public ShipwreckNetherStructure(Structure.StructureSettings config,
-                                  Holder<StructureTemplatePool> startPool,
-                                  int size,
-                                  Optional<Integer> minYAllowed,
-                                  Optional<Integer> maxYAllowed,
-                                  Optional<Integer> allowedYRangeFromStart,
-                                  HeightProvider startHeight,
-                                  Optional<Heightmap.Types> projectStartToHeightmap,
-                                  boolean cannotSpawnInLiquid,
-                                  Optional<Integer> terrainHeightCheckRadius,
-                                  Optional<Integer> allowedTerrainHeightRange,
-                                  Optional<Integer> biomeRadius,
-                                  HashSet<ResourceLocation> poolsThatIgnoreBoundaries,
-                                  Optional<Integer> maxDistanceFromCenter,
-                                  Optional<BURYING_TYPE> buryingType,
-                                  boolean useBoundingBoxHack)
+                                Holder<StructureTemplatePool> startPool,
+                                int size,
+                                Optional<YRangeAllowance> yAllowance,
+                                HeightProvider startHeight,
+                                Optional<Heightmap.Types> projectStartToHeightmap,
+                                boolean cannotSpawnInLiquid,
+                                Optional<Integer> terrainHeightCheckRadius,
+                                Optional<Integer> allowedTerrainHeightRange,
+                                Optional<Integer> biomeRadius,
+                                HashSet<ResourceLocation> poolsThatIgnoreBoundaries,
+                                Optional<Integer> maxDistanceFromCenter,
+                                Optional<BURYING_TYPE> buryingType,
+                                boolean useBoundingBoxHack,
+                                LiquidSettings liquidSettings)
     {
         super(config,
                 startPool,
                 size,
-                minYAllowed,
-                maxYAllowed,
-                allowedYRangeFromStart,
+                yAllowance,
                 startHeight,
                 projectStartToHeightmap,
                 cannotSpawnInLiquid,
@@ -74,7 +73,8 @@ public class ShipwreckNetherStructure extends GenericJigsawStructure {
                 poolsThatIgnoreBoundaries,
                 maxDistanceFromCenter,
                 buryingType,
-                useBoundingBoxHack);
+                useBoundingBoxHack,
+                liquidSettings);
     }
 
     @Override

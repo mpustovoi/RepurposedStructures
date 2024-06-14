@@ -13,7 +13,10 @@ import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
+import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
+
+import java.util.Optional;
 
 public class MansionStructurePiece extends PoolElementStructurePiece {
 
@@ -21,20 +24,21 @@ public class MansionStructurePiece extends PoolElementStructurePiece {
     public final BlockState foundationBlock;
     public final boolean pillarOnlyToLand;
 
-    public MansionStructurePiece(PoolElementStructurePiece poolElementStructurePiece, String mansionType, BlockState foundationBlock, boolean pillarOnlyToLand) {
+    public MansionStructurePiece(PoolElementStructurePiece poolElementStructurePiece, String mansionType, BlockState foundationBlock, boolean pillarOnlyToLand, LiquidSettings liquidSettings) {
         super(((PoolElementStructurePieceAccessor)poolElementStructurePiece).getStructureManager(),
                 poolElementStructurePiece.getElement(),
                 poolElementStructurePiece.getPosition(),
                 poolElementStructurePiece.getGroundLevelDelta(),
                 poolElementStructurePiece.getRotation(),
-                poolElementStructurePiece.getBoundingBox());
+                poolElementStructurePiece.getBoundingBox(),
+                liquidSettings);
         this.mansionType = mansionType;
         this.foundationBlock = foundationBlock;
         this.pillarOnlyToLand = pillarOnlyToLand;
     }
 
-    public MansionStructurePiece(StructureTemplateManager StructureTemplateManager, StructurePoolElement structurePoolElement, BlockPos blockPos, int groundLevelDelta, Rotation rotation, BoundingBox boundingBox, String mansionType, BlockState foundationBlock, boolean pillarOnlyToLand) {
-        super(StructureTemplateManager, structurePoolElement, blockPos, groundLevelDelta, rotation, boundingBox);
+    public MansionStructurePiece(StructureTemplateManager StructureTemplateManager, StructurePoolElement structurePoolElement, BlockPos blockPos, int groundLevelDelta, Rotation rotation, BoundingBox boundingBox, String mansionType, BlockState foundationBlock, LiquidSettings liquidSettings, boolean pillarOnlyToLand) {
+        super(StructureTemplateManager, structurePoolElement, blockPos, groundLevelDelta, rotation, boundingBox, liquidSettings);
         this.mansionType = mansionType;
         this.foundationBlock = foundationBlock;
         this.pillarOnlyToLand = pillarOnlyToLand;

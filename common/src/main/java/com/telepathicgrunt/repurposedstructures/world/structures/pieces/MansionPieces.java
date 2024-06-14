@@ -28,6 +28,7 @@ import net.minecraft.world.level.levelgen.structure.pools.JigsawJunction;
 import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
+import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
@@ -39,9 +40,9 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class MansionPieces{
-    public static void createMansionLayout(RegistryAccess dynamicRegistryManager, StructureTemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> pieces, RandomSource random, String mansionType) {
+    public static void createMansionLayout(RegistryAccess dynamicRegistryManager, StructureTemplateManager manager, BlockPos pos, Rotation rotation, List<StructurePiece> pieces, RandomSource random, String mansionType, LiquidSettings liquidSettings) {
         MansionParameters mansionParameters = new MansionParameters(random);
-        LayoutGenerator layoutGenerator = new LayoutGenerator(manager, random, mansionType);
+        LayoutGenerator layoutGenerator = new LayoutGenerator(manager, random, mansionType, liquidSettings);
         layoutGenerator.generate(dynamicRegistryManager, manager, random, pos, rotation, pieces, mansionParameters);
     }
 
@@ -509,13 +510,15 @@ public class MansionPieces{
         private final StructureTemplateManager manager;
         private final RandomSource random;
         private final String mansionType;
+        private final LiquidSettings liquidSettings;
         private int field_15446;
         private int field_15445;
 
-        public LayoutGenerator(StructureTemplateManager manager, RandomSource random, String mansionType) {
+        public LayoutGenerator(StructureTemplateManager manager, RandomSource random, String mansionType, LiquidSettings liquidSettings) {
             this.manager = manager;
             this.random = random;
             this.mansionType = mansionType;
+            this.liquidSettings = liquidSettings;
         }
 
         public void generate(RegistryAccess dynamicRegistryManager, StructureTemplateManager manager, RandomSource random, BlockPos pos, Rotation rotation, List<StructurePiece> structurePieces, MansionParameters mansionParameters) {
@@ -1012,7 +1015,7 @@ public class MansionPieces{
         }
 
         private void saveJigsawPiece(List<StructurePiece> structurePieces, Registry<StructureTemplatePool> poolRegistry, StructureTemplateManager manager, RandomSource random, String poolPath, BlockPos blockPos, Rotation rotation, Mirror mirror) {
-            ResourceLocation resourceLocation = new ResourceLocation(poolPath.toLowerCase(Locale.ROOT));
+            ResourceLocation resourceLocation = ResourceLocation.tryParse(poolPath.toLowerCase(Locale.ROOT));
             StructureTemplatePool pool = poolRegistry.get(resourceLocation);
             StructurePoolElement poolEntry;
 
@@ -1023,7 +1026,7 @@ public class MansionPieces{
             else {
                 poolEntry = pool.getRandomTemplate(this.random);
                 if(poolEntry instanceof SinglePoolElement) {
-                    poolEntry = new MirroringSingleJigsawPiece((SinglePoolElement) poolEntry, mirror);
+                    poolEntry = new MirroringSingleJigsawPiece((SinglePoolElement) poolEntry, mirror, Optional.of(this.liquidSettings));
                 }
             }
 
@@ -1033,7 +1036,8 @@ public class MansionPieces{
                     blockPos,
                     poolEntry.getGroundLevelDelta(),
                     rotation,
-                    poolEntry.getBoundingBox(this.manager, blockPos, rotation)
+                    poolEntry.getBoundingBox(this.manager, blockPos, rotation),
+                    this.liquidSettings
             );
 
             spawnChildPieces(structurePieces, poolRegistry, manager, random, blockPos, rotation, mainPiece, mirror);
@@ -1062,7 +1066,7 @@ public class MansionPieces{
                 BlockPos jigsawBlockTargetPos = jigsawBlockPos.relative(direction);
 
                 // Get the jigsaw block's piece pool
-                ResourceLocation jigsawBlockPool = new ResourceLocation(jigsawBlock.nbt().getString("pool"));
+                ResourceLocation jigsawBlockPool = ResourceLocation.tryParse(jigsawBlock.nbt().getString("pool"));
                 Optional<StructureTemplatePool> poolOptional = poolRegistry.getOptional(jigsawBlockPool);
 
                 // Only continue if we are using the jigsaw pattern registry and if it is not empty
@@ -1130,11 +1134,12 @@ public class MansionPieces{
                             // Create new piece
                             PoolElementStructurePiece newPiece = new PoolElementStructurePiece(
                                     manager,
-                                    new MirroringSingleJigsawPiece((SinglePoolElement)candidatePiece, mirror),
+                                    new MirroringSingleJigsawPiece((SinglePoolElement)candidatePiece, mirror, Optional.of(this.liquidSettings)),
                                     adjustedCandidateJigsawBlockRelativePos,
                                     groundLevelDelta,
                                     rotationJigsaw,
-                                    adjustedCandidateBoundingBox
+                                    adjustedCandidateBoundingBox,
+                                    this.liquidSettings
                             );
 
                             // Determine actual y-value for the new jigsaw block
