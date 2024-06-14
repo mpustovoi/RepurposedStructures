@@ -1,5 +1,7 @@
 package com.telepathicgrunt.repurposedstructures;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.telepathicgrunt.repurposedstructures.events.RegisterVillagerTradesEvent;
 import com.telepathicgrunt.repurposedstructures.events.RegisterWanderingTradesEvent;
 import com.telepathicgrunt.repurposedstructures.events.lifecycle.RegisterReloadListenerEvent;
@@ -11,7 +13,7 @@ import com.telepathicgrunt.repurposedstructures.misc.lootmanager.StructureModded
 import com.telepathicgrunt.repurposedstructures.misc.maptrades.StructureMapManager;
 import com.telepathicgrunt.repurposedstructures.misc.maptrades.StructureMapTradesEvents;
 import com.telepathicgrunt.repurposedstructures.misc.mobspawners.MobSpawnerManager;
-import com.telepathicgrunt.repurposedstructures.misc.pooladditions.PoolAdditionMerger;
+import com.telepathicgrunt.repurposedstructures.misc.pooladditions.PoolAdditionMergerManager;
 import com.telepathicgrunt.repurposedstructures.misc.structurepiececounter.StructurePieceCountsManager;
 import com.telepathicgrunt.repurposedstructures.modinit.RSConditionsRegistry;
 import com.telepathicgrunt.repurposedstructures.modinit.RSFeatures;
@@ -32,6 +34,7 @@ import org.apache.logging.log4j.Logger;
 public class RepurposedStructures {
     public static final String MODID = "repurposed_structures";
     public static final Logger LOGGER = LogManager.getLogger();
+    public static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().setLenient().disableHtmlEscaping().excludeFieldsWithoutExposeAnnotation().create();
 
     public static void init() {
         RSTags.initTags();
@@ -62,7 +65,7 @@ public class RepurposedStructures {
     }
 
     private static void serverAboutToStart(final ServerGoingToStartEvent event) {
-        PoolAdditionMerger.mergeAdditionPools(event);
+        PoolAdditionMergerManager.mergeAdditionPools(event);
 
         if (PlatformHooks.isDevEnvironment()) {
             StructureModdedLootImporter.checkLoottables(event.getServer());
@@ -88,5 +91,6 @@ public class RepurposedStructures {
         event.register(ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "rs_spawners"), MobSpawnerManager.MOB_SPAWNER_MANAGER);
         event.register(ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "structure_map_trades"), StructureMapManager.STRUCTURE_MAP_MANAGER);
         event.register(ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "rs_pieces_spawn_counts"), StructurePieceCountsManager.STRUCTURE_PIECE_COUNTS_MANAGER);
+        event.register(ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "rs_pool_additions"), PoolAdditionMergerManager.POOL_ADDITIONS_MERGER_MANAGER);
     }
 }

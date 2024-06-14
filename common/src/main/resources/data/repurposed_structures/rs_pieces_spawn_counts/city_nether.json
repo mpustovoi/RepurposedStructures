@@ -1,4 +1,5 @@
 {
+  "target_pool": "repurposed_structures:city_nether",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:cities/nether/fat_tower_top",

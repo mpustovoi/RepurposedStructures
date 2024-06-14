@@ -15,4 +15,5 @@ public class PlatformHooksImpl {
     public static boolean isDevEnvironment() {
         return !FMLEnvironment.production;
     }
+
 }

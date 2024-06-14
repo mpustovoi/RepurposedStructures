@@ -1,8 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.misc.maptrades;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
 import net.minecraft.resources.ResourceLocation;
@@ -14,8 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.telepathicgrunt.repurposedstructures.RepurposedStructures.GSON;
+
 public class StructureMapManager extends SimpleJsonResourceReloadListener {
-    private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().setLenient().disableHtmlEscaping().excludeFieldsWithoutExposeAnnotation().create();
     public final static StructureMapManager STRUCTURE_MAP_MANAGER = new StructureMapManager();
 
     public Map<String, List<VillagerMapObj>> VILLAGER_MAP_TRADES = new HashMap<>();

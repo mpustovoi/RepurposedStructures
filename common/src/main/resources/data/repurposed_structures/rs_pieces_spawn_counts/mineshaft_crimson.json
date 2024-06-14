@@ -1,4 +1,5 @@
 {
+  "target_pool": "repurposed_structures:mineshaft_crimson",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:mineshafts/crimson/spawner_4_end",

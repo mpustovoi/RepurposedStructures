@@ -254,7 +254,7 @@ public final class GeneralUtils {
         int dataTypeLength = dataType.length() + 1;
 
         // Finds all JSON files paths within the rs_pool_additions folder. NOTE: this is just the path rn. Not the actual files yet.
-        for (Map.Entry<ResourceLocation, Resource> resourceStackEntry : resourceManager.listResources(dataType, (fileString) -> fileString.toString().endsWith(".json")).entrySet()) {
+        for (Map.Entry<ResourceLocation, Resource> resourceStackEntry : resourceManager.listResources(dataType, (fileString) -> true).entrySet()) {
             String identifierPath = resourceStackEntry.getKey().getPath();
             ResourceLocation fileID = ResourceLocation.fromNamespaceAndPath(
                     resourceStackEntry.getKey().getNamespace(),

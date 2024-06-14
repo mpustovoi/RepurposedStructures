@@ -1,4 +1,5 @@
 {
+  "target_pool": "repurposed_structures:pyramid_jungle",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:pyramids/jungle_hidden_room",

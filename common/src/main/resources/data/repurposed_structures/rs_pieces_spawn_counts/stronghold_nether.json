@@ -1,4 +1,5 @@
 {
+  "target_pool": "repurposed_structures:stronghold_nether",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:strongholds/nether/portal_room",

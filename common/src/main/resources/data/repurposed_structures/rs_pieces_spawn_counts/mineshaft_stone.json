@@ -1,4 +1,5 @@
 {
+  "target_pool": "repurposed_structures:mineshaft_stone",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:mineshafts/stone/spawner_4_end",

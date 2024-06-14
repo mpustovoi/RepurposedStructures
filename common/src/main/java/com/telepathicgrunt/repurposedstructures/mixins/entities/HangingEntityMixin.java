@@ -4,7 +4,6 @@ package com.telepathicgrunt.repurposedstructures.mixins.entities;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.world.entity.decoration.BlockAttachedEntity;
-import net.minecraft.world.entity.decoration.HangingEntity;
 import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

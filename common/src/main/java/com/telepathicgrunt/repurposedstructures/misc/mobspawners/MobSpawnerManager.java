@@ -1,8 +1,6 @@
 package com.telepathicgrunt.repurposedstructures.misc.mobspawners;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
@@ -20,8 +18,9 @@ import org.apache.logging.log4j.Level;
 import java.util.List;
 import java.util.Map;
 
+import static com.telepathicgrunt.repurposedstructures.RepurposedStructures.GSON;
+
 public class MobSpawnerManager extends SimpleJsonResourceReloadListener {
-    private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().setLenient().disableHtmlEscaping().excludeFieldsWithoutExposeAnnotation().create();
     public static final MobSpawnerManager MOB_SPAWNER_MANAGER = new MobSpawnerManager();
 
     private Map<ResourceLocation, List<MobSpawnerObj>> spawnerMap = ImmutableMap.of();

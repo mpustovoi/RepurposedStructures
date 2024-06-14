@@ -1,7 +1,5 @@
 package com.telepathicgrunt.repurposedstructures.misc.structurepiececounter;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import com.telepathicgrunt.repurposedstructures.RepurposedStructures;
@@ -19,8 +17,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+import static com.telepathicgrunt.repurposedstructures.RepurposedStructures.GSON;
+
 public class StructurePieceCountsManager extends SimpleJsonResourceReloadListener {
-    private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().setLenient().disableHtmlEscaping().excludeFieldsWithoutExposeAnnotation().create();
     public final static StructurePieceCountsManager STRUCTURE_PIECE_COUNTS_MANAGER = new StructurePieceCountsManager();
 
     private Map<ResourceLocation, List<StructurePieceCountsObj>> StructureToPieceCountsObjs = new HashMap<>();
@@ -59,7 +58,7 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
         Map<ResourceLocation, List<StructurePieceCountsObj>> mapBuilder = new HashMap<>();
         loader.forEach((fileIdentifier, jsonElement) -> {
             try {
-                mapBuilder.put(fileIdentifier, getStructurePieceCountsObjs(fileIdentifier, jsonElement));
+                mapBuilder.put(ResourceLocation.parse(jsonElement.getAsJsonObject().get("target_pool").getAsString()), getStructurePieceCountsObjs(fileIdentifier, jsonElement));
             }
             catch (Exception e) {
                 RepurposedStructures.LOGGER.error("Repurposed Structures Error: Couldn't parse rs_pieces_spawn_counts file {} - JSON looks like: {}", fileIdentifier, jsonElement, e);
@@ -67,7 +66,6 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
         });
         this.StructureToPieceCountsObjs = mapBuilder;
         cachedRequirePiecesMap.clear();
-        StructurePieceCountsAdditionsMerger.performCountsAdditionsDetectionAndMerger(manager);
     }
 
     public void parseAndAddCountsJSONObj(ResourceLocation structureRL, JsonElement jsonElement) {

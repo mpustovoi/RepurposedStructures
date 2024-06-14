@@ -28,7 +28,6 @@
     "structures.StructurePieceAccessor",
     "structures.StructurePoolAccessor",
     "structures.StructureProcessorAccessor",
-    "structures.StructureTemplateManagerAccessor",
     "structures.TemplateAccessor"
   ],
   "client": [

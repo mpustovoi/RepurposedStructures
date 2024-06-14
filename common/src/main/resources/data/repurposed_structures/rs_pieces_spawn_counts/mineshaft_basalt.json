@@ -1,4 +1,5 @@
 {
+  "target_pool": "repurposed_structures:mineshaft_basalt",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:mineshafts/basalt/spawner_4_end",

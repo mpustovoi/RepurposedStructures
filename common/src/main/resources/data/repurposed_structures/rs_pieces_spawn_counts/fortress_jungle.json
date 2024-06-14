@@ -1,4 +1,5 @@
 {
+  "target_pool": "repurposed_structures:fortress_jungle",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:fortresses/jungle/spawner",

@@ -16,8 +16,6 @@ import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
-import java.util.Optional;
-
 public class MansionStructurePiece extends PoolElementStructurePiece {
 
     public final String mansionType;
