@@ -1,5 +1,5 @@
 {
-  "target_pool": "repurposed_structures:mineshaft_warped",
+  "target_structure": "repurposed_structures:mineshaft_warped",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:mineshafts/warped/spawner_4_end",

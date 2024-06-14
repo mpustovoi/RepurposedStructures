@@ -1,5 +1,5 @@
 {
-  "target_pool": "repurposed_structures:mineshaft_desert",
+  "target_structure": "repurposed_structures:mineshaft_desert",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:mineshafts/desert/spawner_4_end",

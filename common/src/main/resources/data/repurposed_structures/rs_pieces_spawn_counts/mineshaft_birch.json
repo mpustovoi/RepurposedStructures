@@ -1,5 +1,5 @@
 {
-  "target_pool": "repurposed_structures:mineshaft_birch",
+  "target_structure": "repurposed_structures:mineshaft_birch",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:mineshafts/birch/spawner_4_end",

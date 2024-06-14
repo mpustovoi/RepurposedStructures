@@ -58,7 +58,7 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
         Map<ResourceLocation, List<StructurePieceCountsObj>> mapBuilder = new HashMap<>();
         loader.forEach((fileIdentifier, jsonElement) -> {
             try {
-                mapBuilder.put(ResourceLocation.parse(jsonElement.getAsJsonObject().get("target_pool").getAsString()), getStructurePieceCountsObjs(fileIdentifier, jsonElement));
+                mapBuilder.put(ResourceLocation.parse(jsonElement.getAsJsonObject().get("target_structure").getAsString()), getStructurePieceCountsObjs(fileIdentifier, jsonElement));
             }
             catch (Exception e) {
                 RepurposedStructures.LOGGER.error("Repurposed Structures Error: Couldn't parse rs_pieces_spawn_counts file {} - JSON looks like: {}", fileIdentifier, jsonElement, e);

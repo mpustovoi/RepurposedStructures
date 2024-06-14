@@ -1,5 +1,5 @@
 {
-  "target_pool": "repurposed_structures:mineshaft_ocean",
+  "target_structure": "repurposed_structures:mineshaft_ocean",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:mineshafts/ocean/spawner_4_end",

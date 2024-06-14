@@ -1,5 +1,5 @@
 {
-  "target_pool": "repurposed_structures:mineshaft_icys",
+  "target_structure": "repurposed_structures:mineshaft_icys",
   "pieces_spawn_counts" : [
     {
       "nbt_piece_name" : "repurposed_structures:mineshafts/icy/spawner_4_end",
