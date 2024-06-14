@@ -70,15 +70,13 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
         StructurePieceCountsAdditionsMerger.performCountsAdditionsDetectionAndMerger(manager);
     }
 
-    public void parseAndAddCountsJSONObj(ResourceLocation structureRL, List<JsonElement> jsonElements) {
-        jsonElements.forEach(jsonElement -> {
-            try {
-                this.StructureToPieceCountsObjs.computeIfAbsent(structureRL, rl -> new ArrayList<>()).addAll(getStructurePieceCountsObjs(structureRL, jsonElement));
-            }
-            catch (Exception e) {
-                RepurposedStructures.LOGGER.error("Repurposed Structures Error: Couldn't parse rs_pieces_spawn_counts file {} - JSON looks like: {}", structureRL, jsonElement, e);
-            }
-        });
+    public void parseAndAddCountsJSONObj(ResourceLocation structureRL, JsonElement jsonElement) {
+        try {
+            this.StructureToPieceCountsObjs.computeIfAbsent(structureRL, rl -> new ArrayList<>()).addAll(getStructurePieceCountsObjs(structureRL, jsonElement));
+        }
+        catch (Exception e) {
+            RepurposedStructures.LOGGER.error("Repurposed Structures Error: Couldn't parse rs_pieces_spawn_counts file {} - JSON looks like: {}", structureRL, jsonElement, e);
+        }
     }
 
     @Nullable

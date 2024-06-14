@@ -42,7 +42,7 @@ public final class PoolAdditionMerger {
 
     // Needed for detecting the correct files, ignoring file extension, and what JSON parser to use for parsing the files
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().setLenient().disableHtmlEscaping().create();
-    private static final String DATA_TYPE = "pool_additions";
+    private static final String DATA_TYPE = "rs_pool_additions";
     private static final int FILE_SUFFIX_LENGTH = ".json".length();
 
     /**
@@ -50,7 +50,7 @@ public final class PoolAdditionMerger {
      */
     public static void mergeAdditionPools(final ServerGoingToStartEvent event) {
         ResourceManager resourceManager = ((StructureTemplateManagerAccessor) event.getServer().getStructureManager()).repurposedstructures_getResourceManager();
-        Map<ResourceLocation, List<JsonElement>> poolAdditionJSON = GeneralUtils.getAllDatapacksJSONElement(resourceManager, GSON, DATA_TYPE, FILE_SUFFIX_LENGTH);
+        Map<ResourceLocation, JsonElement> poolAdditionJSON = GeneralUtils.getDatapacksJSONElement(resourceManager, GSON, DATA_TYPE, FILE_SUFFIX_LENGTH);
         parsePoolsAndBeginMerger(poolAdditionJSON, event.getServer().registryAccess(),  event.getServer().getStructureManager());
     }
 
@@ -58,30 +58,28 @@ public final class PoolAdditionMerger {
      * Using the given dynamic registry, will now parse the JSON objects of pools and resolve their processors with the dynamic registry.
      * Afterwards, it will merge the parsed pool into the targeted pool found in the dynamic registry.
      */
-    private static void parsePoolsAndBeginMerger(Map<ResourceLocation, List<JsonElement>> poolAdditionJSON, RegistryAccess dynamicRegistryManager, StructureTemplateManager StructureTemplateManager) {
+    private static void parsePoolsAndBeginMerger(Map<ResourceLocation, JsonElement> poolAdditionJSON, RegistryAccess dynamicRegistryManager, StructureTemplateManager StructureTemplateManager) {
         Registry<StructureTemplatePool> poolRegistry = dynamicRegistryManager.registryOrThrow(Registries.TEMPLATE_POOL);
         RegistryOps<JsonElement> customRegistryOps = RegistryOps.create(JsonOps.INSTANCE, dynamicRegistryManager);
 
         // Will iterate over all of our found pool additions and make sure the target pool exists before we parse our JSON objects
-        for (Map.Entry<ResourceLocation, List<JsonElement>> entry : poolAdditionJSON.entrySet()) {
+        for (Map.Entry<ResourceLocation, JsonElement> entry : poolAdditionJSON.entrySet()) {
             if (poolRegistry.get(entry.getKey()) == null) continue;
 
             // Parse the given pool addition JSON objects and add their pool to the dynamic registry pool
-            for (JsonElement jsonElement : entry.getValue()) {
-                try {
-                    AdditionalStructureTemplatePool.DIRECT_CODEC.parse(customRegistryOps, jsonElement)
-                            .resultOrPartial(messageString -> logBadData(entry.getKey(), messageString))
-                            .ifPresent(validPool -> mergeIntoExistingPool(validPool, poolRegistry.get(entry.getKey()), StructureTemplateManager));
-                }
-                catch (Exception e) {
-                    RepurposedStructures.LOGGER.error("""
+            try {
+                AdditionalStructureTemplatePool.DIRECT_CODEC.parse(customRegistryOps, entry.getValue())
+                        .resultOrPartial(messageString -> logBadData(entry.getKey(), messageString))
+                        .ifPresent(validPool -> mergeIntoExistingPool(validPool, poolRegistry.get(validPool.targetPool), StructureTemplateManager));
+            }
+            catch (Exception e) {
+                RepurposedStructures.LOGGER.error("""
 
-                            Repurposed Structures: Pool Addition json failed to be parsed.
-                            This is usually due to using a mod compat datapack without the other mod being on.
-                            Entry failed to be resolved: %s
-                            Registry being used: %s
-                            Error message is: %s""".formatted(entry.getKey(), poolRegistry, e.getMessage()).indent(1));
-                }
+                        Repurposed Structures: Pool Addition json failed to be parsed.
+                        This is usually due to using a mod compat datapack without the other mod being on.
+                        Entry failed to be resolved: %s
+                        Registry being used: %s
+                        Error message is: %s""".formatted(entry.getKey(), poolRegistry, e.getMessage()).indent(1));
             }
         }
     }
@@ -125,12 +123,12 @@ public final class PoolAdditionMerger {
         try {
             InputStream inputstream = ((StructureTemplateManagerAccessor) structureTemplateManager).repurposedstructures_getResourceManager().open(resourcelocation);
             if (inputstream.available() == 0 || inputstream.read(new byte[1]) == -1) {
-                RepurposedStructures.LOGGER.error("(Repurposed Structures POOL MERGER) Found an entry in {} that points to the non-existent nbt file called {}", feedingPool.name, pieceRL);
+                RepurposedStructures.LOGGER.error("(Repurposed Structures POOL MERGER) Found an entry in {} that points to the non-existent nbt file called {}", feedingPool.targetPool, pieceRL);
             }
             inputstream.close();
         }
         catch (Throwable filenotfoundexception) {
-            RepurposedStructures.LOGGER.error("(Repurposed Structures POOL MERGER) Found an entry in {} that points to the non-existent nbt file called {}", feedingPool.name, pieceRL);
+            RepurposedStructures.LOGGER.error("(Repurposed Structures POOL MERGER) Found an entry in {} that points to the non-existent nbt file called {}", feedingPool.targetPool, pieceRL);
         }
     }
 
@@ -150,15 +148,15 @@ public final class PoolAdditionMerger {
         ).apply(instance, ExpandedPoolEntry::new));
 
         public static final Codec<AdditionalStructureTemplatePool> DIRECT_CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                ResourceLocation.CODEC.fieldOf("name").forGetter(structureTemplatePool -> structureTemplatePool.name),
+                ResourceLocation.CODEC.fieldOf("target_pool").forGetter(structureTemplatePool -> structureTemplatePool.targetPool),
                 Codec.lazyInitialized(StructurePoolAccessor.getCODEC_REFERENCE()::getValue).fieldOf("fallback").forGetter(StructureTemplatePool::getFallback),
                 EXPANDED_POOL_ENTRY_CODEC.listOf().fieldOf("elements").forGetter(structureTemplatePool -> structureTemplatePool.rawTemplatesWithConditions)
         ).apply(instance, AdditionalStructureTemplatePool::new));
 
         protected final List<ExpandedPoolEntry> rawTemplatesWithConditions;
-        protected final ResourceLocation name;
+        protected final ResourceLocation targetPool;
 
-        public AdditionalStructureTemplatePool(ResourceLocation name, Holder<StructureTemplatePool> fallback, List<ExpandedPoolEntry> rawTemplatesWithConditions) {
+        public AdditionalStructureTemplatePool(ResourceLocation targetPool, Holder<StructureTemplatePool> fallback, List<ExpandedPoolEntry> rawTemplatesWithConditions) {
             super(fallback, rawTemplatesWithConditions.stream().filter(triple -> {
                 if(triple.condition().isPresent()) {
                     Supplier<Boolean> supplier = RSConditionsRegistry.RS_JSON_CONDITIONS_REGISTRY.lookup().get(triple.condition.get());
@@ -166,13 +164,13 @@ public final class PoolAdditionMerger {
                         return supplier.get();
                     }
                     else {
-                        RepurposedStructures.LOGGER.error("Repurposed Structures Error: Found {} entry has a condition that does not exist. Extra info: {}", name, fallback);
+                        RepurposedStructures.LOGGER.error("Repurposed Structures Error: Found {} entry has a condition that does not exist. Extra info: {}", targetPool, fallback);
                     }
                 }
                 return true;
             }).map(triple -> Pair.of(triple.poolElement(), triple.weight())).collect(Collectors.toList()));
             this.rawTemplatesWithConditions = rawTemplatesWithConditions;
-            this.name = name;
+            this.targetPool = targetPool;
         }
 
         public record ExpandedPoolEntry(StructurePoolElement poolElement, Integer weight, Optional<ResourceLocation> condition) {}

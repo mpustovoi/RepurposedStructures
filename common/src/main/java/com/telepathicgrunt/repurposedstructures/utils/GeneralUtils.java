@@ -49,7 +49,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +56,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Function;
 
 public final class GeneralUtils {
     private GeneralUtils() {}
@@ -249,46 +247,28 @@ public final class GeneralUtils {
     //////////////////////////////////////////////
 
     /**
-     * Will grab all JSON objects from all datapacks's folder that is specified by the dataType parameter.
-     *
-     * @return - A map of paths (identifiers) to a list of all JSON elements found under it from all datapacks.
+     * Will grab JSON objects that is specified by the dataType parameter.
      */
-    public static Map<ResourceLocation, List<JsonElement>> getAllDatapacksJSONElement(ResourceManager resourceManager, Gson gson, String dataType, int fileSuffixLength) {
-        Map<ResourceLocation, List<JsonElement>> map = new HashMap<>();
+    public static Map<ResourceLocation, JsonElement> getDatapacksJSONElement(ResourceManager resourceManager, Gson gson, String dataType, int fileSuffixLength) {
+        Map<ResourceLocation, JsonElement> map = new HashMap<>();
         int dataTypeLength = dataType.length() + 1;
 
-        // Finds all JSON files paths within the pool_additions folder. NOTE: this is just the path rn. Not the actual files yet.
-        for (Map.Entry<ResourceLocation, List<Resource>> resourceStackEntry : resourceManager.listResourceStacks(dataType, (fileString) -> fileString.toString().endsWith(".json")).entrySet()) {
+        // Finds all JSON files paths within the rs_pool_additions folder. NOTE: this is just the path rn. Not the actual files yet.
+        for (Map.Entry<ResourceLocation, Resource> resourceStackEntry : resourceManager.listResources(dataType, (fileString) -> fileString.toString().endsWith(".json")).entrySet()) {
             String identifierPath = resourceStackEntry.getKey().getPath();
             ResourceLocation fileID = ResourceLocation.fromNamespaceAndPath(
                     resourceStackEntry.getKey().getNamespace(),
                     identifierPath.substring(dataTypeLength, identifierPath.length() - fileSuffixLength));
 
             try {
-                // getAllFileStreams will find files with the given ID. This part is what will loop over all matching files from all datapacks.
-                for (Resource resource : resourceStackEntry.getValue()) {
-                    InputStream fileStream = resource.open();
-                    try (Reader bufferedReader = new BufferedReader(new InputStreamReader(fileStream, StandardCharsets.UTF_8))) {
+                InputStream fileStream = resourceStackEntry.getValue().open();
+                try (Reader bufferedReader = new BufferedReader(new InputStreamReader(fileStream, StandardCharsets.UTF_8))) {
 
-                        // Get the JSON from the file
-                        JsonElement countsJSONElement = GsonHelper.fromJson(gson, bufferedReader, (Class<? extends JsonElement>) JsonElement.class);
-                        if (countsJSONElement != null) {
+                    // Get the JSON from the file
+                    JsonElement countsJSONElement = GsonHelper.fromJson(gson, bufferedReader, (Class<? extends JsonElement>) JsonElement.class);
 
-                            // Create list in map for the ID if non exists yet for that ID
-                            if (!map.containsKey(fileID)) {
-                                map.put(fileID, new ArrayList<>());
-                            }
-                            // Add the parsed json to the list we will merge later on
-                            map.get(fileID).add(countsJSONElement);
-                        }
-                        else {
-                            RepurposedStructures.LOGGER.error(
-                                    "(Repurposed Structures {} MERGER) Couldn't load data file {} from {} as it's null or empty",
-                                    dataType,
-                                    fileID,
-                                    resourceStackEntry);
-                        }
-                    }
+                    // Add the parsed json to the list we will merge later on
+                    map.put(fileID, countsJSONElement);
                 }
             }
             catch (IllegalArgumentException | IOException | JsonParseException exception) {
