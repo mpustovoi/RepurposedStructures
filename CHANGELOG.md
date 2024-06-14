@@ -1,9 +1,3 @@
-### **(V.7.5.3 Changes) (1.21 Minecraft)**
-
-#### Misc:
-(Fabric): Fixed startup crash.
-
-
 ### **(V.7.5.1 Changes) (1.21 Minecraft)**
 
 #### Misc:
