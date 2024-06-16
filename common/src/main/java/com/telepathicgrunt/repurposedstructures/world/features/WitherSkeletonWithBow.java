@@ -44,7 +44,7 @@ public class WitherSkeletonWithBow extends Feature<NoneFeatureConfiguration> {
 
         witherEntity.getAttribute(Attributes.FOLLOW_RANGE)
                 .addPermanentModifier(new AttributeModifier(
-                        ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "Random spawn bonus"),
+                        ResourceLocation.fromNamespaceAndPath(RepurposedStructures.MODID, "random_spawn_bonus"),
                         (context.random().nextGaussian() * 0.3D) + 0.5D,
                         AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 

@@ -1,3 +1,9 @@
+### **(V.7.5.2 Changes) (1.21 Minecraft)**
+
+#### Cities:
+Fixed crash when Wither Skeletons with Bows are spawned in the Nether City.
+
+
 ### **(V.7.5.1 Changes) (1.21 Minecraft)**
 
 #### Misc:
