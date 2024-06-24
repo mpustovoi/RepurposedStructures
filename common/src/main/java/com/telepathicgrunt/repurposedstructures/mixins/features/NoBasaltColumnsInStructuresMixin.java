@@ -1,6 +1,7 @@
 package com.telepathicgrunt.repurposedstructures.mixins.features;
 
 import com.telepathicgrunt.repurposedstructures.modinit.RSTags;
+import com.telepathicgrunt.repurposedstructures.utils.GeneralUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -39,8 +40,8 @@ public class NoBasaltColumnsInStructuresMixin {
         Registry<Structure> configuredStructureFeatureRegistry = levelAccessor.registryAccess().registryOrThrow(Registries.STRUCTURE);
         StructureManager structureManager = ((WorldGenRegion) levelAccessor).getLevel().structureManager();
 
-        for (Holder<Structure> configuredStructureFeature : configuredStructureFeatureRegistry.getOrCreateTag(RSTags.NO_BASALT)) {
-            if (structureManager.getStructureAt(mutableBlockPos, configuredStructureFeature.value()).isValid()) {
+        for (Holder<Structure> structure : configuredStructureFeatureRegistry.getOrCreateTag(RSTags.NO_BASALT)) {
+            if (GeneralUtils.getStructureAt(levelAccessor, structureManager, mutableBlockPos, structure.value()).isValid()) {
                 cir.setReturnValue(false);
                 return;
             }

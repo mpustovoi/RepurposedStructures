@@ -3,6 +3,7 @@ package com.telepathicgrunt.repurposedstructures.mixins.features;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.telepathicgrunt.repurposedstructures.modinit.RSTags;
+import com.telepathicgrunt.repurposedstructures.utils.GeneralUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -38,8 +39,8 @@ public class SmarterSnowPlacingInStructuresMixin {
                 Registry<Structure> configuredStructureFeatureRegistry = level.registryAccess().registryOrThrow(Registries.STRUCTURE);
                 StructureManager structureManager = ((WorldGenRegion) level).getLevel().structureManager();
 
-                for (Holder<Structure> configuredStructureFeature : configuredStructureFeatureRegistry.getOrCreateTag(RSTags.SMARTER_SNOW_PLACING)) {
-                    if (structureManager.getStructureAt(position, configuredStructureFeature.value()).isValid()) {
+                for (Holder<Structure> structure : configuredStructureFeatureRegistry.getOrCreateTag(RSTags.SMARTER_SNOW_PLACING)) {
+                    if (GeneralUtils.getStructureAt(level, structureManager, position, structure.value()).isValid()) {
                         return false;
                     }
                 }

@@ -1,3 +1,9 @@
+### **(V.7.5.3 Changes) (1.21 Minecraft)**
+
+#### Misc:
+Changed how I detect structures within features. May resolve issues where game gets deadlocked/stuck during worldgen.
+
+
 ### **(V.7.5.2 Changes) (1.21 Minecraft)**
 
 #### Cities:
