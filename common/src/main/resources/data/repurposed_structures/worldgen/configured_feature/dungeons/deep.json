@@ -22,7 +22,7 @@
 	  "processors": "repurposed_structures:dungeons/deep",
 	  "post_processors": "minecraft:empty",
 	  "min_air_space": 1,
-	  "max_air_space": 11,
+	  "max_air_space": 5,
 	  "replace_air": false,
 	  "air_requirement_is_now_water": false,
 	  "structure_y_offset": 0

@@ -1,3 +1,9 @@
+### **(V.7.5.4 Changes) (1.21 Minecraft) (Config Datapack Updated)**
+
+#### Dungeons:
+Made Deep Dungeons spawn only in spots with up to 5 air spaces instead of 11 to match Vanilla Dungeon's air space checks better.
+
+
 ### **(V.7.5.3 Changes) (1.21 Minecraft)**
 
 #### Misc:
