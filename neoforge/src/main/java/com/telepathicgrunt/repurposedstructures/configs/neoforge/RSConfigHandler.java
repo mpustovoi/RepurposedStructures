@@ -24,7 +24,7 @@ public class RSConfigHandler {
         copyToCommon(event.getConfig().getSpec());
     }
 
-    private static void copyToCommon(IConfigSpec<?> spec) {
+    private static void copyToCommon(IConfigSpec spec) {
         if (spec == RSModdedLootConfig.GENERAL_SPEC) RSModdedLootConfig.copyToCommon();
     }
 }
