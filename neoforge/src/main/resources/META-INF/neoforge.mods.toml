@@ -25,4 +25,4 @@ license="https://github.com/TelepathicGrunt/RepurposedStructures/blob/latest-rel
 [[dependencies.repurposed_structures]]
     modId="minecraft"
     type="required"
-    versionRange="[1.21,)"
+    versionRange="[1.21.1,)"
