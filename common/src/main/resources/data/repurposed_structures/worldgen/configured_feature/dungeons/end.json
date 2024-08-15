@@ -23,7 +23,7 @@
 	  "processors": "repurposed_structures:dungeons/end",
 	  "post_processors": "minecraft:empty",
 	  "min_air_space": 1,
-	  "max_air_space": 20,
+	  "max_air_space": 16,
 	  "replace_air": false,
 	  "air_requirement_is_now_water": false,
 	  "structure_y_offset": 0

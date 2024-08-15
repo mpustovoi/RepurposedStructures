@@ -2,6 +2,10 @@
   "feature": "repurposed_structures:dungeons/end",
   "placement": [
     {
+      "type": "repurposed_structures:min_distance_from_world_origin_placement",
+      "min_distance_from_world_origin": 1000
+    },
+    {
       "type": "repurposed_structures:unlimited_count",
       "count": 10
     },
