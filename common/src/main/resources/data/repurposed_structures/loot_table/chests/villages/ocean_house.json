@@ -201,13 +201,13 @@
           "weight": 5,
           "functions": [
             {
-              "enchantments": [
+              "function": "minecraft:enchant_randomly",
+              "options": [
                 "minecraft:unbreaking",
                 "minecraft:protection",
                 "minecraft:depth_strider",
                 "minecraft:frost_walker"
-              ],
-              "function": "minecraft:enchant_randomly"
+              ]
             }
           ]
         },
@@ -217,13 +217,13 @@
           "weight": 5,
           "functions": [
             {
-              "enchantments": [
+              "function": "minecraft:enchant_randomly",
+              "options": [
                 "minecraft:unbreaking",
                 "minecraft:protection",
                 "minecraft:aqua_affinity",
                 "minecraft:respiration"
-              ],
-              "function": "minecraft:enchant_randomly"
+              ]
             }
           ]
         },
@@ -476,7 +476,8 @@
                 "min": -10.0,
                 "max": 15.0,
                 "type": "minecraft:uniform"
-              }
+              },
+              "options": "#minecraft:on_random_loot"
             }
           ]
         }

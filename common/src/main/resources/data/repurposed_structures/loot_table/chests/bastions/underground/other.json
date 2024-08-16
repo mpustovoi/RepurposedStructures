@@ -55,7 +55,7 @@
           "functions": [
             {
               "function": "minecraft:enchant_randomly",
-              "enchantments": [
+              "options": [
                 "minecraft:smite"
               ]
             }
@@ -87,7 +87,8 @@
           "weight": 6,
           "functions": [
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -109,7 +110,8 @@
               }
             },
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -139,7 +141,8 @@
           "weight": 2,
           "functions": [
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -237,7 +240,8 @@
               }
             },
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -259,7 +263,8 @@
               }
             },
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -270,7 +275,7 @@
           "functions": [
             {
               "function": "minecraft:enchant_randomly",
-              "enchantments": [
+              "options": [
                 "minecraft:projectile_protection"
               ]
             }
@@ -282,7 +287,8 @@
           "weight": 1,
           "functions": [
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },

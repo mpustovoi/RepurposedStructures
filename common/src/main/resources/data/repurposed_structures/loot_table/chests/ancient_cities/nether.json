@@ -128,12 +128,12 @@
             },
             {
               "function": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot",
               "levels": {
                 "type": "minecraft:uniform",
                 "max": 50.0,
                 "min": 30.0
-              },
-              "treasure": true
+              }
             }
           ]
         },
@@ -195,7 +195,7 @@
                 "max": 60.0,
                 "min": 40.0
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -291,7 +291,7 @@
                 "max": 39.0,
                 "min": 20.0
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -317,15 +317,15 @@
           "weight": 7,
           "functions": [
             {
-              "enchantments": [
+              "function": "minecraft:enchant_randomly",
+              "options": [
                 "minecraft:fire_aspect",
                 "minecraft:flame",
                 "minecraft:fire_protection",
                 "minecraft:soul_speed",
                 "minecraft:unbreaking",
                 "minecraft:vanishing_curse"
-              ],
-              "function": "minecraft:enchant_randomly"
+              ]
             }
           ]
         },
@@ -419,7 +419,8 @@
           "weight": 15,
           "functions": [
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         }

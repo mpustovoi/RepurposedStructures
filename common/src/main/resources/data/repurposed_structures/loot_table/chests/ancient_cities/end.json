@@ -280,12 +280,12 @@
             },
             {
               "function": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot",
               "levels": {
                 "type": "minecraft:uniform",
                 "max": 50.0,
                 "min": 30.0
-              },
-              "treasure": true
+              }
             }
           ]
         },
@@ -347,7 +347,7 @@
                 "max": 50.0,
                 "min": 30.0
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -357,7 +357,8 @@
           "weight": 4,
           "functions": [
             {
-              "enchantments": [
+              "function": "minecraft:enchant_randomly",
+              "options": [
                 "minecraft:feather_falling",
                 "minecraft:blast_protection",
                 "minecraft:fire_protection",
@@ -367,8 +368,7 @@
                 "minecraft:mending",
                 "minecraft:unbreaking",
                 "minecraft:vanishing_curse"
-              ],
-              "function": "minecraft:enchant_randomly"
+              ]
             }
           ]
         },
@@ -464,7 +464,7 @@
                 "max": 60.0,
                 "min": 40.0
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -474,14 +474,14 @@
           "weight": 8,
           "functions": [
             {
-              "enchantments": [
+              "function": "minecraft:enchant_randomly",
+              "options": [
                 "minecraft:silk_touch",
                 "minecraft:fortune",
                 "minecraft:frost_walker",
                 "minecraft:looting",
                 "minecraft:vanishing_curse"
-              ],
-              "function": "minecraft:enchant_randomly"
+              ]
             }
           ]
         },
@@ -584,7 +584,8 @@
               "function": "minecraft:set_count"
             },
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         }

@@ -91,12 +91,12 @@
           "functions": [
             {
               "function": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot",
               "levels": {
                 "min": 28.0,
                 "max": 40.0,
                 "type": "minecraft:uniform"
-              },
-              "treasure": true
+              }
             }
           ]
         },

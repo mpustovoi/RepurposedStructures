@@ -40,6 +40,10 @@
       "required": false
     },
     {
+      "id": "#biomeswevegone:is_floral",
+      "required": false
+    },
+    {
       "id": "biomesoplenty:cherry_blossom_grove",
       "required": false
     },

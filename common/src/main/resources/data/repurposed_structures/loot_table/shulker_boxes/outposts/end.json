@@ -23,12 +23,12 @@
             },
             {
               "function": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot",
               "levels": {
                 "min": 25.0,
                 "max": 39.0,
                 "type": "minecraft:uniform"
-              },
-              "treasure": true
+              }
             }
           ]
         },
@@ -51,7 +51,7 @@
                 "max": 39.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -74,7 +74,7 @@
                 "max": 39.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -97,7 +97,7 @@
                 "max": 39.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -120,7 +120,7 @@
                 "max": 39.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -143,7 +143,7 @@
                 "max": 39.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -166,7 +166,7 @@
                 "max": 39.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -189,7 +189,7 @@
                 "max": 39.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -212,7 +212,7 @@
                 "max": 39.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -235,7 +235,7 @@
                 "max": 39.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -258,7 +258,7 @@
                 "max": 39.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -281,7 +281,7 @@
                 "max": 39.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         }
@@ -412,7 +412,7 @@
                 "max": 35.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -435,7 +435,7 @@
                 "max": 35.0,
                 "type": "minecraft:uniform"
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         }

@@ -174,7 +174,8 @@
           "weight": 2,
           "functions": [
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -184,7 +185,8 @@
           "weight": 1,
           "functions": [
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -194,7 +196,8 @@
           "weight": 1,
           "functions": [
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -316,7 +319,8 @@
                 "min": 5.0,
                 "max": 25.0,
                 "type": "minecraft:uniform"
-              }
+              },
+              "options": "#minecraft:on_random_loot"
             }
           ]
         }

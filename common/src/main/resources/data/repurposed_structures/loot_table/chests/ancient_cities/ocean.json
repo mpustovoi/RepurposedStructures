@@ -128,12 +128,12 @@
             },
             {
               "function": "minecraft:enchant_with_levels",
+              "options": "#minecraft:on_random_loot",
               "levels": {
                 "type": "minecraft:uniform",
                 "max": 50.0,
                 "min": 30.0
-              },
-              "treasure": true
+              }
             }
           ]
         },
@@ -195,7 +195,7 @@
                 "max": 50.0,
                 "min": 30.0
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -205,14 +205,14 @@
           "weight": 4,
           "functions": [
             {
-              "enchantments": [
+              "function": "minecraft:enchant_randomly",
+              "options": [
                 "minecraft:channeling",
                 "minecraft:impaling",
                 "minecraft:riptide",
                 "minecraft:unbreaking",
                 "minecraft:vanishing_curse"
-              ],
-              "function": "minecraft:enchant_randomly"
+              ]
             }
           ]
         },
@@ -308,7 +308,7 @@
                 "max": 39.0,
                 "min": 20.0
               },
-              "treasure": true
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
@@ -318,12 +318,12 @@
           "weight": 8,
           "functions": [
             {
-              "enchantments": [
+              "function": "minecraft:enchant_randomly",
+              "options": [
                 "minecraft:aqua_affinity",
                 "minecraft:depth_strider",
                 "minecraft:respiration"
-              ],
-              "function": "minecraft:enchant_randomly"
+              ]
             }
           ]
         },
@@ -369,7 +369,8 @@
           "weight": 10,
           "functions": [
             {
-              "function": "minecraft:enchant_randomly"
+              "function": "minecraft:enchant_randomly",
+              "options": "#minecraft:on_random_loot"
             }
           ]
         },
