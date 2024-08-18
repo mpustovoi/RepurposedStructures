@@ -91,12 +91,11 @@ public class MineshaftEndStructure extends Structure {
     }
 
 
-    protected boolean extraSpawningChecks(GenerationContext context, BlockPos blockPos) {
+    protected boolean extraSpawningChecks(GenerationContext context, BlockPos blockPos, BlockPos.MutableBlockPos islandTopBottomThickness) {
         if(this.minIslandThickness.isEmpty()) {
             return true;
         }
 
-        BlockPos.MutableBlockPos islandTopBottomThickness = new BlockPos.MutableBlockPos(Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE);
         int xPos = blockPos.getX();
         int zPos = blockPos.getZ();
 
@@ -116,7 +115,7 @@ public class MineshaftEndStructure extends Structure {
     }
 
     private static int getHeightAt(GenerationContext context, int xPos, int zPos, int landHeight) {
-        landHeight = Math.min(landHeight, context.chunkGenerator().getFirstOccupiedHeight(xPos, zPos, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState()));
+        landHeight = Math.min(landHeight, GeneralUtils.getCachedFreeHeight(context.chunkGenerator(), xPos, zPos, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState()) - 1);
         return landHeight;
     }
 
@@ -160,12 +159,10 @@ public class MineshaftEndStructure extends Structure {
     @Override
     public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext context) {
         BlockPos.MutableBlockPos blockpos = new BlockPos.MutableBlockPos(context.chunkPos().getMinBlockX(), 0, context.chunkPos().getMinBlockZ());
-        if (!extraSpawningChecks(context, blockpos)) {
+        BlockPos.MutableBlockPos islandTopBottomThickness = new BlockPos.MutableBlockPos(Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        if (!extraSpawningChecks(context, blockpos, islandTopBottomThickness)) {
             return Optional.empty();
         }
-
-        BlockPos.MutableBlockPos islandTopBottomThickness = new BlockPos.MutableBlockPos(Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE);
-        analyzeLand(context, blockpos.getX(), blockpos.getZ(), islandTopBottomThickness, context.heightAccessor());
 
         int maxY = 53;
         int minY = 15;

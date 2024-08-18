@@ -410,7 +410,7 @@ public final class GeneralUtils {
             if (CACHED_HEIGHT.size() >= 2048) {
                 CACHED_HEIGHT.clear();
             }
-            y = chunkGenerator.getFirstOccupiedHeight(x, z, types, levelHeightAccessor, randomState);
+            y = chunkGenerator.getFirstFreeHeight(x, z, types, levelHeightAccessor, randomState);
             CACHED_HEIGHT.put(key, y);
         }
 

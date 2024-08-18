@@ -110,22 +110,34 @@ public class MansionStructure extends Structure {
 
         int centerX = chunkPos.getMiddleBlockX();
         int centerZ = chunkPos.getMiddleBlockZ();
-        int firstHeight = context.chunkGenerator().getFirstOccupiedHeight(centerX, centerZ, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState());
-        int secondHeight = context.chunkGenerator().getFirstOccupiedHeight(centerX, centerZ + zOffset, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState());
-        int thirdHeight = context.chunkGenerator().getFirstOccupiedHeight(centerX + xOffset, centerZ, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState());
-        int forthheight = context.chunkGenerator().getFirstOccupiedHeight(centerX + xOffset, centerZ + zOffset, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState());
-        int finalheight = Math.min(Math.min(firstHeight, secondHeight), Math.min(thirdHeight, forthheight));
-
-        if(finalheight <= context.chunkGenerator().getMinY()) {
+        int firstHeight = GeneralUtils.getCachedFreeHeight(context.chunkGenerator(), centerX, centerZ, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState()) - 1;
+        if (firstHeight <= context.chunkGenerator().getMinY()) {
             return Optional.empty();
         }
 
-        if (!extraSpawningChecks(context, chunkPos.getMiddleBlockPosition(finalheight))) {
+        int secondHeight = GeneralUtils.getCachedFreeHeight(context.chunkGenerator(), centerX, centerZ + zOffset, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState()) - 1;
+        if (secondHeight <= context.chunkGenerator().getMinY()) {
             return Optional.empty();
         }
 
-        return Optional.of(new Structure.GenerationStub(new BlockPos(centerX, finalheight + 1, centerZ), (structurePiecesBuilder) -> {
-            BlockPos blockPos = new BlockPos(chunkPos.getMiddleBlockX(), finalheight + 1, chunkPos.getMiddleBlockZ());
+        int thirdHeight = GeneralUtils.getCachedFreeHeight(context.chunkGenerator(), centerX + xOffset, centerZ, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState()) - 1;
+        if (thirdHeight <= context.chunkGenerator().getMinY()) {
+            return Optional.empty();
+        }
+
+        int forthHeight = GeneralUtils.getCachedFreeHeight(context.chunkGenerator(), centerX + xOffset, centerZ + zOffset, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState()) - 1;
+        if (forthHeight <= context.chunkGenerator().getMinY()) {
+            return Optional.empty();
+        }
+
+        int finalHeight = Math.min(Math.min(firstHeight, secondHeight), Math.min(thirdHeight, forthHeight));
+
+        if (!extraSpawningChecks(context, chunkPos.getMiddleBlockPosition(finalHeight))) {
+            return Optional.empty();
+        }
+
+        return Optional.of(new Structure.GenerationStub(new BlockPos(centerX, finalHeight + 1, centerZ), (structurePiecesBuilder) -> {
+            BlockPos blockPos = new BlockPos(chunkPos.getMiddleBlockX(), finalHeight + 1, chunkPos.getMiddleBlockZ());
             List<StructurePiece> list = new ArrayList<>();
             MansionPieces.createMansionLayout(context.registryAccess(), context.structureTemplateManager(), blockPos, blockRotation, list, random, this.mansionType, this.liquidSettings);
             list.forEach(piece -> {
@@ -147,23 +159,23 @@ public class MansionStructure extends Structure {
             int structureBottomY = box.minY();
             int terrainY = Integer.MIN_VALUE;
 
-            for(int x = box.minX(); x <= box.maxX(); ++x) {
-                for(int z = box.minZ(); z <= box.maxZ(); ++z) {
+            for (int x = box.minX(); x <= box.maxX(); ++x) {
+                for (int z = box.minZ(); z <= box.maxZ(); ++z) {
                     if (chunkPos.x != x >> 4 || chunkPos.z != z >> 4) {
                         continue;
                     }
 
                     mutableBlockPos.set(x, structureBottomY, z);
-                    if(mansionStructurePiece.pillarOnlyToLand) {
+                    if (mansionStructurePiece.pillarOnlyToLand) {
                         terrainY = GeneralUtils.getFirstLandYFromPos(level, mutableBlockPos.below());
-                        if(terrainY <= chunkGenerator.getMinY()) {
+                        if (terrainY <= chunkGenerator.getMinY()) {
                             continue;
                         }
                     }
 
-                    if (!level.isEmptyBlock(mutableBlockPos) && box.isInside(mutableBlockPos) && piecesContainer.isInsidePiece(mutableBlockPos)) {
-                        for(int currentY = structureBottomY - 1; currentY > chunkGenerator.getMinY(); --currentY) {
-                            if(mansionStructurePiece.pillarOnlyToLand) {
+                    if (!level.isEmptyBlock(mutableBlockPos) && piecesContainer.isInsidePiece(mutableBlockPos)) {
+                        for (int currentY = structureBottomY - 1; currentY > chunkGenerator.getMinY(); --currentY) {
+                            if (mansionStructurePiece.pillarOnlyToLand) {
                                 if(currentY <= terrainY) {
                                     break;
                                 }

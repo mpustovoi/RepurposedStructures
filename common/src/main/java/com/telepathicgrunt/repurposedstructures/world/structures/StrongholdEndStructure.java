@@ -105,7 +105,7 @@ public class StrongholdEndStructure extends GenericJigsawStructure {
     }
 
     private static int getHeightAt(GenerationContext context, int xPos, int zPos, int landHeight) {
-        landHeight = Math.min(landHeight, context.chunkGenerator().getFirstOccupiedHeight(xPos, zPos, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState()));
+        landHeight = Math.min(landHeight, GeneralUtils.getCachedFreeHeight(context.chunkGenerator(), xPos, zPos, Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState())) - 1;
         return landHeight;
     }
 

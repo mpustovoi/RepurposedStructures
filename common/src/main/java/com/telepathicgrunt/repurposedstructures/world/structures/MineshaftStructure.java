@@ -93,13 +93,13 @@ public class MineshaftStructure extends GenericJigsawStructure {
     }
 
     private static int getTerrainHeight(BlockPos centerPos, GenerationContext context) {
-        int height = context.chunkGenerator().getFirstOccupiedHeight(centerPos.getX(), centerPos.getZ(), Heightmap.Types.OCEAN_FLOOR_WG, context.heightAccessor(), context.randomState());
+        int height = GeneralUtils.getCachedFreeHeight(context.chunkGenerator(), centerPos.getX(), centerPos.getZ(), Heightmap.Types.OCEAN_FLOOR_WG, context.heightAccessor(), context.randomState()) - 1;
 
-        BlockPos pos = new BlockPos(centerPos.getX(), GeneralUtils.getMaxTerrainLimit(context.chunkGenerator()), centerPos.getZ());
+        BlockPos pos = new BlockPos(centerPos.getX(), 0, centerPos.getZ());
         BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
         for(Direction direction : Direction.Plane.HORIZONTAL) {
             mutable.set(pos).move(direction, 16);
-            height = Math.min(height, context.chunkGenerator().getFirstOccupiedHeight(mutable.getX(), mutable.getZ(), Heightmap.Types.OCEAN_FLOOR_WG, context.heightAccessor(), context.randomState()));
+            height = Math.min(height, GeneralUtils.getCachedFreeHeight(context.chunkGenerator(), mutable.getX(), mutable.getZ(), Heightmap.Types.OCEAN_FLOOR_WG, context.heightAccessor(), context.randomState())) - 1;
         }
 
         return height;
