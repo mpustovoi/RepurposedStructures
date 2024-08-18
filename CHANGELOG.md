@@ -1,3 +1,12 @@
+### **(V.7.5.8 Changes) (1.21.1 Minecraft) (Config Datapack Updated)**
+
+#### Villages:
+Made Mushroom Villages ot be able to spawn within 6 chunks of vanilla villages/outposts or other RS villages.
+
+#### Outposts:
+Made Repurposed Structures Outposts not able to spawn within 5 chunks of Mushroom Village.
+
+
 ### **(V.7.5.7 Changes) (1.21.1 Minecraft) (Config Datapack Updated)**
 
 #### Loot:
