@@ -20,6 +20,7 @@ import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.CheckerboardColumnBiomeSource;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraft.world.level.levelgen.WorldGenerationContext;
@@ -36,12 +37,14 @@ import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class GenericJigsawStructure extends Structure {
 
@@ -126,7 +129,7 @@ public class GenericJigsawStructure extends Structure {
             int validBiomeRange = this.biomeRadius.get();
             int sectionY = blockPos.getY();
             if (projectStartToHeightmap.isPresent()) {
-                sectionY += context.chunkGenerator().getFirstOccupiedHeight(blockPos.getX(), blockPos.getZ(), projectStartToHeightmap.get(), context.heightAccessor(), context.randomState());
+                sectionY += GeneralUtils.getCachedFreeHeight(context.chunkGenerator(), blockPos.getX(), blockPos.getZ(), projectStartToHeightmap.get(), context.heightAccessor(), context.randomState()) - 1;
             }
             sectionY = QuartPos.fromBlock(sectionY);
 

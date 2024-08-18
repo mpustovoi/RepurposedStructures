@@ -42,6 +42,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
@@ -394,5 +395,25 @@ public final class GeneralUtils {
                 consumer.accept(structureStart);
             }
         }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+
+    private static final ConcurrentHashMap<HeightKey, Integer> CACHED_HEIGHT = new ConcurrentHashMap<>(2048);
+    private record HeightKey(ChunkGenerator chunkGenerator, int x, int z){}
+
+    public static int getCachedFreeHeight(ChunkGenerator chunkGenerator, int x, int z, Heightmap.Types types, LevelHeightAccessor levelHeightAccessor, RandomState randomState) {
+        HeightKey key = new HeightKey(chunkGenerator, x , z);
+        Integer y = CACHED_HEIGHT.get(key);
+
+        if (y == null) {
+            if (CACHED_HEIGHT.size() >= 2048) {
+                CACHED_HEIGHT.clear();
+            }
+            y = chunkGenerator.getFirstOccupiedHeight(x, z, types, levelHeightAccessor, randomState);
+            CACHED_HEIGHT.put(key, y);
+        }
+
+        return y;
     }
 }
