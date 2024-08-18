@@ -1,7 +1,7 @@
 ### **(V.7.5.8 Changes) (1.21.1 Minecraft) (Config Datapack Updated)**
 
 #### Villages:
-Made Mushroom Villages ot be able to spawn within 6 chunks of vanilla villages/outposts or other RS villages.
+Made Mushroom Villages not be able to spawn within 6 chunks of vanilla villages/outposts or other RS villages.
 
 Fixed Oak Village's Church being chopped off at top.
 
