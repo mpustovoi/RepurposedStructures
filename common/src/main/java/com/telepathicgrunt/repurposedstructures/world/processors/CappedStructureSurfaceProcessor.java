@@ -27,8 +27,8 @@ import java.util.Map;
 public class CappedStructureSurfaceProcessor extends StructureProcessor {
 
     public static final MapCodec<CappedStructureSurfaceProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
-        StructureProcessorType.SINGLE_CODEC.fieldOf("delegate").forGetter((cappedProcessor) -> { return cappedProcessor.delegate; }),
-        Codec.BOOL.fieldOf("allow_void_sides").orElse(false).forGetter((cappedProcessor) -> { return cappedProcessor.allowVoidSides; })
+        StructureProcessorType.SINGLE_CODEC.fieldOf("delegate").forGetter((cappedProcessor) -> cappedProcessor.delegate),
+        Codec.BOOL.fieldOf("allow_void_sides").orElse(false).forGetter((cappedProcessor) -> cappedProcessor.allowVoidSides)
     ).apply(instance, CappedStructureSurfaceProcessor::new));
 
     private static final Pair<StructureTemplate.StructureBlockInfo, Integer> DEFAULT_AIR_BLOCK = Pair.of(new StructureTemplate.StructureBlockInfo(BlockPos.ZERO, Blocks.AIR.defaultBlockState(), null), 0);
@@ -61,10 +61,8 @@ public class CappedStructureSurfaceProcessor extends StructureProcessor {
                 }
                 List<BlockPos> shuffledPositionList = new ArrayList<>(nbtPosToData.keySet());
                 Collections.shuffle(shuffledPositionList);
-                Iterator<BlockPos> iterator = shuffledPositionList.iterator();
 
-                while (iterator.hasNext()) {
-                    BlockPos currentPosition = iterator.next();
+                for (BlockPos currentPosition : shuffledPositionList) {
                     Pair<StructureTemplate.StructureBlockInfo, Integer> currentInfo = nbtPosToData.get(currentPosition);
                     StructureTemplate.StructureBlockInfo structureBlockInfoOriginalNbtOrigin = nbtOriginBlockInfo.get(currentInfo.getSecond());
                     StructureTemplate.StructureBlockInfo structureBlockInfoWorld = worldOriginBlockInfo.get(currentInfo.getSecond());
@@ -83,8 +81,7 @@ public class CappedStructureSurfaceProcessor extends StructureProcessor {
                     BlockState belowState = nbtPosToData.getOrDefault(belowPos, DEFAULT_SOLID_BLOCK).getFirst().state();
                     BlockState aboveState = nbtPosToData.getOrDefault(abovePos, DEFAULT_AIR_BLOCK).getFirst().state();
                     if ((!belowState.canOcclude() || belowState.is(Blocks.JIGSAW)) ||
-                        (aboveState.canOcclude() && !aboveState.is(Blocks.JIGSAW)))
-                    {
+                            (aboveState.canOcclude() && !aboveState.is(Blocks.JIGSAW))) {
                         continue;
                     }
 

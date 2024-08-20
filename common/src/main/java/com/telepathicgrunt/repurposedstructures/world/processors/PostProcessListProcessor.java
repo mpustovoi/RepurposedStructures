@@ -15,11 +15,9 @@ import java.util.List;
 
 public class PostProcessListProcessor extends StructureProcessor {
 
-    public static final MapCodec<PostProcessListProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
-        return instance.group(
-            StructureProcessorType.SINGLE_CODEC.listOf().fieldOf("delegates").forGetter((processor) -> { return processor.delegates; })
-        ).apply(instance, PostProcessListProcessor::new);
-    });
+    public static final MapCodec<PostProcessListProcessor> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
+        StructureProcessorType.SINGLE_CODEC.listOf().fieldOf("delegates").forGetter((processor) -> processor.delegates)
+    ).apply(instance, PostProcessListProcessor::new));
 
     private final List<StructureProcessor> delegates;
 
