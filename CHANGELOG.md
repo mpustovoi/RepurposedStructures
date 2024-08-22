@@ -1,7 +1,7 @@
 ### **(V.7.5.9 Changes) (1.21.1 Minecraft)**
 
 ##### Misc:
-Slightly optimize Jigsaw Block match up for Repurposed Structures's structures.
+Slightly optimize Jigsaw Block match up and piece intersection checking for Repurposed Structures's structures.
 
 
 ### **(V.7.5.8 Changes) (1.21.1 Minecraft) (Config Datapack Updated)**
