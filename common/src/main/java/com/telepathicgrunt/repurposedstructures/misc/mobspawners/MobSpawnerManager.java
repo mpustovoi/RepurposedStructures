@@ -26,6 +26,8 @@ public class MobSpawnerManager extends SimpleJsonResourceReloadListener {
     private Map<ResourceLocation, List<MobSpawnerObj>> spawnerMap = ImmutableMap.of();
 
     public MobSpawnerManager() {
+        // NOTE: Anyone copying this class, PLEASE CHANGE THE BELOW STRING TO BE UNIQUE!!!!
+        // If you do not, both of our mods will read the same file twice and apply the file twice, causing duplicate spawner applications!!!
         super(GSON, "rs_spawners");
     }
 

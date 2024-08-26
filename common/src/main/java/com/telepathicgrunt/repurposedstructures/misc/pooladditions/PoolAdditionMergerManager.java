@@ -37,6 +37,8 @@ public final class PoolAdditionMergerManager extends SimpleJsonResourceReloadLis
     private static Map<ResourceLocation, JsonElement> cachedMap = null;
 
     public PoolAdditionMergerManager() {
+        // NOTE: Anyone copying this class, PLEASE CHANGE THE BELOW STRING TO BE UNIQUE!!!!
+        // If you do not, both of our mods will read the same file twice and apply the file twice, causing duplicate additions to pools!!!
         super(GSON, "rs_pool_additions");
     }
 

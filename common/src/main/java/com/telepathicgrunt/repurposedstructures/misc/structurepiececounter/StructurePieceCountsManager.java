@@ -27,6 +27,8 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
     private final Map<ResourceLocation, Map<ResourceLocation, Integer>> cachedMaxCountPiecesMap = new HashMap<>();
 
     public StructurePieceCountsManager() {
+        // NOTE: Anyone copying this class, PLEASE CHANGE THE BELOW STRING TO BE UNIQUE!!!!
+        // If you do not, both of our mods will read the same file twice and apply the file twice, causing duplicate spawn pieces application!!!
         super(GSON, "rs_pieces_spawn_counts");
     }
 
