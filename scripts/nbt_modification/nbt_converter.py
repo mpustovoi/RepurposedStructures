@@ -3,7 +3,7 @@ from pathlib import Path
 import collections.abc
 import os
 
-# https://pypi.org/project/Python-NBT/
+# https://github.com/vberlier/nbtlib
 #--------------------------------------------------------------------------------------------
 
 blockPalette = {}
