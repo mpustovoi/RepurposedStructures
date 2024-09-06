@@ -1,4 +1,4 @@
-import python_nbt.nbt as nbt
+import nbtlib as nbt
 from pathlib import Path
 import collections.abc
 import os
@@ -12,31 +12,32 @@ originalBiome = ""
 newBiome = ""
 string_blacklist = []
 conversion_partial_dict = {
+    "blue": "yellow"
 }
 conversion_exact_dict = {
 }
 #-------------------------------------------------------------------------------------------
 
 def string_replacer(nbt_string):
-    if nbt_string.value not in string_blacklist:
+    if nbt_string not in string_blacklist:
         for key, replacement in conversion_exact_dict.items():
-            if nbt_string.value == key:
-                replacementValue = nbt_string.value.replace(key, replacement)
-                blockPalette[nbt_string.value] = replacementValue
-                nbt_string.value = replacementValue
-                return
+            if nbt_string == key:
+                replacementValue = nbt_string.replace(key, replacement)
+                blockPalette[nbt_string] = replacementValue
+                return nbt.String(replacementValue)
         for key, replacement in conversion_partial_dict.items():
-            if key in nbt_string.value:
-                replacementValue = nbt_string.value.replace(key, replacement)
-                blockPalette[nbt_string.value] = replacementValue
-                nbt_string.value = replacementValue
+            if key in nbt_string:
+                replacementValue = nbt_string.replace(key, replacement)
+                blockPalette[nbt_string] = replacementValue
+                nbt_string = nbt.String(replacementValue)
+    return nbt_string
 
 def property_replacer(nbt_key, nbt_string, property_name, value_to_replace, new_value):
     if nbt_key == property_name:
-        if nbt_string.value == value_to_replace:
-            blockPalette[nbt_string.value] = new_value
-            nbt_string.value = new_value
-            return
+        if nbt_string == value_to_replace:
+            blockPalette[nbt_string] = new_value
+            return new_value
+    return nbt.String(nbt_string)
 
 
 
@@ -48,9 +49,9 @@ def traverse_dicts(nbt_list):
         '''
         
         if 'palette' in nbt_list:
-            for entry in nbt_list['palette'].value:
-                if entry.value['Name'].value not in blockPalette.keys():
-                    blockPalette[entry.value['Name'].value] = entry.value['Name'].value
+            for entry in nbt_list['palette']:
+                if entry.get('Name') not in blockPalette.keys():
+                    blockPalette[entry.get('Name')] = entry.get('Name')
 
         '''
         for key, entry in nbt_list.items():
@@ -73,10 +74,10 @@ def traverse_dicts(nbt_list):
         
         for key, entry in nbt_list.items():
 
-            if isinstance(entry, nbt.NBTTagList) or isinstance(entry, nbt.NBTTagCompound):
+            if isinstance(entry, nbt.List) or isinstance(entry, nbt.Compound):
                 traverse_dicts(entry)
-            elif isinstance(entry, nbt.NBTTagString):
-                string_replacer(entry)
+            elif isinstance(entry, nbt.String):
+                nbt_list[key] = string_replacer(entry)
 
             #property_replacer(key, entry, "PersistenceRequired", 0, 1)
             #property_replacer(key, entry, "waterlogged", "true", "false")
@@ -84,15 +85,15 @@ def traverse_dicts(nbt_list):
             #property_replacer(key, entry, "joint", "rollable", "aligned")
 
 
-    elif isinstance(nbt_list, nbt.NBTTagList) or isinstance(nbt_list, nbt.NBTTagCompound):
+    elif isinstance(nbt_list, nbt.List) or isinstance(nbt_list, nbt.Compound):
         for entry in nbt_list:
-            if isinstance(entry, nbt.NBTTagInt):
+            if isinstance(entry, nbt.Int):
                 continue
 
-            if isinstance(nbt_list, nbt.NBTTagList) or isinstance(entry, nbt.NBTTagCompound):
+            if isinstance(nbt_list, nbt.List) or isinstance(entry, nbt.Compound):
                 traverse_dicts(entry)
-            elif isinstance(entry, nbt.NBTTagString):
-                string_replacer(entry)
+            elif isinstance(entry, nbt.String):
+                nbt_list[key] = string_replacer(entry)
 
 for (subdir, dirs, files) in os.walk("toconvert", topdown=True):
     for file in files:
@@ -100,14 +101,14 @@ for (subdir, dirs, files) in os.walk("toconvert", topdown=True):
         filepath = directory + file
 
         if filepath.endswith(".nbt"): 
-            nbtfile = nbt.read_from_nbt_file(filepath)
+            nbtfile = nbt.load(filepath)
             traverse_dicts(nbtfile)
 
             directory = directory.replace("toconvert", "converted").replace(originalBiome, newBiome)
             Path(directory).mkdir(parents=True, exist_ok=True)
             newFile = directory + file.replace(originalBiome, newBiome)
 
-            nbt.write_to_nbt_file(newFile, nbtfile)
+            nbtfile.save(newFile)
             continue
         else:
             continue

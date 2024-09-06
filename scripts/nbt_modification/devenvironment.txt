@@ -17,7 +17,7 @@ $ python -m virtualenv nbt_converter
 $ virtualenvironment\nbt_converter\Scripts\activate.bat
 
 # Install package
-$ pip install Python-NBT
+$ pip install nbtlib
 
 # Exit the current project env
 $ Scripts\deactivate
